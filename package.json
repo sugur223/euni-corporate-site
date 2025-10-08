@@ -1,0 +1,8 @@
+{
+  "name": "euni-wordpress-local",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx @wp-now/wp-now start --path=euni-theme",
+    "stop": "npx @wp-now/wp-now stop"
+  }
+}
