@@ -48,12 +48,7 @@ jobs:
           SOURCE: "euni-theme/"
           TARGET: ${{ secrets.SSH_TARGET_DIR }}  # 例: /home/username/domain.com/public_html/wp-content/themes/euni-theme/
           EXCLUDE: ".git, .github, node_modules, .DS_Store, Thumbs.db, *.log"
-          SCRIPT_BEFORE: |
-            whoami
-            ls -al
-          SCRIPT_AFTER: |
-            echo "Deployment completed successfully"
-            ls -al ${{ secrets.SSH_TARGET_DIR }}
+          ARGS: "-avz --delete"
 
       - name: Deployment Status
         if: success()
