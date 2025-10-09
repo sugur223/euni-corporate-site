@@ -60,12 +60,14 @@ body {
    ==================== */
 .l-header {
     background: var(--color-bg-white);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 9000;
     border-bottom: 1px solid var(--color-border);
-    will-change: box-shadow;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .l-header__inner {
@@ -166,11 +168,16 @@ body {
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 8px;
+    padding: 12px;
     position: relative;
-    z-index: 1001;
+    z-index: 9999;
     transition: transform 0.3s ease;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    tap-highlight-color: rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: auto;
 }
 
 .l-header__toggle:hover {
@@ -179,6 +186,8 @@ body {
 
 .l-header__toggle:active {
     transform: scale(0.95);
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
 }
 
 .l-header__toggle-bar {
@@ -970,11 +979,12 @@ body {
         width: 280px;
         height: 100vh;
         background: var(--color-bg-white);
-        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
-        z-index: 1000;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 9998;
         padding: 80px 0 2rem 0;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .l-header__gnav.-active {
@@ -1021,7 +1031,7 @@ body {
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
+        z-index: 9997;
         animation: fadeIn 0.3s ease;
     }
 

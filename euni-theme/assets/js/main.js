@@ -84,35 +84,12 @@
     }
 
     /**
-     * Header scroll effect
+     * Header scroll effect - Disabled to prevent jitter
      */
     function initHeaderScroll() {
-        const header = document.querySelector('.l-header');
-        if (!header) return;
-
-        let lastScroll = 0;
-        let ticking = false;
-
-        function updateHeaderShadow() {
-            const currentScroll = window.pageYOffset;
-
-            // Add shadow on scroll
-            if (currentScroll > 10) {
-                header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
-            } else {
-                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
-            }
-
-            lastScroll = currentScroll;
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                window.requestAnimationFrame(updateHeaderShadow);
-                ticking = true;
-            }
-        }, { passive: true });
+        // Disabled for better performance and to prevent jitter on mobile
+        // Header shadow is now static via CSS
+        return;
     }
 
     /**
@@ -280,8 +257,13 @@
 
         if (!menuToggle || !gnav) return;
 
-        // Toggle menu on button click
-        menuToggle.addEventListener('click', function() {
+        // Toggle menu function
+        function toggleMenu(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
             const isActive = gnav.classList.contains('-active');
 
             if (isActive) {
@@ -299,7 +281,13 @@
                 menuToggle.setAttribute('aria-expanded', 'true');
                 menuToggle.setAttribute('aria-label', 'メニューを閉じる');
             }
-        });
+        }
+
+        // Add both click and touchstart listeners for better mobile support
+        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle.addEventListener('touchstart', function(e) {
+            toggleMenu(e);
+        }, { passive: false });
 
         // Close menu when clicking on a menu item
         const menuLinks = gnav.querySelectorAll('a');
