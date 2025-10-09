@@ -292,12 +292,15 @@
         // Close menu when clicking on a menu item
         const menuLinks = gnav.querySelectorAll('a');
         menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                gnav.classList.remove('-active');
-                menuToggle.classList.remove('-active');
-                body.classList.remove('menu-open');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuToggle.setAttribute('aria-label', 'メニューを開く');
+            link.addEventListener('click', function(e) {
+                // Allow the link to work, then close menu after a short delay
+                setTimeout(function() {
+                    gnav.classList.remove('-active');
+                    menuToggle.classList.remove('-active');
+                    body.classList.remove('menu-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.setAttribute('aria-label', 'メニューを開く');
+                }, 100);
             });
         });
 
@@ -307,8 +310,10 @@
             if (gnav.classList.contains('-active')) {
                 const isClickInsideMenu = gnav.contains(e.target);
                 const isClickOnToggle = menuToggle.contains(e.target);
+                const isClickOnLink = e.target.tagName === 'A' || e.target.closest('a');
 
-                if (!isClickInsideMenu && !isClickOnToggle) {
+                // Don't close if clicking on a link (let the link handler do it)
+                if (!isClickInsideMenu && !isClickOnToggle && !isClickOnLink) {
                     gnav.classList.remove('-active');
                     menuToggle.classList.remove('-active');
                     body.classList.remove('menu-open');
@@ -319,7 +324,7 @@
         }
 
         document.addEventListener('click', closeMenuOnOutsideClick);
-        document.addEventListener('touchstart', closeMenuOnOutsideClick, { passive: true });
+        document.addEventListener('touchend', closeMenuOnOutsideClick, { passive: true });
 
         // Close menu on ESC key
         document.addEventListener('keydown', function(e) {
