@@ -43,7 +43,7 @@ Version: 3.0.0
    Global Styles
    ==================== */
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 body {
@@ -60,11 +60,12 @@ body {
    ==================== */
 .l-header {
     background: var(--color-bg-white);
-    box-shadow: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
     z-index: 100;
     border-bottom: 1px solid var(--color-border);
+    will-change: box-shadow;
 }
 
 .l-header__inner {
@@ -160,18 +161,24 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
+    padding: 8px;
+    position: relative;
     z-index: 1001;
     transition: transform 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .l-header__toggle:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+.l-header__toggle:active {
+    transform: scale(0.95);
 }
 
 .l-header__toggle-bar {
