@@ -79,3 +79,17 @@ wordpress-data/
 # Package lock files
 package-lock.json
 yarn.lock
+
+# SSH Keys (重要: 絶対にコミットしない)
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+xserver_deploy
+xserver_deploy.pub
+
+# Local Development Scripts
+start-wordpress.sh
+start-server.sh

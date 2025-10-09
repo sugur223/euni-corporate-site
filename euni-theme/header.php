@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 } else {
                     ?>
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="c-logo" rel="home">
-                        <span class="c-logo__text"><?php bloginfo( 'name' ); ?></span>
+                        <span class="c-logo__text">株式会社Euni</span>
                     </a>
                     <?php
                 }
@@ -40,19 +40,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             </div>
 
             <nav id="gnav" class="l-header__gnav c-gnavWrap">
-                <?php
-                if ( has_nav_menu( 'primary' ) ) {
-                    wp_nav_menu(
-                        array(
-                            'theme_location' => 'primary',
-                            'menu_id'        => 'primary-menu',
-                            'menu_class'     => 'c-gnav',
-                            'container'      => false,
-                            'fallback_cb'    => false,
-                        )
-                    );
-                }
-                ?>
+                <ul class="c-gnav" id="primary-menu">
+                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#news' ) ); ?>">ニュース</a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#business' ) ); ?>">事業内容</a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#vision' ) ); ?>">ビジョン</a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#message' ) ); ?>">メッセージ</a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#company' ) ); ?>">会社概要</a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">お問い合わせ</a></li>
+                </ul>
             </nav>
         </div>
     </header>

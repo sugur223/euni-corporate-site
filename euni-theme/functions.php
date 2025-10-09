@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define theme constants
  */
-define( 'EUNI_THEME_VERSION', '2.0.0' );
+define( 'EUNI_THEME_VERSION', '2.1.0' );
 define( 'EUNI_THEME_DIR', get_template_directory() );
 define( 'EUNI_THEME_URI', get_template_directory_uri() );
 
@@ -59,69 +59,8 @@ function euni_remove_csp_headers() {
 }
 add_action( 'send_headers', 'euni_remove_csp_headers' );
 
-/**
- * Create default navigation menu
- */
-function euni_create_default_menu() {
-    // Check if already created
-    if ( get_option( 'euni_default_menu_created' ) ) {
-        return;
-    }
-
-    // Check if menu already exists
-    $menu_name = 'Primary Menu';
-    $menu_exists = wp_get_nav_menu_object( $menu_name );
-
-    if ( ! $menu_exists ) {
-        $menu_id = wp_create_nav_menu( $menu_name );
-
-        // Add menu items
-        $menu_items = array(
-            array(
-                'title' => '企業理念',
-                'url'   => '#philosophy',
-            ),
-            array(
-                'title' => '事業内容',
-                'url'   => '#service',
-            ),
-            array(
-                'title' => '参加者の声',
-                'url'   => '#voice',
-            ),
-            array(
-                'title' => '選ばれる理由',
-                'url'   => '#features',
-            ),
-            array(
-                'title' => 'よくある質問',
-                'url'   => '#faq',
-            ),
-            array(
-                'title' => 'お問い合わせ',
-                'url'   => '#contact',
-            ),
-        );
-
-        foreach ( $menu_items as $item ) {
-            wp_update_nav_menu_item( $menu_id, 0, array(
-                'menu-item-title'   => $item['title'],
-                'menu-item-url'     => home_url( '/' ) . $item['url'],
-                'menu-item-status'  => 'publish',
-                'menu-item-type'    => 'custom',
-            ) );
-        }
-
-        // Assign menu to location
-        $locations = get_theme_mod( 'nav_menu_locations' );
-        $locations['primary'] = $menu_id;
-        set_theme_mod( 'nav_menu_locations', $locations );
-
-        // Mark as created
-        update_option( 'euni_default_menu_created', true );
-    }
-}
-add_action( 'init', 'euni_create_default_menu' );
+// メニューはheader.phpとfooter.phpに直接記述されているため、
+// 動的なメニュー作成処理は不要
 
 /**
  * Include core files
@@ -135,3 +74,61 @@ require_once EUNI_THEME_DIR . '/inc/customizer.php';
  */
 require_once EUNI_THEME_DIR . '/lib/utility.php';
 require_once EUNI_THEME_DIR . '/lib/shortcode.php';
+
+/**
+ * Handle contact form submission
+ */
+function euni_handle_contact_form() {
+    // Check nonce
+    if ( ! isset( $_POST['euni_contact_nonce'] ) ||
+         ! wp_verify_nonce( $_POST['euni_contact_nonce'], 'euni_contact_form' ) ) {
+        wp_die( 'Security check failed' );
+    }
+
+    // Sanitize and validate inputs
+    $name = sanitize_text_field( $_POST['contact_name'] );
+    $company = sanitize_text_field( $_POST['contact_company'] );
+    $email = sanitize_email( $_POST['contact_email'] );
+    $phone = sanitize_text_field( $_POST['contact_phone'] );
+    $type = sanitize_text_field( $_POST['contact_type'] );
+    $message = sanitize_textarea_field( $_POST['contact_message'] );
+
+    // Validate required fields
+    if ( empty( $name ) || empty( $email ) || empty( $type ) || empty( $message ) ) {
+        wp_redirect( add_query_arg( 'contact', 'error', home_url( '/#contact' ) ) );
+        exit;
+    }
+
+    // Prepare email
+    $to = get_theme_mod( 'euni_email', get_option( 'admin_email' ) );
+    $subject = '[Euniコーポレートサイト] ' . esc_html( $name ) . ' 様からお問い合わせ';
+
+    $body = "お問い合わせがありました。\n\n";
+    $body .= "■ お名前: " . $name . "\n";
+    if ( ! empty( $company ) ) {
+        $body .= "■ 会社名: " . $company . "\n";
+    }
+    $body .= "■ メールアドレス: " . $email . "\n";
+    if ( ! empty( $phone ) ) {
+        $body .= "■ 電話番号: " . $phone . "\n";
+    }
+    $body .= "■ お問い合わせ種別: " . $type . "\n\n";
+    $body .= "■ お問い合わせ内容:\n" . $message . "\n";
+
+    $headers = array(
+        'From: ' . get_bloginfo( 'name' ) . ' <' . $to . '>',
+        'Reply-To: ' . $email,
+    );
+
+    // Send email
+    $sent = wp_mail( $to, $subject, $body, $headers );
+
+    if ( $sent ) {
+        wp_redirect( add_query_arg( 'contact', 'success', home_url( '/#contact' ) ) );
+    } else {
+        wp_redirect( add_query_arg( 'contact', 'error', home_url( '/#contact' ) ) );
+    }
+    exit;
+}
+add_action( 'admin_post_nopriv_euni_contact_form', 'euni_handle_contact_form' );
+add_action( 'admin_post_euni_contact_form', 'euni_handle_contact_form' );

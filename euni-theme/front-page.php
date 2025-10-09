@@ -1,6 +1,6 @@
 <?php
 /**
- * Front Page Template (SWELL-based structure with Euni content)
+ * Front Page Template (Simplified Structure)
  *
  * @package Euni_Theme
  */
@@ -16,9 +16,10 @@ get_header();
         <div class="p-hero__content">
             <h1 class="p-hero__title">善き心で、つながろう</h1>
             <p class="p-hero__subtitle">EUNOIA ∞ USER NETWORK INTERFACE</p>
-            <p class="p-hero__text">全ての人がありたい姿を実現できる社会を創造します</p>
+            <p class="p-hero__text">全ての人が善いつながりの中でありたい姿を実現できる社会を創造する</p>
             <div class="p-hero__btns">
-                <a href="#contact" class="c-btn c-btn--primary">お問い合わせ</a>
+                <a href="#vision" class="c-btn c-btn--primary">私たちのビジョン</a>
+                <a href="#contact" class="c-btn c-btn--outline">お問い合わせ</a>
             </div>
         </div>
     </div>
@@ -26,421 +27,300 @@ get_header();
 
 <div class="l-mainContent">
 
-    <!-- Stats Section -->
-    <section class="p-stats">
-        <div class="l-container">
-            <div class="p-stats__grid">
-                <div class="c-statCard">
-                    <div class="c-statCard__number">500+</div>
-                    <div class="c-statCard__label">コミュニティ参加者</div>
-                    <div class="c-statCard__text">若手社会人が成長を実感</div>
-                </div>
-                <div class="c-statCard">
-                    <div class="c-statCard__number">95%</div>
-                    <div class="c-statCard__label">満足度</div>
-                    <div class="c-statCard__text">参加者の継続率</div>
-                </div>
-                <div class="c-statCard">
-                    <div class="c-statCard__number">200+</div>
-                    <div class="c-statCard__label">イベント開催数</div>
-                    <div class="c-statCard__text">オンライン・オフライン合計</div>
-                </div>
-                <div class="c-statCard">
-                    <div class="c-statCard__number">50+</div>
-                    <div class="c-statCard__label">企業パートナー</div>
-                    <div class="c-statCard__text">共に価値を創造</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section id="philosophy" class="p-section -bg">
+    <!-- News Section -->
+    <section id="news" class="p-section">
         <div class="l-container">
             <div class="p-section__head">
-                <span class="c-secLabel">PHILOSOPHY</span>
-                <h2 class="c-secHeading">企業理念</h2>
+                <span class="c-secLabel">NEWS</span>
+                <h2 class="c-secHeading">ニュース・お知らせ</h2>
+                <p class="c-secDscr">Euniの最新情報をお届けします</p>
             </div>
 
             <div class="p-section__body">
-                <p class="c-bigText -center">
-                    善き心でつながり、全ての人がありたい姿を実現できる社会を創造する
-                </p>
+                <div class="p-newsGrid">
+                    <?php
+                    // Get latest news posts (limit to 5)
+                    $news_query = new WP_Query(array(
+                        'post_type' => 'news',
+                        'posts_per_page' => 5,
+                        'orderby' => 'date',
+                        'order' => 'DESC'
+                    ));
 
-                <div class="p-philosophy__content">
-                    <p class="c-text -large">
-                        <strong>Euni（ユニ）</strong>という社名には、3つの意味が込められています。
-                    </p>
+                    // If no news posts exist, show dummy data
+                    if (!$news_query->have_posts()) :
+                        // Dummy news data
+                        $dummy_news = array(
+                            array(
+                                'date' => '2025.10.01',
+                                'category' => 'プレスリリース',
+                                'category_class' => 'press',
+                                'title' => '企業向け組織開発支援サービスを正式リリース',
+                            ),
+                            array(
+                                'date' => '2025.09.15',
+                                'category' => 'メディア掲載',
+                                'category_class' => 'media',
+                                'title' => '「現代社会の孤独・孤立問題」について代表インタビューが掲載されました',
+                            ),
+                            array(
+                                'date' => '2025.09.01',
+                                'category' => 'イベント',
+                                'category_class' => 'event',
+                                'title' => '第200回記念イベント「つながりの未来を考える」を開催しました',
+                            ),
+                            array(
+                                'date' => '2025.08.20',
+                                'category' => 'お知らせ',
+                                'category_class' => 'info',
+                                'title' => 'パートナー企業が50社を突破しました',
+                            ),
+                            array(
+                                'date' => '2025.08.01',
+                                'category' => 'プレスリリース',
+                                'category_class' => 'press',
+                                'title' => 'コミュニティ参加者数が500名を突破',
+                            ),
+                        );
 
-                    <div class="p-philosophy__grid">
-                        <div class="c-boxCard">
-                            <h3 class="c-boxCard__title">Eunoia（ユーノイア）</h3>
-                            <p class="c-boxCard__text">ギリシャ語で「善き心、美しい思考」を意味します。</p>
-                        </div>
+                        foreach ($dummy_news as $news) :
+                    ?>
+                        <article class="c-newsCard">
+                            <div class="c-newsCard__meta">
+                                <time class="c-newsCard__date"><?php echo esc_html($news['date']); ?></time>
+                                <span class="c-newsCard__cat -<?php echo esc_attr($news['category_class']); ?>">
+                                    <?php echo esc_html($news['category']); ?>
+                                </span>
+                            </div>
+                            <h3 class="c-newsCard__title">
+                                <a href="#news"><?php echo esc_html($news['title']); ?></a>
+                            </h3>
+                        </article>
+                    <?php
+                        endforeach;
 
-                        <div class="c-boxCard">
-                            <h3 class="c-boxCard__title">UNI</h3>
-                            <p class="c-boxCard__text">User Network Interface - 人と人をつなぐ接点となること。</p>
-                        </div>
+                    else :
+                        // Display actual news posts
+                        while ($news_query->have_posts()) : $news_query->the_post();
+                            $categories = get_the_terms(get_the_ID(), 'news_category');
+                            $cat_name = $categories ? $categories[0]->name : 'お知らせ';
+                            $cat_slug = $categories ? $categories[0]->slug : 'info';
+                    ?>
+                        <article class="c-newsCard">
+                            <div class="c-newsCard__meta">
+                                <time class="c-newsCard__date"><?php echo get_the_date('Y.m.d'); ?></time>
+                                <span class="c-newsCard__cat -<?php echo esc_attr($cat_slug); ?>">
+                                    <?php echo esc_html($cat_name); ?>
+                                </span>
+                            </div>
+                            <h3 class="c-newsCard__title">
+                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                            </h3>
+                        </article>
+                    <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    endif;
+                    ?>
+                </div>
 
-                        <div class="c-boxCard">
-                            <h3 class="c-boxCard__title">Uni</h3>
-                            <p class="c-boxCard__text">ラテン語で「一つ」を意味し、つながりの本質を表しています。</p>
-                        </div>
-                    </div>
-
-                    <p class="c-text -large -center" style="margin-top: 3rem;">
-                        私たちは、善き心でつながり合うことで、一人ひとりが自分らしく成長し、<br>
-                        理想の未来を実現できる社会を創造します。
-                    </p>
+                <div class="p-section__cta">
+                    <a href="<?php echo esc_url(home_url('/news/')); ?>" class="c-btn c-btn--outline-dark">
+                        ニュース一覧を見る →
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Service Section -->
-    <section id="service" class="p-section">
+    <!-- Business Overview Section -->
+    <section id="business" class="p-section -bg">
         <div class="l-container">
             <div class="p-section__head">
-                <span class="c-secLabel">SERVICE</span>
+                <span class="c-secLabel">BUSINESS</span>
                 <h2 class="c-secHeading">事業内容</h2>
-                <p class="c-secDscr">若手社会人の成長とつながりを支援し、孤独・孤立問題の解決に貢献します。</p>
+                <p class="c-secDscr">人と人とのつながりを支援し、一人ひとりの成長と可能性の実現に貢献します。</p>
             </div>
 
             <div class="p-section__body">
                 <div class="p-cardGrid -col3">
                     <div class="c-card">
                         <div class="c-card__icon">👥</div>
-                        <h3 class="c-card__title">成長支援コミュニティ</h3>
+                        <h3 class="c-card__title">成長支援コミュニティ事業</h3>
                         <p class="c-card__text">
-                            若手社会人が互いに学び合い、成長し合えるコミュニティを企画・運営しています。
+                            互いに学び合い、成長し合えるコミュニティの企画・運営。
                             多様なバックグラウンドを持つメンバーとの出会いを通じて、新たな気づきと可能性を提供します。
                         </p>
-                        <div class="c-card__detail">
-                            <strong>主な活動：</strong>
-                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-                                <li>月2回のオンライン勉強会</li>
-                                <li>四半期ごとのオフライン交流会</li>
-                                <li>テーマ別の分科会活動</li>
-                            </ul>
-                        </div>
+                        <a href="#contact" class="c-btn-link">詳しく見る →</a>
                     </div>
 
                     <div class="c-card">
-                        <div class="c-card__icon">🔗</div>
-                        <h3 class="c-card__title">つながり支援サービス</h3>
+                        <div class="c-card__icon">💻</div>
+                        <h3 class="c-card__title">ITソリューション事業</h3>
                         <p class="c-card__text">
-                            テクノロジーと人の温かみを融合させた、つながり支援サービスを開発・提供しています。
-                            善き心でのつながりを大切にし、一人ひとりに寄り添ったサポートを実現します。
+                            つながり支援プラットフォームの開発・運営、企業向けITシステム開発・導入支援、AI活用コンサルティング、
+                            業務効率化のためのデジタル化支援、起業家向けプロトタイプ開発支援を提供します。
                         </p>
-                        <div class="c-card__detail">
-                            <strong>提供サービス：</strong>
-                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-                                <li>マッチング支援プラットフォーム</li>
-                                <li>1on1メンタリング</li>
-                                <li>キャリア相談窓口</li>
-                            </ul>
-                        </div>
+                        <a href="#contact" class="c-btn-link">お問い合わせ →</a>
                     </div>
 
                     <div class="c-card">
-                        <div class="c-card__icon">🌱</div>
-                        <h3 class="c-card__title">成長支援プログラム</h3>
+                        <div class="c-card__icon">📊</div>
+                        <h3 class="c-card__title">コンサルティング事業</h3>
                         <p class="c-card__text">
-                            個人の強みを活かし、本来の自分らしさを発揮できる成長プログラムを提供します。
-                            関係性の中での学びを重視し、持続可能な成長を支援します。
+                            企業向けの組織開発支援、人材育成プログラムの設計・提供。
+                            関係性の中での学びを重視した、持続可能な成長を支援します。
                         </p>
-                        <div class="c-card__detail">
-                            <strong>プログラム例：</strong>
-                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-                                <li>リーダーシップ開発</li>
-                                <li>キャリアデザイン研修</li>
-                                <li>コミュニケーション強化</li>
-                            </ul>
+                        <a href="#contact" class="c-btn-link">お問い合わせ →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="p-section">
+        <div class="l-container">
+            <div class="p-section__head">
+                <span class="c-secLabel">OUR VISION</span>
+                <h2 class="c-secHeading">私たちのビジョン</h2>
+            </div>
+
+            <div class="p-section__body">
+                <p class="c-bigText -center">
+                    全ての人が善いつながりの中でありたい姿を実現できる社会を創造する
+                </p>
+
+                <div class="p-philosophy__content" style="margin-top: 4rem;">
+                    <div class="p-philosophy__grid">
+                        <div class="c-boxCard">
+                            <h3 class="c-boxCard__title">Eunoia（ユーノイア）</h3>
+                            <p class="c-boxCard__text">ギリシャ語で「善き心、美しい思考」を意味します。相手を思いやり、誠実に向き合う心を大切にします。</p>
+                        </div>
+
+                        <div class="c-boxCard">
+                            <h3 class="c-boxCard__title">UNI</h3>
+                            <p class="c-boxCard__text">User Network Interface - 人と人をつなぐ接点となること。つながりを生み出すプラットフォームを目指します。</p>
+                        </div>
+
+                        <div class="c-boxCard">
+                            <h3 class="c-boxCard__title">Uni</h3>
+                            <p class="c-boxCard__text">ラテン語で「一つ」を意味し、つながりの本質を表しています。一人ひとりが繋がり、共に成長する社会を創ります。</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- MVV Section -->
-    <section id="mvv" class="p-section -bg">
-        <div class="l-container">
-            <div class="p-section__head">
-                <span class="c-secLabel">MISSION & VISION</span>
-                <h2 class="c-secHeading">ミッション & ビジョン</h2>
-            </div>
-
-            <div class="p-section__body">
-                <div class="p-cardGrid -col2">
-                    <div class="c-card -border">
-                        <h3 class="c-card__label">Mission<span class="c-card__sublabel">使命</span></h3>
-                        <p class="c-card__text -large">
-                            善き心でつながり合うことで、人々が自分らしく成長し、理想の未来を実現できる世界を創る
-                        </p>
-                    </div>
-
-                    <div class="c-card -border">
-                        <h3 class="c-card__label">Vision<span class="c-card__sublabel">目指す未来</span></h3>
-                        <p class="c-card__text -large">
-                            2030年までに「善き心でつながり、共に成長し合うことが当たり前の社会」を実現する
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values Section -->
-    <section id="values" class="p-section">
-        <div class="l-container">
-            <div class="p-section__head">
-                <span class="c-secLabel">VALUES</span>
-                <h2 class="c-secHeading">大切にする価値観</h2>
-                <p class="c-secDscr">私たちが日々の活動において大切にしている5つの価値観です。</p>
-            </div>
-
-            <div class="p-section__body">
-                <div class="p-cardGrid -col3">
-                    <div class="c-valueCard">
-                        <div class="c-valueCard__num">01</div>
-                        <h3 class="c-valueCard__title">Eunoia Spirit<span class="c-valueCard__subtitle">善き心の精神</span></h3>
-                        <p class="c-valueCard__text">
-                            相手の立場に立ち、一人ひとりの個性と可能性を信じます。
-                            誠実さと思いやりを持って、全ての人との関係を築きます。
-                        </p>
-                    </div>
-
-                    <div class="c-valueCard">
-                        <div class="c-valueCard__num">02</div>
-                        <h3 class="c-valueCard__title">Authentic Being<span class="c-valueCard__subtitle">本来の自分</span></h3>
-                        <p class="c-valueCard__text">
-                            他人との比較ではなく、自分らしい道を歩むことを支援します。
-                            一人ひとりが本来の自分を発揮できる環境を大切にします。
-                        </p>
-                    </div>
-
-                    <div class="c-valueCard">
-                        <div class="c-valueCard__num">03</div>
-                        <h3 class="c-valueCard__title">Connected Growth<span class="c-valueCard__subtitle">つながりの中の成長</span></h3>
-                        <p class="c-valueCard__text">
-                            関係性の中でこそ、新たな気づき、創造性、可能性が生まれると信じています。
-                            共に学び、成長し合うコミュニティを大切にします。
-                        </p>
-                    </div>
-
-                    <div class="c-valueCard">
-                        <div class="c-valueCard__num">04</div>
-                        <h3 class="c-valueCard__title">Thoughtful Innovation<span class="c-valueCard__subtitle">思いやりのあるイノベーション</span></h3>
-                        <p class="c-valueCard__text">
-                            テクノロジーは手段、人の幸福が目的です。
-                            人の温かみを大切にしながら、革新的なソリューションを創造します。
-                        </p>
-                    </div>
-
-                    <div class="c-valueCard">
-                        <div class="c-valueCard__num">05</div>
-                        <h3 class="c-valueCard__title">Sustainable Impact<span class="c-valueCard__subtitle">持続可能な価値創造</span></h3>
-                        <p class="c-valueCard__text">
-                            一時的な解決ではなく、根本的な変化を追求します。
-                            長期的な視点で、持続可能な社会価値を創造していきます。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Voice Section -->
-    <section id="voice" class="p-section -bg">
-        <div class="l-container">
-            <div class="p-section__head">
-                <span class="c-secLabel">VOICE</span>
-                <h2 class="c-secHeading">参加者の声</h2>
-                <p class="c-secDscr">コミュニティに参加した方々の生の声をご紹介します。</p>
-            </div>
-
-            <div class="p-section__body">
-                <div class="p-cardGrid -col3">
-                    <div class="c-voiceCard">
-                        <div class="c-voiceCard__header">
-                            <div class="c-voiceCard__avatar">👤</div>
-                            <div class="c-voiceCard__info">
-                                <div class="c-voiceCard__name">A.T さん</div>
-                                <div class="c-voiceCard__meta">IT企業 / 入社3年目</div>
+                    <!-- Mission・Vision・Value Grid -->
+                    <div class="p-mvvGrid" style="margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+                        <div class="c-card -border">
+                            <h3 class="c-card__label">Mission<span class="c-card__sublabel">使命</span></h3>
+                            <p class="c-card__text -large" style="margin-bottom: 1.5rem;">
+                                善き心でつながり合うことで、人々が自分らしく成長し、理想の未来を実現できる世界を創る
+                            </p>
+                            <div class="c-card__detail">
+                                <p>
+                                    私たちは、人と人とのつながりを支援し、孤独・孤立という社会課題の解決に取り組んでいます。
+                                    善き心（Eunoia）を持った人々が出会い、つながり、共に成長し合えるコミュニティとプラットフォームを提供することで、
+                                    一人ひとりが本来の可能性を発揮できる社会を実現します。
+                                </p>
                             </div>
                         </div>
-                        <p class="c-voiceCard__text">
-                            「同じ境遇の仲間と出会え、悩みを共有できたことで、仕事への向き合い方が変わりました。
-                            月1回のイベントが今では楽しみで仕方ありません。」
-                        </p>
-                    </div>
 
-                    <div class="c-voiceCard">
-                        <div class="c-voiceCard__header">
-                            <div class="c-voiceCard__avatar">👤</div>
-                            <div class="c-voiceCard__info">
-                                <div class="c-voiceCard__name">M.K さん</div>
-                                <div class="c-voiceCard__meta">メーカー / 入社2年目</div>
+                        <div class="c-card -border">
+                            <h3 class="c-card__label">Vision<span class="c-card__sublabel">目指す未来</span></h3>
+                            <p class="c-card__text -large" style="margin-bottom: 1.5rem;">
+                                善き心でつながり、共に成長し合うことが当たり前の社会を実現する
+                            </p>
+                            <div class="c-card__detail">
+                                <p>
+                                    孤独や孤立が社会問題となる現代において、私たちは人と人とのつながりの価値を再定義します。
+                                    テクノロジーと温かみのある関係性を融合させ、誰もが安心して自分らしくいられる、
+                                    新しい時代のコミュニティと働き方を創造していきます。
+                                </p>
                             </div>
                         </div>
-                        <p class="c-voiceCard__text">
-                            「他業界の方との交流で視野が広がり、自分のキャリアについて深く考えるきっかけになりました。
-                            一人では気づけなかった強みを発見できました。」
-                        </p>
-                    </div>
 
-                    <div class="c-voiceCard">
-                        <div class="c-voiceCard__header">
-                            <div class="c-voiceCard__avatar">👤</div>
-                            <div class="c-voiceCard__info">
-                                <div class="c-voiceCard__name">S.Y さん</div>
-                                <div class="c-voiceCard__meta">コンサル / 入社4年目</div>
+                        <div class="c-card -border">
+                            <h3 class="c-card__label">Value<span class="c-card__sublabel">大切にする価値観</span></h3>
+                            <p class="c-card__text -large" style="margin-bottom: 1.5rem;">
+                                善き心、誠実さ、成長マインドを持って行動する
+                            </p>
+                            <div class="c-card__detail">
+                                <ul>
+                                    <li><strong>善き心（Eunoia）：</strong>相手を思いやり、誠実に向き合う心を大切にします</li>
+                                    <li><strong>つながり（Connection）：</strong>多様性を尊重し、関係性の中での学びを重視します</li>
+                                    <li><strong>成長（Growth）：</strong>常に学び、挑戦し、共に成長し続けます</li>
+                                    <li><strong>誠実さ（Integrity）：</strong>透明性と説明責任を持って行動します</li>
+                                </ul>
                             </div>
                         </div>
-                        <p class="c-voiceCard__text">
-                            「孤独を感じていた社会人生活が一変しました。ここには本音で話せる仲間がいて、
-                            お互いの成長を応援し合える環境があります。」
-                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="p-section">
+    <!-- CEO Message Section -->
+    <section id="message" class="p-section -bg">
         <div class="l-container">
             <div class="p-section__head">
-                <span class="c-secLabel">FEATURES</span>
-                <h2 class="c-secHeading">Euniが選ばれる理由</h2>
+                <span class="c-secLabel">CEO MESSAGE</span>
+                <h2 class="c-secHeading">代表メッセージ</h2>
             </div>
 
             <div class="p-section__body">
-                <div class="p-cardGrid -col2">
-                    <div class="c-featureCard">
-                        <div class="c-featureCard__icon">🎯</div>
-                        <h3 class="c-featureCard__title">厳選されたコミュニティメンバー</h3>
-                        <p class="c-featureCard__text">
-                            成長意欲の高い若手社会人のみが参加。事前審査により、
-                            互いに高め合える質の高いコミュニティを実現しています。
-                        </p>
-                        <ul class="c-featureCard__list">
-                            <li>多様な業界・職種から参加</li>
-                            <li>20代〜30代前半が中心</li>
-                            <li>主体的に学ぶ姿勢を重視</li>
-                        </ul>
+                <div class="p-ceoMessage">
+                    <div class="p-ceoMessage__profile">
+                        <div class="c-ceoCard">
+                            <div class="c-ceoCard__photo">
+                                <?php if ( get_theme_mod( 'euni_ceo_photo' ) ) : ?>
+                                    <img src="<?php echo esc_url( get_theme_mod( 'euni_ceo_photo' ) ); ?>" alt="代表者写真">
+                                <?php else : ?>
+                                    <div class="c-ceoCard__placeholder">👤</div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="c-ceoCard__info">
+                                <p class="c-ceoCard__title">代表取締役</p>
+                                <p class="c-ceoCard__name">
+                                    <?php echo esc_html( get_theme_mod( 'euni_ceo_name', '代表者名' ) ); ?>
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="c-featureCard">
-                        <div class="c-featureCard__icon">📚</div>
-                        <h3 class="c-featureCard__title">体系的な成長プログラム</h3>
-                        <p class="c-featureCard__text">
-                            キャリア、リーダーシップ、コミュニケーションなど、
-                            若手社会人に必要なスキルを段階的に学べる設計です。
-                        </p>
-                        <ul class="c-featureCard__list">
-                            <li>月2回のオンラインイベント</li>
-                            <li>四半期ごとのオフライン交流会</li>
-                            <li>個別メンタリング制度</li>
-                        </ul>
-                    </div>
-
-                    <div class="c-featureCard">
-                        <div class="c-featureCard__icon">🤝</div>
-                        <h3 class="c-featureCard__title">本音で話せる安心な場</h3>
-                        <p class="c-featureCard__text">
-                            守秘義務の徹底と心理的安全性の確保により、
-                            普段は言えない悩みや本音を共有できる環境を提供します。
-                        </p>
-                        <ul class="c-featureCard__list">
-                            <li>少人数グループでの対話</li>
-                            <li>経験豊富なファシリテーター</li>
-                            <li>非競争的な支援文化</li>
-                        </ul>
-                    </div>
-
-                    <div class="c-featureCard">
-                        <div class="c-featureCard__icon">🌐</div>
-                        <h3 class="c-featureCard__title">全国どこからでも参加可能</h3>
-                        <p class="c-featureCard__text">
-                            オンラインを中心としたハイブリッド形式により、
-                            地方在住の方も首都圏と同等の学びと出会いを得られます。
-                        </p>
-                        <ul class="c-featureCard__list">
-                            <li>オンライン完結型イベント</li>
-                            <li>録画による見逃し配信</li>
-                            <li>地域別オフ会の開催</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="p-section -bg">
-        <div class="l-container">
-            <div class="p-section__head">
-                <span class="c-secLabel">FAQ</span>
-                <h2 class="c-secHeading">よくあるご質問</h2>
-            </div>
-
-            <div class="p-section__body">
-                <div class="p-faq">
-                    <div class="c-faqItem">
-                        <h3 class="c-faqItem__question">どのような方が参加していますか？</h3>
-                        <p class="c-faqItem__answer">
-                            20代〜30代前半の若手社会人が中心です。業界はIT、コンサル、メーカー、金融、商社など多岐にわたり、
-                            多様なバックグラウンドを持つメンバーが集まっています。共通しているのは、自己成長への高い意欲と、
-                            他者との関わりの中で学びたいという姿勢です。
-                        </p>
-                    </div>
-
-                    <div class="c-faqItem">
-                        <h3 class="c-faqItem__question">参加にあたって審査はありますか？</h3>
-                        <p class="c-faqItem__answer">
-                            はい、事前に簡単な面談を行っています。これは選別ではなく、コミュニティの価値観や
-                            活動内容がご自身に合っているかを相互に確認するためのものです。
-                            成長意欲と他者への敬意を持っている方であれば、どなたでもご参加いただけます。
-                        </p>
-                    </div>
-
-                    <div class="c-faqItem">
-                        <h3 class="c-faqItem__question">忙しくて毎回参加できないのですが大丈夫ですか？</h3>
-                        <p class="c-faqItem__answer">
-                            はい、大丈夫です。オンラインイベントは録画を共有していますので、
-                            後日視聴することも可能です。ご自身のペースで無理なく参加していただけます。
-                            ただし、継続的な参加がより多くの学びと出会いにつながります。
-                        </p>
-                    </div>
-
-                    <div class="c-faqItem">
-                        <h3 class="c-faqItem__question">費用はどのくらいかかりますか？</h3>
-                        <p class="c-faqItem__answer">
-                            コミュニティへの参加は月額制となっており、詳細はお問い合わせください。
-                            質の高いプログラム提供と持続可能な運営のため、適正な料金を設定しています。
-                            初回は無料体験イベントにご参加いただけます。
-                        </p>
-                    </div>
-
-                    <div class="c-faqItem">
-                        <h3 class="c-faqItem__question">退会はいつでもできますか？</h3>
-                        <p class="c-faqItem__answer">
-                            はい、いつでも退会可能です。最低利用期間などの縛りはありません。
-                            ただし、継続的な参加によって得られる学びや人間関係の深まりを考えると、
-                            最低でも3ヶ月程度の参加をお勧めしています。
-                        </p>
-                    </div>
-
-                    <div class="c-faqItem">
-                        <h3 class="c-faqItem__question">地方在住ですが参加できますか？</h3>
-                        <p class="c-faqItem__answer">
-                            はい、もちろんです。イベントの多くはオンラインで開催されており、
-                            全国どこからでもご参加いただけます。また、地域ごとのオフライン交流会も
-                            定期的に企画していますので、近隣のメンバーとリアルで会う機会もあります。
-                        </p>
+                    <div class="p-ceoMessage__content">
+                        <div class="c-messageBox">
+                            <?php if ( get_theme_mod( 'euni_ceo_message' ) ) : ?>
+                                <div class="c-messageBox__text">
+                                    <?php echo nl2br( esc_html( get_theme_mod( 'euni_ceo_message' ) ) ); ?>
+                                </div>
+                            <?php else : ?>
+                                <div class="c-messageBox__text">
+                                    <p>
+                                        私たちEuniは、「全ての人が善いつながりの中でありたい姿を実現できる社会を創造する」という理念のもと、
+                                        人と人とのつながりを支援し、孤独・孤立という社会課題の解決に取り組んでいます。
+                                    </p>
+                                    <p>
+                                        現代社会において、多くの人々が職場や私生活での人間関係に悩み、
+                                        孤独を感じながら日々を過ごしています。しかし、人は本来、関係性の中でこそ成長し、
+                                        可能性を開花させることができる存在です。
+                                    </p>
+                                    <p>
+                                        私たちは、善き心を持った人々が出会い、つながり、共に成長し合えるコミュニティとプラットフォームを提供することで、
+                                        一人ひとりが本来の自分を発揮し、理想の未来を実現できる社会を創っていきます。
+                                    </p>
+                                    <p>
+                                        「善き心でつながり、共に成長し合うことが当たり前の社会」を実現することが、
+                                        私たちのビジョンです。この挑戦に、ぜひご一緒していただければ幸いです。
+                                    </p>
+                                </div>
+                                <?php if ( get_theme_mod( 'euni_ceo_career' ) ) : ?>
+                                    <div class="c-messageBox__career">
+                                        <h4>略歴</h4>
+                                        <p><?php echo nl2br( esc_html( get_theme_mod( 'euni_ceo_career' ) ) ); ?></p>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -448,7 +328,7 @@ get_header();
     </section>
 
     <!-- Company Section -->
-    <section id="company" class="p-section -bg">
+    <section id="company" class="p-section">
         <div class="l-container">
             <div class="p-section__head">
                 <span class="c-secLabel">COMPANY</span>
@@ -495,9 +375,11 @@ get_header();
                                 <th>事業内容</th>
                                 <td>
                                     <ul class="c-list">
-                                        <li>若手社会人向けの成長支援コミュニティの企画・運営</li>
-                                        <li>つながり支援サービスの開発・提供</li>
-                                        <li>成長支援プログラムの提供</li>
+                                        <li>成長支援コミュニティの企画・運営</li>
+                                        <li>つながり支援プラットフォームの開発・運営</li>
+                                        <li>ITシステム開発・導入支援、AI活用コンサルティング</li>
+                                        <li>起業家向けプロトタイプ開発支援</li>
+                                        <li>組織開発・人材育成プログラムの提供</li>
                                     </ul>
                                 </td>
                             </tr>
@@ -512,23 +394,104 @@ get_header();
     <section id="contact" class="p-section p-contact">
         <div class="l-container">
             <div class="p-section__head">
-                <span class="c-secLabel -white">CONTACT</span>
-                <h2 class="c-secHeading -white">お問い合わせ</h2>
-                <p class="c-secDscr -white">
+                <span class="c-secLabel">CONTACT</span>
+                <h2 class="c-secHeading">お問い合わせ</h2>
+                <p class="c-secDscr">
                     サービスに関するご質問やご相談など、お気軽にお問い合わせください。
                 </p>
             </div>
 
             <div class="p-section__body">
-                <?php if ( get_theme_mod( 'euni_email' ) ) : ?>
+                <div class="p-contact__grid">
+                    <!-- Contact Info -->
                     <div class="p-contact__info">
-                        <p class="p-contact__email">
-                            <a href="mailto:<?php echo esc_attr( get_theme_mod( 'euni_email' ) ); ?>">
-                                <?php echo esc_html( get_theme_mod( 'euni_email' ) ); ?>
-                            </a>
-                        </p>
+                        <div class="c-contactInfo">
+                            <h3 class="c-contactInfo__title">お問い合わせ先</h3>
+
+                            <?php if ( get_theme_mod( 'euni_email' ) ) : ?>
+                                <div class="c-contactInfo__item">
+                                    <div class="c-contactInfo__label">Email</div>
+                                    <div class="c-contactInfo__value">
+                                        <a href="mailto:<?php echo esc_attr( get_theme_mod( 'euni_email' ) ); ?>">
+                                            <?php echo esc_html( get_theme_mod( 'euni_email' ) ); ?>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( get_theme_mod( 'euni_phone' ) ) : ?>
+                                <div class="c-contactInfo__item">
+                                    <div class="c-contactInfo__label">電話</div>
+                                    <div class="c-contactInfo__value">
+                                        <a href="tel:<?php echo esc_attr( str_replace('-', '', get_theme_mod( 'euni_phone' )) ); ?>">
+                                            <?php echo esc_html( get_theme_mod( 'euni_phone' ) ); ?>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="c-contactInfo__item">
+                                <div class="c-contactInfo__label">営業時間</div>
+                                <div class="c-contactInfo__value">
+                                    <?php echo esc_html( get_theme_mod( 'euni_business_hours', '平日 10:00 - 18:00' ) ); ?>
+                                </div>
+                            </div>
+
+                            <div class="c-contactInfo__note">
+                                <p>※ お問い合わせ内容によっては、回答までにお時間をいただく場合がございます。</p>
+                            </div>
+                        </div>
                     </div>
-                <?php endif; ?>
+
+                    <!-- Contact Form -->
+                    <div class="p-contact__form">
+                        <form id="contactForm" class="c-form" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post">
+                            <input type="hidden" name="action" value="euni_contact_form">
+                            <?php wp_nonce_field( 'euni_contact_form', 'euni_contact_nonce' ); ?>
+
+                            <div class="c-form__row">
+                                <label for="contact_name" class="c-form__label">お名前 <span class="c-form__required">必須</span></label>
+                                <input type="text" id="contact_name" name="contact_name" class="c-form__input" required>
+                            </div>
+
+                            <div class="c-form__row">
+                                <label for="contact_company" class="c-form__label">会社名・組織名 <span class="c-form__optional">任意</span></label>
+                                <input type="text" id="contact_company" name="contact_company" class="c-form__input">
+                            </div>
+
+                            <div class="c-form__row">
+                                <label for="contact_email" class="c-form__label">メールアドレス <span class="c-form__required">必須</span></label>
+                                <input type="email" id="contact_email" name="contact_email" class="c-form__input" required>
+                            </div>
+
+                            <div class="c-form__row">
+                                <label for="contact_phone" class="c-form__label">電話番号 <span class="c-form__optional">任意</span></label>
+                                <input type="tel" id="contact_phone" name="contact_phone" class="c-form__input">
+                            </div>
+
+                            <div class="c-form__row">
+                                <label for="contact_type" class="c-form__label">お問い合わせ種別 <span class="c-form__required">必須</span></label>
+                                <select id="contact_type" name="contact_type" class="c-form__select" required>
+                                    <option value="">選択してください</option>
+                                    <option value="general">一般お問い合わせ</option>
+                                    <option value="recruit">採用について</option>
+                                    <option value="media">取材・メディア掲載について</option>
+                                    <option value="partnership">事業提携について</option>
+                                    <option value="other">その他</option>
+                                </select>
+                            </div>
+
+                            <div class="c-form__row">
+                                <label for="contact_message" class="c-form__label">お問い合わせ内容 <span class="c-form__required">必須</span></label>
+                                <textarea id="contact_message" name="contact_message" class="c-form__textarea" rows="8" required></textarea>
+                            </div>
+
+                            <div class="c-form__submit">
+                                <button type="submit" class="c-btn c-btn--primary">送信する</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

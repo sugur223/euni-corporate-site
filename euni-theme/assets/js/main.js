@@ -11,24 +11,41 @@
      * Smooth scroll for anchor links
      */
     function initSmoothScroll() {
-        const links = document.querySelectorAll('a[href^="#"]');
+        // Select all links (both relative #hash and full URL with hash)
+        const links = document.querySelectorAll('a[href*="#"]');
 
         links.forEach(link => {
             link.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
 
-                // Skip if href is just "#"
-                if (href === '#') {
+                // Extract hash from URL
+                let hash = '';
+                if (href.includes('#')) {
+                    hash = href.substring(href.indexOf('#'));
+                }
+
+                // Skip if no hash or hash is just "#"
+                if (!hash || hash === '#') {
                     return;
                 }
 
-                const target = document.querySelector(href);
+                // Check if this is a same-page link
+                const linkURL = new URL(href, window.location.href);
+                const currentURL = window.location;
+
+                // Only handle same-page links
+                if (linkURL.pathname !== currentURL.pathname && linkURL.pathname !== '/') {
+                    return;
+                }
+
+                const target = document.querySelector(hash);
 
                 if (target) {
                     e.preventDefault();
 
-                    const headerHeight = document.querySelector('.l-header')?.offsetHeight || 0;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                    const header = document.querySelector('.l-header');
+                    const headerHeight = header ? header.offsetHeight : 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 30;
 
                     window.scrollTo({
                         top: targetPosition,
@@ -37,7 +54,7 @@
 
                     // Update URL without jumping
                     if (history.pushState) {
-                        history.pushState(null, null, href);
+                        history.pushState(null, null, hash);
                     }
                 }
             });
@@ -101,7 +118,7 @@
      */
     function initActiveNavigation() {
         const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.c-gnav a[href^="#"]');
+        const navLinks = document.querySelectorAll('.c-gnav a[href*="#"]');
 
         if (sections.length === 0 || navLinks.length === 0) return;
 
@@ -119,8 +136,15 @@
             });
 
             navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                let hash = '';
+
+                if (href && href.includes('#')) {
+                    hash = href.substring(href.indexOf('#'));
+                }
+
                 link.parentElement.classList.remove('current-menu-item');
-                if (link.getAttribute('href') === '#' + current) {
+                if (hash === '#' + current) {
                     link.parentElement.classList.add('current-menu-item');
                 }
             });
