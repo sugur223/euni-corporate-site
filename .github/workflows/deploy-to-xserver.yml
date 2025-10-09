@@ -43,6 +43,13 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > deploy_key
           chmod 600 deploy_key
 
+      - name: Create target directory if not exists
+        if: ${{ vars.DEPLOY_METHOD == 'ssh' }}
+        run: |
+          ssh -i deploy_key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT || '10022' }} \
+            ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} \
+            "mkdir -p ${{ secrets.SSH_TARGET_DIR }}"
+
       - name: Deploy via rsync
         if: ${{ vars.DEPLOY_METHOD == 'ssh' }}
         run: |
