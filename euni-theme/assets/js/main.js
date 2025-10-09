@@ -301,10 +301,14 @@
             });
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!gnav.contains(e.target) && !menuToggle.contains(e.target)) {
-                if (gnav.classList.contains('-active')) {
+        // Close menu when clicking on overlay
+        function closeMenuOnOutsideClick(e) {
+            // Check if menu is open and click is outside menu and toggle button
+            if (gnav.classList.contains('-active')) {
+                const isClickInsideMenu = gnav.contains(e.target);
+                const isClickOnToggle = menuToggle.contains(e.target);
+
+                if (!isClickInsideMenu && !isClickOnToggle) {
                     gnav.classList.remove('-active');
                     menuToggle.classList.remove('-active');
                     body.classList.remove('menu-open');
@@ -312,7 +316,10 @@
                     menuToggle.setAttribute('aria-label', 'メニューを開く');
                 }
             }
-        });
+        }
+
+        document.addEventListener('click', closeMenuOnOutsideClick);
+        document.addEventListener('touchstart', closeMenuOnOutsideClick, { passive: true });
 
         // Close menu on ESC key
         document.addEventListener('keydown', function(e) {
