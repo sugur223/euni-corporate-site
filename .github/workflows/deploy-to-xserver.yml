@@ -17,16 +17,16 @@ jobs:
         with:
           fetch-depth: 0  # 全履歴を取得
 
-      # オプション1: FTP経由でデプロイ（SSH未対応プランの場合）
+      # オプション1: FTP経由でデプロイ（フォールバック）
       - name: Deploy via FTP
-        if: ${{ vars.DEPLOY_METHOD == 'ftp' || vars.DEPLOY_METHOD == '' }}
+        if: ${{ vars.DEPLOY_METHOD == 'ftp' }}
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./euni-theme/
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}  # 例: /home/username/domain.com/public_html/wp-content/themes/euni-theme/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
           exclude: |
             **/.git*
             **/.git*/**
@@ -37,18 +37,26 @@ jobs:
             **/README.md
 
       # オプション2: SSH/rsync経由でデプロイ（SSH対応プランの場合）
-      - name: Deploy via SSH
+      - name: Setup SSH Key
         if: ${{ vars.DEPLOY_METHOD == 'ssh' }}
-        uses: easingthemes/ssh-deploy@v5.0.3
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.SSH_HOST }}
-          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-          REMOTE_PORT: ${{ secrets.SSH_PORT || '10022' }}  # Xserverのデフォルトは10022
-          SOURCE: "euni-theme/"
-          TARGET: ${{ secrets.SSH_TARGET_DIR }}  # 例: /home/username/domain.com/public_html/wp-content/themes/euni-theme/
-          EXCLUDE: ".git, .github, node_modules, .DS_Store, Thumbs.db, *.log"
-          ARGS: "-avz --delete"
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > deploy_key
+          chmod 600 deploy_key
+
+      - name: Deploy via rsync
+        if: ${{ vars.DEPLOY_METHOD == 'ssh' }}
+        run: |
+          rsync -auzrv --update \
+            -e "ssh -i deploy_key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT || '10022' }}" \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='.DS_Store' \
+            --exclude='Thumbs.db' \
+            --exclude='*.log' \
+            --delete \
+            ./euni-theme/ \
+            ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_TARGET_DIR }}
 
       - name: Deployment Status
         if: success()
