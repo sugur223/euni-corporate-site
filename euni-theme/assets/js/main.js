@@ -229,6 +229,85 @@
     }
 
     /**
+     * Mobile hamburger menu
+     */
+    function initMobileMenu() {
+        const menuToggle = document.getElementById('menuToggle');
+        const gnav = document.getElementById('gnav');
+        const body = document.body;
+
+        if (!menuToggle || !gnav) return;
+
+        // Toggle menu on button click
+        menuToggle.addEventListener('click', function() {
+            const isActive = gnav.classList.contains('-active');
+
+            if (isActive) {
+                // Close menu
+                gnav.classList.remove('-active');
+                menuToggle.classList.remove('-active');
+                body.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'メニューを開く');
+            } else {
+                // Open menu
+                gnav.classList.add('-active');
+                menuToggle.classList.add('-active');
+                body.classList.add('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'true');
+                menuToggle.setAttribute('aria-label', 'メニューを閉じる');
+            }
+        });
+
+        // Close menu when clicking on a menu item
+        const menuLinks = gnav.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                gnav.classList.remove('-active');
+                menuToggle.classList.remove('-active');
+                body.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'メニューを開く');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!gnav.contains(e.target) && !menuToggle.contains(e.target)) {
+                if (gnav.classList.contains('-active')) {
+                    gnav.classList.remove('-active');
+                    menuToggle.classList.remove('-active');
+                    body.classList.remove('menu-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.setAttribute('aria-label', 'メニューを開く');
+                }
+            }
+        });
+
+        // Close menu on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && gnav.classList.contains('-active')) {
+                gnav.classList.remove('-active');
+                menuToggle.classList.remove('-active');
+                body.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'メニューを開く');
+            }
+        });
+
+        // Close menu on window resize if > 768px
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && gnav.classList.contains('-active')) {
+                gnav.classList.remove('-active');
+                menuToggle.classList.remove('-active');
+                body.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'メニューを開く');
+            }
+        });
+    }
+
+    /**
      * Back to top button
      */
     function initBackToTop() {
@@ -301,6 +380,7 @@
         initActiveNavigation();
         initExternalLinks();
         initFormValidation();
+        initMobileMenu();
         initBackToTop();
     }
 

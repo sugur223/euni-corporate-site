@@ -39,6 +39,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 ?>
             </div>
 
+            <!-- ハンバーガーメニューボタン -->
+            <button class="l-header__toggle" id="menuToggle" aria-label="メニューを開く" aria-expanded="false">
+                <span class="l-header__toggle-bar"></span>
+                <span class="l-header__toggle-bar"></span>
+                <span class="l-header__toggle-bar"></span>
+            </button>
+
             <nav id="gnav" class="l-header__gnav c-gnavWrap">
                 <ul class="c-gnav" id="primary-menu">
                     <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#news' ) ); ?>">ニュース</a></li>

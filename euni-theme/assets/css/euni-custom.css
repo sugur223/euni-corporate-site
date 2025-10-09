@@ -153,6 +153,53 @@ body {
 }
 
 /* ====================
+   Hamburger Menu Toggle Button
+   ==================== */
+.l-header__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.l-header__toggle:hover {
+    transform: scale(1.1);
+}
+
+.l-header__toggle-bar {
+    width: 24px;
+    height: 2px;
+    background-color: var(--color_main);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.l-header__toggle-bar + .l-header__toggle-bar {
+    margin-top: 5px;
+}
+
+/* ハンバーガーメニューが開いている時のアニメーション */
+.l-header__toggle.-active .l-header__toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.l-header__toggle.-active .l-header__toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.l-header__toggle.-active .l-header__toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ====================
    Breadcrumb (Minimalist)
    ==================== */
 .p-breadcrumb {
@@ -903,32 +950,86 @@ body {
         padding-top: 0.75rem;
     }
 
+    /* ハンバーガーメニューボタンを表示 */
+    .l-header__toggle {
+        display: flex;
+    }
+
+    /* モバイルメニューのスタイル */
+    .l-header__gnav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--color-bg-white);
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding: 80px 0 2rem 0;
+        overflow-y: auto;
+    }
+
+    .l-header__gnav.-active {
+        right: 0;
+    }
+
     .c-gnav {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0;
+        padding: 0 1.5rem;
     }
 
     .c-gnav .menu-item {
         width: 100%;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .c-gnav .menu-item:last-child {
+        border-bottom: none;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 2px solid var(--color-border);
     }
 
     .c-gnav .menu-item a {
-        padding: 1rem 1.5rem;
-        border-radius: 12px;
+        padding: 1.25rem 0;
+        border-radius: 0;
+        display: block;
+        text-align: left;
     }
 
     .c-gnav .menu-item:last-child a {
         text-align: center;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
     }
 
-    .l-header__inner {
-        flex-wrap: wrap;
+    /* モバイルメニューが開いている時のオーバーレイ */
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        animation: fadeIn 0.3s ease;
     }
 
-    .l-header__gnav {
-        flex-basis: 100%;
-        order: 3;
-        margin-top: 1rem;
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* スクロールを防ぐ */
+    body.menu-open {
+        overflow: hidden;
     }
 
     .c-card,
