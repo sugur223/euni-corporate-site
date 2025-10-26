@@ -1,103 +1,63 @@
-# Euniテーマ ローカルセットアップ手順
+# Euniテーマ ローカルセットアップ（wp-now）
 
-## 方法1：Local by Flywheel（推奨・最も簡単）
+このプロジェクトのローカル環境は「wp-now + Node.js」を前提としています。以下の手順に従えば、ヒーロー「善き心で、つながろう」まで含めた本番同等の画面を再現できます。
 
-### 1. Local by Flywheelのインストール
-1. https://localwp.com/ にアクセス
-2. 無料ダウンロード（メールアドレス登録が必要）
-3. インストールして起動
+## 1. 必要ソフトの準備
+- Node.js（https://nodejs.org/）をインストール
+- npm v9 以上を推奨
 
-### 2. 新規サイト作成
-1. 「+ CREATE A NEW SITE」をクリック
-2. サイト名：euni-test（任意）
-3. 「Preferred」を選択
-4. WordPressのユーザー名・パスワードを設定
-5. 「ADD SITE」をクリック
+## 2. WordPress を起動
+リポジトリ直下で以下を実行します。
 
-### 3. テーマのインストール
-1. Localで作成したサイトを右クリック→「Show Folder」
-2. `app/public/wp-content/themes/` フォルダを開く
-3. この`euni-theme`フォルダをコピー＆ペースト
-
-### 4. テーマの有効化
-1. Localで「WP ADMIN」をクリック
-2. WordPressにログイン
-3. 「外観」→「テーマ」
-4. 「Euni Corporate Theme」を有効化
-
-### 5. 初期設定
-1. 「外観」→「カスタマイズ」→「会社情報」で情報入力
-2. 「外観」→「メニュー」でナビゲーション設定
-3. 「設定」→「表示設定」で固定ページを選択
-
----
-
-## 方法2：wp-now（超簡単・Node.js必要）
-
-### 1. Node.jsのインストール
-https://nodejs.org/ からNode.jsをインストール
-
-### 2. wp-nowのインストールと起動
 ```bash
-# コマンドプロンプトで実行
 cd C:\Users\sstec\Downloads\CorporateSite
 
-# wp-nowをインストール
+# 初回のみ wp-now をグローバルインストール
 npm install -g @wp-now/wp-now
 
-# WordPressを起動
-npx @wp-now/wp-now start
+# 推奨: package.json の npm start を使う
+npm start
+# 直接指定する場合
+# npx @wp-now/wp-now start --path=euni-theme
 ```
 
-### 3. ブラウザでアクセス
-http://localhost:8881
+`npm start` で http://localhost:8881 に WordPress が立ち上がります。
 
-### 4. テーマの有効化
-1. WordPress管理画面にアクセス
-2. デフォルトのユーザー名：admin、パスワード：password
-3. 「外観」→「テーマ」→「Euni Corporate Theme」を有効化
+## 3. テーマを wp-now 側にコピー（初回のみ）
+wp-now は `~/.wp-now/wp-content/playground/themes/` をテーマフォルダとして利用します。以下のコマンドでテーマをコピーしてください。
 
----
+```bash
+cp -R ./euni-theme ~/.wp-now/wp-content/playground/themes/
+```
 
-## 方法3：XAMPP（従来の方法）
+Windows から操作する場合は  
+`\\wsl$\<ディストリ名>\home\<ユーザー名>\.wp-now\wp-content\playground\themes\`  
+へ `euni-theme` フォルダをドラッグ＆ドロップしても同じです。
 
-### 1. XAMPPのインストール
-1. https://www.apachefriends.org/ からダウンロード
-2. インストール
+> `~/.wp-now` を削除した場合は再度コピーが必要です。通常の再起動ではコピーし直す必要はありません。
 
-### 2. WordPressのダウンロード
-1. https://ja.wordpress.org/ からダウンロード
-2. `C:\xampp\htdocs\euni` に解凍
+## 4. テーマを有効化
+1. http://localhost:8881/wp-admin にアクセス（ユーザー `admin` / パスワード `password`）
+2. 「外観 > テーマ」で「Euni Corporate Theme」を有効化
 
-### 3. データベース作成
-1. XAMPPでApache、MySQLを起動
-2. http://localhost/phpmyadmin にアクセス
-3. 「euni_db」という名前のデータベースを作成
+## 5. ホームページの表示設定（必須）
+フロントページのテンプレートは固定ページ指定が前提です。
 
-### 4. WordPressのセットアップ
-1. http://localhost/euni にアクセス
-2. WordPressのインストールを実行
-3. データベース情報を入力
+1. 固定ページを 1 つ作成（タイトルは「Home」など任意。中身は空でも可）
+2. 「設定 > 表示設定」を開き、「ホームページの表示」で「固定ページ」を選択
+3. 「ホームページ」プルダウンで作成したページを指定し「変更を保存」
 
-### 5. テーマのインストール
-1. `euni-theme`フォルダを`C:\xampp\htdocs\euni\wp-content\themes\`にコピー
-2. WordPress管理画面で有効化
+この設定を行わない場合、WordPress は `index.php` を利用し、ヒーローセクションが表示されません。
 
----
+## 6. 追加の初期設定
+- 「外観 > カスタマイズ > 会社情報」で会社名や連絡先を入力
+- 「ニュース > 新規追加」でカスタム投稿を確認（投稿が無い場合はダミーが表示されます）
+- メニューは header/footer に直書きなので、WordPress のメニュー設定は不要です
 
 ## テーマの機能確認
-
-### 1. 基本設定
-- ロゴのアップロード
-- 会社情報の入力（カスタマイザー）
-- メニューの設定
-
-### 2. ニュースの投稿
-- 「ニュース」→「新規追加」
-- タイトル、本文、アイキャッチ画像を設定
-
-### 3. ショートコードのテスト
-固定ページで以下を試してください：
+1. ロゴ・会社情報の登録
+2. ニュースの投稿と表示確認
+3. 以下のショートコードを固定ページで実行し、ブロックの動作を確認
 
 ```
 [euni_button url="https://euni.co.jp" text="詳しく見る" style="primary"]
@@ -109,29 +69,11 @@ http://localhost:8881
 [/euni_box]
 ```
 
----
-
 ## トラブルシューティング
-
-### エラー：環境要件を満たしていません
-- PHP 8.0以上、WordPress 6.0以上が必要です
-- Local by Flywheelなら自動で最新版が使用されます
-
-### テーマが表示されない
-1. `euni-theme`フォルダが正しい場所にあるか確認
-2. `style.css`が存在するか確認
-3. ファイルのパーミッションを確認
-
-### スタイルが適用されない
-1. 「外観」→「カスタマイズ」を開いて保存
-2. ブラウザのキャッシュをクリア（Ctrl+Shift+R）
-3. WordPressのキャッシュプラグインをクリア
-
----
+- `npm start` 時に `EAI_AGAIN` などのネットワークエラーが出る場合は、プロキシ設定やネットワーク接続を確認し、再度実行してください。
+- テーマが一覧に出ない / 有効化できない場合は `~/.wp-now/wp-content/playground/themes/euni-theme` が存在しているか確認します。
+- トップページが表示されない場合は「設定 > 表示設定」で固定ページがホームに指定されているか確認してください。
+- スタイルが崩れる場合は「外観 > カスタマイズ」を開いて保存し直し、ブラウザのキャッシュをクリアします（Ctrl+Shift+R）。
 
 ## サポート
-
-問題が解決しない場合は、以下を確認してください：
-- PHPエラーログ
-- WordPressデバッグモード（wp-config.phpでWP_DEBUGを有効化）
-- ブラウザのコンソール（F12）
+それでも問題が解決しない場合は、PHP エラーログ・WordPress のデバッグモード（`wp-config.php` で `WP_DEBUG` を有効化）・ブラウザコンソールを確認し、現象を添えて報告してください。
