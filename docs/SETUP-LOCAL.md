@@ -24,7 +24,15 @@ npm start
 `npm start` で http://localhost:8881 に WordPress が立ち上がります。
 
 ## 3. テーマを wp-now 側にコピー（初回のみ）
-wp-now は `~/.wp-now/wp-content/playground/themes/` をテーマフォルダとして利用します。以下のコマンドでテーマをコピーしてください。
+wp-now は `~/.wp-now/wp-content/playground/themes/` をテーマフォルダとして利用します。以下の npm スクリプトで同期してください。
+
+```bash
+npm run sync-theme
+```
+
+内部では `rsync` を使って `./euni-theme` を `~/.wp-now/wp-content/playground/themes/euni-theme/` にミラーリングしています。WSL 以外で実行する場合は同等のコマンドを用意するか、手動でコピーしてください。
+
+手動でコピーしたい場合は次のように実行できます。
 
 ```bash
 cp -R ./euni-theme ~/.wp-now/wp-content/playground/themes/
@@ -35,6 +43,7 @@ Windows から操作する場合は
 へ `euni-theme` フォルダをドラッグ＆ドロップしても同じです。
 
 > `~/.wp-now` を削除した場合は再度コピーが必要です。通常の再起動ではコピーし直す必要はありません。
+> テーマを編集した際も `npm run sync-theme` を実行して wp-now 側へ反映させてください。
 
 ## 4. テーマを有効化
 1. http://localhost:8881/wp-admin にアクセス（ユーザー `admin` / パスワード `password`）
@@ -53,6 +62,12 @@ Windows から操作する場合は
 - 「外観 > カスタマイズ > 会社情報」で会社名や連絡先を入力
 - 「ニュース > 新規追加」でカスタム投稿を確認（投稿が無い場合はダミーが表示されます）
 - メニューは header/footer に直書きなので、WordPress のメニュー設定は不要です
+
+## 7. 開発時のワークフロー例
+1. リポジトリ内の `euni-theme` を編集
+2. `npm run sync-theme` で wp-now 側に反映
+3. ブラウザでリロードし結果を確認
+4. 確認後は通常通り Git にコミット
 
 ## テーマの機能確認
 1. ロゴ・会社情報の登録

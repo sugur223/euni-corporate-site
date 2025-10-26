@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "npx @wp-now/wp-now start --path=euni-theme",
-    "stop": "npx @wp-now/wp-now stop"
+    "stop": "npx @wp-now/wp-now stop",
+    "sync-theme": "mkdir -p ~/.wp-now/wp-content/playground/themes/euni-theme && rsync -av --delete ./euni-theme/ ~/.wp-now/wp-content/playground/themes/euni-theme/"
   }
 }
