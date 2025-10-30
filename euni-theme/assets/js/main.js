@@ -436,6 +436,55 @@
     }
 
     /**
+     * Parallax effect for Purpose section
+     */
+    function initParallaxEffect() {
+        const parallaxTriggers = document.querySelectorAll('.js-parallax-trigger');
+
+        if (parallaxTriggers.length === 0) return;
+
+        let ticking = false;
+
+        function updateParallax() {
+            parallaxTriggers.forEach(trigger => {
+                const rect = trigger.getBoundingClientRect();
+                const scrolled = window.pageYOffset;
+
+                // Only apply parallax if element is in viewport
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const parallaxElements = trigger.querySelectorAll('.js-parallax');
+                    const parallaxElements2 = trigger.querySelectorAll('.js-parallax2');
+
+                    parallaxElements.forEach(el => {
+                        const speed = 0.05;
+                        const yPos = -(scrolled * speed);
+                        el.style.transform = `translate3d(0, ${yPos}%, 0)`;
+                    });
+
+                    parallaxElements2.forEach(el => {
+                        const speed = 0.03;
+                        const yPos = -(scrolled * speed);
+                        el.style.transform = `translate3d(0, ${yPos}%, 0)`;
+                    });
+                }
+            });
+
+            ticking = false;
+        }
+
+        // Use requestAnimationFrame for better performance
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Initial call
+        updateParallax();
+    }
+
+    /**
      * Initialize all functions when DOM is ready
      */
     function init() {
@@ -447,6 +496,7 @@
         initFormValidation();
         initMobileMenu();
         initBackToTop();
+        initParallaxEffect();
     }
 
     // Wait for DOM to be ready

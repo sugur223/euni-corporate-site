@@ -18,12 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                     <!-- Company Info -->
                     <div class="l-footer__brand">
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="c-logo" rel="home">
-                            <span class="c-logo__text">株式会社Euni</span>
+                            <span class="c-logo__text">株式会社ユニ / Euni Inc.</span>
                         </a>
-                        <p class="l-footer__tagline">善き心で、つながろう</p>
+                        <p class="l-footer__tagline">つながろう。あなたの未来のために。</p>
                         <p class="l-footer__description">
-                            全ての人が善いつながりの中でありたい姿を実現できる社会を創造する。<br>
-                            人と人とのつながりを支援し、一人ひとりの成長と可能性の実現に貢献します。
+                            誰もがつながりの中で生きる社会へ。<br>
+                            人と人をつなぐ接点となり、善いつながりを育む。
                         </p>
 
                         <!-- SNS Links -->
@@ -55,7 +55,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                     <nav class="l-footer__nav">
                         <h3 class="l-footer__navTitle">会社情報</h3>
                         <ul class="c-footer-nav">
-                            <li><a href="<?php echo esc_url( home_url( '/#vision' ) ); ?>">企業理念</a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/#mvv' ) ); ?>">企業理念</a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/#philosophy' ) ); ?>">社名の由来</a></li>
                             <li><a href="<?php echo esc_url( home_url( '/#message' ) ); ?>">代表メッセージ</a></li>
                             <li><a href="<?php echo esc_url( home_url( '/#company' ) ); ?>">会社概要</a></li>
                         </ul>
@@ -87,7 +88,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                     <div class="c-copyright">
                         <p>&copy; <?php echo esc_html( date_i18n( 'Y' ) ); ?>
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-                            株式会社Euni
+                            株式会社ユニ
                         </a>
                         All rights reserved.</p>
                     </div>
