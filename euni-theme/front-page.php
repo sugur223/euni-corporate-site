@@ -86,7 +86,7 @@ get_header();
 
                 <!-- Purpose Statement -->
                 <div class="p-mvvPurpose">
-                    <p class="p-mvvPurpose__text">人と人をつなぎ、未来をつくる</p>
+                    <p class="p-mvvPurpose__text">人と人をつなぎ<br>未来をつくる</p>
                     <div class="p-mvvPurpose__detail">
                         <p>一人ひとりの可能性。<br>
                         誰かとの出会い。<br>
