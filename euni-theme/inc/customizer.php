@@ -146,5 +146,281 @@ function euni_customize_register( $wp_customize ) {
             'type'        => 'tel',
         )
     );
+
+    // Employees
+    $wp_customize->add_setting(
+        'euni_employees',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_employees',
+        array(
+            'label'       => __( '従業員数', 'euni-theme' ),
+            'description' => __( '従業員数を入力してください（例：10名）。', 'euni-theme' ),
+            'section'     => 'euni_company_info',
+            'type'        => 'text',
+        )
+    );
+
+    // Business Hours
+    $wp_customize->add_setting(
+        'euni_business_hours',
+        array(
+            'default'           => '平日 10:00 - 18:00',
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_business_hours',
+        array(
+            'label'       => __( '営業時間', 'euni-theme' ),
+            'description' => __( '営業時間を入力してください。', 'euni-theme' ),
+            'section'     => 'euni_company_info',
+            'type'        => 'text',
+        )
+    );
+
+    // ========================================
+    // SEO Settings Section
+    // ========================================
+    $wp_customize->add_section(
+        'euni_seo_settings',
+        array(
+            'title'       => __( 'SEO設定', 'euni-theme' ),
+            'description' => __( 'サイトのSEO関連設定を管理します。', 'euni-theme' ),
+            'priority'    => 31,
+        )
+    );
+
+    // SEO Description
+    $wp_customize->add_setting(
+        'euni_seo_description',
+        array(
+            'default'           => 'つながりの中で生きる社会を目指し、成長支援コミュニティ事業、ITソリューション事業、コンサルティング事業を展開する株式会社Euniのコーポレートサイトです。',
+            'sanitize_callback' => 'sanitize_textarea_field',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_seo_description',
+        array(
+            'label'       => __( 'サイト説明（メタディスクリプション）', 'euni-theme' ),
+            'description' => __( '検索結果に表示される説明文です（120-160文字推奨）。', 'euni-theme' ),
+            'section'     => 'euni_seo_settings',
+            'type'        => 'textarea',
+        )
+    );
+
+    // OGP Image
+    $wp_customize->add_setting(
+        'euni_ogp_image',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'euni_ogp_image',
+            array(
+                'label'       => __( 'OGP画像', 'euni-theme' ),
+                'description' => __( 'SNSでシェアされた際に表示される画像（1200x630px推奨）。', 'euni-theme' ),
+                'section'     => 'euni_seo_settings',
+            )
+        )
+    );
+
+    // Twitter Username
+    $wp_customize->add_setting(
+        'euni_twitter_username',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_twitter_username',
+        array(
+            'label'       => __( 'Twitterユーザー名', 'euni-theme' ),
+            'description' => __( '@なしで入力（例：euni_inc）', 'euni-theme' ),
+            'section'     => 'euni_seo_settings',
+            'type'        => 'text',
+        )
+    );
+
+    // ========================================
+    // Social Media Section
+    // ========================================
+    $wp_customize->add_section(
+        'euni_social_media',
+        array(
+            'title'       => __( 'SNS設定', 'euni-theme' ),
+            'description' => __( 'SNSアカウントのURLを設定します。', 'euni-theme' ),
+            'priority'    => 32,
+        )
+    );
+
+    // Facebook URL
+    $wp_customize->add_setting(
+        'euni_facebook_url',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_facebook_url',
+        array(
+            'label'       => __( 'Facebook URL', 'euni-theme' ),
+            'section'     => 'euni_social_media',
+            'type'        => 'url',
+        )
+    );
+
+    // Twitter URL
+    $wp_customize->add_setting(
+        'euni_twitter_url',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_twitter_url',
+        array(
+            'label'       => __( 'Twitter (X) URL', 'euni-theme' ),
+            'section'     => 'euni_social_media',
+            'type'        => 'url',
+        )
+    );
+
+    // Instagram URL
+    $wp_customize->add_setting(
+        'euni_instagram_url',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_instagram_url',
+        array(
+            'label'       => __( 'Instagram URL', 'euni-theme' ),
+            'section'     => 'euni_social_media',
+            'type'        => 'url',
+        )
+    );
+
+    // LinkedIn URL
+    $wp_customize->add_setting(
+        'euni_linkedin_url',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_linkedin_url',
+        array(
+            'label'       => __( 'LinkedIn URL', 'euni-theme' ),
+            'section'     => 'euni_social_media',
+            'type'        => 'url',
+        )
+    );
+
+    // ========================================
+    // CEO Message Section
+    // ========================================
+    $wp_customize->add_section(
+        'euni_ceo_message',
+        array(
+            'title'       => __( '代表メッセージ', 'euni-theme' ),
+            'description' => __( '代表者のメッセージと写真を設定します。', 'euni-theme' ),
+            'priority'    => 33,
+        )
+    );
+
+    // CEO Photo
+    $wp_customize->add_setting(
+        'euni_ceo_photo',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'euni_ceo_photo',
+            array(
+                'label'       => __( '代表者写真', 'euni-theme' ),
+                'description' => __( '代表者の写真をアップロードしてください。', 'euni-theme' ),
+                'section'     => 'euni_ceo_message',
+            )
+        )
+    );
+
+    // CEO Message
+    $wp_customize->add_setting(
+        'euni_ceo_message',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'wp_kses_post',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_ceo_message',
+        array(
+            'label'       => __( '代表メッセージ', 'euni-theme' ),
+            'description' => __( '代表者のメッセージを入力してください。', 'euni-theme' ),
+            'section'     => 'euni_ceo_message',
+            'type'        => 'textarea',
+        )
+    );
+
+    // CEO Career
+    $wp_customize->add_setting(
+        'euni_ceo_career',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'wp_kses_post',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_ceo_career',
+        array(
+            'label'       => __( '代表者略歴', 'euni-theme' ),
+            'description' => __( '代表者の略歴を入力してください。', 'euni-theme' ),
+            'section'     => 'euni_ceo_message',
+            'type'        => 'textarea',
+        )
+    );
 }
 add_action( 'customize_register', 'euni_customize_register' );

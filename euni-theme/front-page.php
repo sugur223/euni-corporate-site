@@ -224,7 +224,8 @@ get_header();
                 <div class="p-philosophyOrigin">
                     <h3 class="p-philosophyOrigin__title">社名の由来</h3>
                     <p class="p-philosophyOrigin__intro">
-                        私たちの社名「Euni（ユニ）」には、3つの想いが込められています。
+                        私たちの社名「Euni（ユニ）」には、<br>
+                        3つの想いが込められています。
                     </p>
                     <div class="p-philosophyOrigin__list">
                         <div class="p-philosophyOrigin__item">
@@ -295,7 +296,9 @@ get_header();
                 </div>
                 <span class="c-secLabel">BUSINESS</span>
                 <h2 class="c-secHeading">事業概要</h2>
-                <p class="c-secDscr">Euniでは、3つの事業を展開しています。</p>
+                <p class="c-secDscr">
+                    Euniでは<br>
+                    3つの事業を展開しています。</p>
             </div>
 
             <div class="p-section__body">

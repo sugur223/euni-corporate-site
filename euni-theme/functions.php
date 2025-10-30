@@ -76,6 +76,129 @@ require_once EUNI_THEME_DIR . '/lib/utility.php';
 require_once EUNI_THEME_DIR . '/lib/shortcode.php';
 
 /**
+ * Add SEO meta tags, OGP, and structured data
+ */
+function euni_add_seo_meta_tags() {
+    // Get site information
+    $site_name = get_bloginfo( 'name' );
+    $site_description = get_bloginfo( 'description' );
+    $site_url = home_url( '/' );
+
+    // Get page-specific information
+    if ( is_front_page() ) {
+        $page_title = $site_name . ' | ' . $site_description;
+        $page_description = get_theme_mod( 'euni_seo_description', 'つながりの中で生きる社会を目指し、成長支援コミュニティ事業、ITソリューション事業、コンサルティング事業を展開する株式会社Euniのコーポレートサイトです。' );
+        $page_url = $site_url;
+        $page_type = 'website';
+    } else {
+        $page_title = wp_get_document_title();
+        $page_description = has_excerpt() ? get_the_excerpt() : $site_description;
+        $page_url = get_permalink();
+        $page_type = 'article';
+    }
+
+    // Get OGP image
+    $ogp_image = get_theme_mod( 'euni_ogp_image', get_template_directory_uri() . '/assets/images/ogp-default.jpg' );
+    if ( has_post_thumbnail() ) {
+        $ogp_image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+    }
+
+    // Twitter username
+    $twitter_username = get_theme_mod( 'euni_twitter_username', '' );
+    ?>
+
+    <!-- Meta Description -->
+    <meta name="description" content="<?php echo esc_attr( $page_description ); ?>">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="<?php echo esc_url( $page_url ); ?>">
+
+    <!-- Open Graph Protocol (OGP) -->
+    <meta property="og:site_name" content="<?php echo esc_attr( $site_name ); ?>">
+    <meta property="og:title" content="<?php echo esc_attr( $page_title ); ?>">
+    <meta property="og:description" content="<?php echo esc_attr( $page_description ); ?>">
+    <meta property="og:type" content="<?php echo esc_attr( $page_type ); ?>">
+    <meta property="og:url" content="<?php echo esc_url( $page_url ); ?>">
+    <meta property="og:image" content="<?php echo esc_url( $ogp_image ); ?>">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo esc_attr( $page_title ); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr( $page_description ); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url( $ogp_image ); ?>">
+    <?php if ( $twitter_username ) : ?>
+    <meta name="twitter:site" content="@<?php echo esc_attr( $twitter_username ); ?>">
+    <?php endif; ?>
+
+    <?php
+    // Add structured data (JSON-LD) only on front page
+    if ( is_front_page() ) {
+        euni_add_structured_data();
+    }
+}
+add_action( 'wp_head', 'euni_add_seo_meta_tags' );
+
+/**
+ * Add structured data (JSON-LD) for Organization
+ */
+function euni_add_structured_data() {
+    $site_name = get_bloginfo( 'name' );
+    $site_url = home_url( '/' );
+    $logo_url = get_theme_mod( 'custom_logo' )
+        ? wp_get_attachment_image_url( get_theme_mod( 'custom_logo' ), 'full' )
+        : get_template_directory_uri() . '/assets/images/logo.png';
+
+    $structured_data = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'Organization',
+        'name' => $site_name,
+        'alternateName' => 'Euni Inc.',
+        'url' => $site_url,
+        'logo' => $logo_url,
+        'description' => get_theme_mod( 'euni_seo_description', 'つながりの中で生きる社会を目指し、成長支援コミュニティ事業、ITソリューション事業、コンサルティング事業を展開する企業です。' ),
+        'foundingDate' => get_theme_mod( 'euni_establishment', '2025-11' ),
+        'sameAs' => array_filter( array(
+            get_theme_mod( 'euni_facebook_url', '' ),
+            get_theme_mod( 'euni_twitter_url', '' ),
+            get_theme_mod( 'euni_instagram_url', '' ),
+            get_theme_mod( 'euni_linkedin_url', '' ),
+        ) ),
+    );
+
+    // Add address if available
+    if ( get_theme_mod( 'euni_address' ) ) {
+        $structured_data['address'] = array(
+            '@type' => 'PostalAddress',
+            'addressCountry' => 'JP',
+            'addressLocality' => '東京都',
+            'streetAddress' => get_theme_mod( 'euni_address', '' ),
+        );
+    }
+
+    // Add contact point if email is available
+    if ( get_theme_mod( 'euni_email' ) ) {
+        $structured_data['contactPoint'] = array(
+            '@type' => 'ContactPoint',
+            'contactType' => 'Customer Service',
+            'email' => get_theme_mod( 'euni_email', '' ),
+        );
+
+        // Add telephone if available
+        if ( get_theme_mod( 'euni_phone' ) ) {
+            $structured_data['contactPoint']['telephone'] = get_theme_mod( 'euni_phone', '' );
+        }
+    }
+
+    ?>
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    <?php echo wp_json_encode( $structured_data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ); ?>
+    </script>
+    <?php
+}
+
+/**
  * Handle contact form submission
  */
 function euni_handle_contact_form() {
