@@ -82,11 +82,10 @@ body {
     top: 0;
     z-index: 9000;
     border-bottom: 1px solid var(--color-border);
-    transform: translateZ(0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    will-change: transform;
-    -webkit-transform: translateZ(0);
 }
 
 .l-header__inner {
@@ -1189,6 +1188,16 @@ body {
    Responsive Design
    ==================== */
 @media (max-width: 768px) {
+    /* iOS Safari スクロール最適化 */
+    html {
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
     .p-section {
         padding: 4rem 0;
     }
@@ -1225,9 +1234,17 @@ body {
     }
 
     /* モバイルビューでのヘッダー調整 */
+    .l-header {
+        position: -webkit-sticky;
+        position: sticky;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+
     .l-header__inner {
         padding: 1rem 0;
         min-height: 60px;
+        height: 60px;
     }
 
     /* モバイルビューでのロゴ調整 */
