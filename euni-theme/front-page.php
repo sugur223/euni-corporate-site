@@ -103,7 +103,7 @@ get_header();
                         <p class="p-mvvPurpose__tagline">Connect to possibilities.</p>
 
                         <p>つながろう。<br>
-                        あなたの可能性が、誰かの可能性と出会うために。</p>
+                        あなたの可能性が、<span class="u-nowrap">誰かの可能性と出会うために。</p>
                     </div>
                 </div>
 
