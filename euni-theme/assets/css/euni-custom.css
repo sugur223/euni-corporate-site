@@ -1235,10 +1235,10 @@ body {
 
     /* モバイルビューでのヘッダー調整 */
     .l-header {
-        position: -webkit-sticky;
-        position: sticky;
-        transform: translate3d(0, 0, 0);
-        -webkit-transform: translate3d(0, 0, 0);
+        position: relative;
+        top: 0;
+        transform: none;
+        -webkit-transform: none;
     }
 
     .l-header__inner {
