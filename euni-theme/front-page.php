@@ -39,9 +39,9 @@ get_header();
 
     <div class="p-hero__inner l-container">
         <div class="p-hero__content">
-            <p class="p-hero__subtitle">Connect to Possibilities</p>
-            <h1 class="p-hero__title">つながろう<br>あなたの未来の<span class="u-nowrap">ために</span></h1>
-            <p class="p-hero__lead">一つの出会いが、<br>新しい道を開く。</p>
+            <p class="p-hero__subtitle">Connect to possibilities.</p>
+            <h1 class="p-hero__title">つながりで<br>未来をひらく</h1>
+            <p class="p-hero__lead">一人ひとりの可能性が、誰かとつながることで広がっていく。</p>
         </div>
     </div>
 </div>
@@ -86,46 +86,41 @@ get_header();
 
                 <!-- Purpose Statement -->
                 <div class="p-mvvPurpose">
-                    <p class="p-mvvPurpose__text">人と人をつなぎ<br>未来をつくる</p>
+                    <p class="p-mvvPurpose__text">出会いが、人生を変える<br>瞬間がある。</p>
                     <div class="p-mvvPurpose__detail">
-                        <p>一人ひとりの可能性。<br>
-                        誰かとの出会い。<br>
-                        そこから生まれる、新しい選択。</p>
+                        <p>ふとした会話が、新しい道を見せてくれた日。<br>
+                        誰かの言葉が、背中を押してくれた日。</p>
 
-                        <p>Euniが思い描くのは、<br>
-                        誰もがつながりの中で生き、<br>
-                        自分らしい道を歩める未来。</p>
+                        <p>Euniは、そんな出会いと関係が生まれる場を整えます。<br>
+                        一人ひとりの可能性が、誰かとつながることで広がっていく。<br>
+                        迷いながらでも、一歩ずつ前へ進める関係を、もっと当たり前にしたい。</p>
 
-                        <p>そのために私たちは、<br>
-                        人と人をつなぐインターフェースを創る。<br>
-                        そして、関係性から社会を変える。</p>
+                        <p>人と人がつながることで、未来は変わっていく。</p>
 
                         <p class="p-mvvPurpose__tagline">Connect to possibilities.</p>
-
-                        <p>つながろう。<br>
-                        あなたの可能性が、<span class="u-nowrap">誰かの可能性と出会うために。</p>
                     </div>
                 </div>
 
                 <div class="p-mvvContent">
                     <div class="p-mvvItem">
                         <div class="p-mvvItem__label">
-                            <span class="p-mvvItem__en">Vision</span>
-                            <span class="p-mvvItem__jp">目指す未来</span>
+                            <span class="p-mvvItem__en">Mission</span>
+                            <span class="p-mvvItem__jp">使命</span>
                         </div>
                         <p class="p-mvvItem__text">
-                            誰もがつながりの中で生きる社会
+                            つながりで、未来をひらく
                         </p>
                     </div>
 
                     <div class="p-mvvItem">
                         <div class="p-mvvItem__label">
-                            <span class="p-mvvItem__en">Mission</span>
-                            <span class="p-mvvItem__jp">使命</span>
+                            <span class="p-mvvItem__en">Vision</span>
+                            <span class="p-mvvItem__jp">企業のありたい姿</span>
                         </div>
                         <p class="p-mvvItem__text">
-                            人と人をつなぐ接点となり、<br>
-                            善いつながりを育む。
+                            善いつながりを築く<br>
+                            インターフェースとして<br>
+                            信頼されている。
                         </p>
                     </div>
                 </div>
@@ -163,19 +158,26 @@ get_header();
                             <li class="p-values__item">
                                 <div class="p-values__num">02</div>
                                 <dl class="p-values__content">
-                                    <dt class="p-values__title">心から楽しもう</dt>
-                                    <dd class="p-values__text">人生は一度きり。<br>遊び心を持って、わくわくしながら、やってみよう。</dd>
+                                    <dt class="p-values__title">人として信じよう</dt>
+                                    <dd class="p-values__text">誰もが弱さを抱えている。<br>見えている姿だけで判断せず、人として信じ合う。</dd>
                                 </dl>
                             </li>
                             <li class="p-values__item">
                                 <div class="p-values__num">03</div>
+                                <dl class="p-values__content">
+                                    <dt class="p-values__title">心から楽しもう</dt>
+                                    <dd class="p-values__text">楽しむことを、忘れない。<br>遊び心を持って、わくわくしながら、やってみよう。</dd>
+                                </dl>
+                            </li>
+                            <li class="p-values__item">
+                                <div class="p-values__num">04</div>
                                 <dl class="p-values__content">
                                     <dt class="p-values__title">循環を創ろう</dt>
                                     <dd class="p-values__text">受け取ったものを、また誰かに。<br>善意が巡る流れを創ろう。</dd>
                                 </dl>
                             </li>
                             <li class="p-values__item">
-                                <div class="p-values__num">04</div>
+                                <div class="p-values__num">05</div>
                                 <dl class="p-values__content">
                                     <dt class="p-values__title">矛盾を受け入れよう</dt>
                                     <dd class="p-values__text">完璧じゃなくていい。<br>矛盾も、不完全も受け入れる。それでも、少しずつ前へ。</dd>
