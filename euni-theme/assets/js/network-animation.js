@@ -16,7 +16,7 @@
     let progress = 0; // アニメーション進行度 (0-1)
     let mouse = { x: null, y: null };
     let nodeSpawnTimer = 0;
-    let distanceBounds = { min: 0, max: 0 };
+    let distanceBounds = { min: 0, max: 0, widthLimit: 0, heightLimit: 0 };
     let lastNodeAddedAt = Date.now();
 
     // 設定
@@ -27,7 +27,7 @@
         nodeRadius: 8,          // ノードの半径
         expandDuration: 3000,   // 広がるアニメーションの時間（ms）
         fadeInDuration: 2000,   // フェードインの時間（ms）
-        floatSpeed: 0.00018,    // 浮遊速度
+        floatSpeed: 0.00014,    // 浮遊速度
         lineOpacity: 0.25,      // 線の透明度
         nodeColor: '#666666',   // ノードの色
         lineColor: '#999999',   // 線の色
@@ -35,9 +35,9 @@
         mouseForce: 0.7,        // マウスの引力（かなり強く）
         avoidCenter: false,     // レスポンシブで更新
         maxDistance: 240,       // 線を引く最大距離（レスポンシブで更新）
-        minDistanceFactor: 0.2, // ノード生成距離の最小係数
-        maxDistanceFactor: 0.55,// ノード生成距離の最大係数
-        edgePadding: 32,        // キャンバス端の余白
+        minDistanceFactor: 0.16, // ノード生成距離の最小係数
+        maxDistanceFactor: 0.58,// ノード生成距離の最大係数
+        edgePadding: 16,        // キャンバス端の余白（変動可能）
         driftAmplitude: 0.25,   // ノードの揺らぎ幅（ラジアン）
         separationDistance: 120,// ノード間の理想距離
         separationStrength: 0.18,// ノード間の離反強度
@@ -54,10 +54,10 @@
         config.lineOpacity = isMobile ? 0.18 : 0.25;
         config.nodeColor = isMobile ? '#b5b5b5' : '#666666';
         config.lineColor = isMobile ? '#d6d6d6' : '#999999';
-        config.avoidCenter = isMobile;
-        config.minDistanceFactor = isMobile ? 0.18 : 0.22;
-        config.maxDistanceFactor = isMobile ? 0.55 : 0.65;
-        config.edgePadding = isMobile ? 16 : 40;
+        config.avoidCenter = false; // モバイルでも中央含め縦方向へ広げる
+        config.minDistanceFactor = isMobile ? 0.08 : 0.16;
+        config.maxDistanceFactor = isMobile ? 0.85 : 0.62;
+        config.edgePadding = isMobile ? -40 : 16; // モバイルは余白なしでヒーロー外にも広げる
         config.driftAmplitude = isMobile ? 0.32 : 0.22;
         config.separationDistance = Math.min(minDimension * (isMobile ? 0.34 : 0.28), (effectiveWidth / 2) * 0.9);
         config.separationStrength = isMobile ? 0.1 : 0.16;
@@ -68,20 +68,24 @@
     function updateDistanceBounds() {
         const minDimension = Math.min(width, height);
         const widthLimit = Math.max((width / 2) - config.edgePadding, minDimension * 0.25);
-        let maxDistance = Math.min(minDimension * config.maxDistanceFactor, widthLimit);
+        const heightLimit = Math.max((height / 2) - config.edgePadding, minDimension * 0.3);
+        let radialLimit = Math.min(minDimension * config.maxDistanceFactor, widthLimit);
 
-        if (!isFinite(maxDistance) || maxDistance <= 0) {
-            maxDistance = minDimension * 0.4;
+        if (!isFinite(radialLimit) || radialLimit <= 0) {
+            radialLimit = minDimension * 0.4;
         }
 
-        let minDistance = Math.min(minDimension * config.minDistanceFactor, maxDistance * 0.7);
-        if (minDistance >= maxDistance) {
-            minDistance = maxDistance * 0.6;
+        let minDistance = Math.min(minDimension * config.minDistanceFactor, radialLimit * 0.7);
+        if (minDistance >= radialLimit) {
+            minDistance = radialLimit * 0.6;
         }
 
         distanceBounds = {
-            min: Math.max(minDistance, maxDistance * 0.4),
-            max: maxDistance
+            min: Math.max(minDistance, radialLimit * 0.4),
+            max: radialLimit,
+            widthLimit,
+            heightLimit,
+            aspect: Math.min(heightLimit / Math.max(widthLimit, 1), 1.6)
         };
 
         config.maxDistance = distanceBounds.max * 1.35;
@@ -142,8 +146,11 @@
             const floatX = lockMovement ? 0 : Math.cos(this.floatAngle) * this.floatRadius * easedProgress;
             const floatY = lockMovement ? 0 : Math.sin(this.floatAngle) * this.floatRadius * easedProgress;
 
-            this.targetX = centerX + Math.cos(this.angle) * this.currentDistance + floatX;
-            this.targetY = centerY + Math.sin(this.angle) * this.currentDistance + floatY;
+            const distanceX = Math.cos(this.angle) * this.currentDistance;
+            const distanceY = Math.sin(this.angle) * this.currentDistance * distanceBounds.aspect;
+
+            this.targetX = centerX + distanceX + floatX;
+            this.targetY = centerY + distanceY + floatY;
 
             if (!this.initialized) {
                 this.currentX = this.targetX;
@@ -210,9 +217,8 @@
             }
 
             // キャンバス外へ出ないようにクランプ
-            const padding = config.edgePadding;
-            this.targetX = Math.max(padding, Math.min(width - padding, this.targetX));
-            this.targetY = Math.max(padding, Math.min(height - padding, this.targetY));
+            this.targetX = Math.max(centerX - distanceBounds.widthLimit, Math.min(centerX + distanceBounds.widthLimit, this.targetX));
+            this.targetY = Math.max(centerY - distanceBounds.heightLimit, Math.min(centerY + distanceBounds.heightLimit, this.targetY));
 
             // 緩やかに目標位置へ補間
             this.currentX += (this.targetX - this.currentX) * config.moveSmoothing;

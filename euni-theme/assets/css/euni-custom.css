@@ -3719,14 +3719,14 @@ body {
 @media (max-width: 768px) {
     .p-hero {
         position: relative;
-        min-height: clamp(580px, 100vh, 780px);
-        padding: clamp(2rem, 8vh, 3rem) 0;
+        min-height: clamp(460px, 82vh, 600px);
+        padding: clamp(1rem, 4.5vh, 1.6rem) 0;
     }
 
     .p-hero__inner {
         padding: 0;
-        height: 100%;
-        min-height: 100%;
+        height: auto;
+        min-height: inherit;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -3734,17 +3734,17 @@ body {
 
     .p-hero__grid {
         grid-template-columns: 1fr;
-        gap: clamp(1.5rem, 4vh, 2.5rem);
+        gap: clamp(1rem, 2vh, 1.5rem);
         position: relative;
         width: 100%;
-        min-height: 100%;
+        min-height: auto;
     }
 
     .p-hero__content {
         position: relative;
         z-index: 2;
         text-align: center;
-        padding: clamp(1.5rem, 5vh, 2.25rem) 1.75rem;
+        padding: clamp(1rem, 3.5vh, 1.5rem) 1.4rem;
     }
 
     .p-hero__visual {
@@ -3766,12 +3766,12 @@ body {
 
 @media (max-width: 560px) {
     .p-hero {
-        min-height: clamp(520px, 100vh, 720px);
-        padding: clamp(1.75rem, 9vh, 2.75rem) 0;
+        min-height: clamp(390px, 88vh, 540px);
+        padding: clamp(0.95rem, 4.75vh, 1.5rem) 0;
     }
 
     .p-hero__content {
-        padding: clamp(1.5rem, 5.5vh, 2rem) 1.25rem;
+        padding: clamp(0.95rem, 3.25vh, 1.35rem) 1.2rem;
     }
 }
 
