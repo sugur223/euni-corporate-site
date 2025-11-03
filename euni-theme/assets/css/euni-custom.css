@@ -88,6 +88,17 @@ body {
     -webkit-backface-visibility: hidden;
 }
 
+/* Offset header when WordPress admin bar is visible */
+body.admin-bar .l-header {
+    top: 32px;
+}
+
+@media (max-width: 782px) {
+    body.admin-bar .l-header {
+        top: 46px;
+    }
+}
+
 .l-header__inner {
     display: flex;
     justify-content: space-between;
@@ -208,6 +219,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 6px;
     width: 48px;
     height: 48px;
     background: transparent;
@@ -223,6 +235,16 @@ body {
     user-select: none;
     -webkit-user-select: none;
     pointer-events: auto;
+}
+
+.l-header__toggle-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex: none;
+    pointer-events: none;
 }
 
 .l-header__toggle:hover {
@@ -243,20 +265,26 @@ body {
     border-radius: 2px;
 }
 
-.l-header__toggle-bar + .l-header__toggle-bar {
-    margin-top: 5px;
+.l-header__toggle-label {
+    display: block;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    color: var(--color_main);
+    pointer-events: none;
 }
 
 /* ハンバーガーメニューが開いている時のアニメーション */
-.l-header__toggle.-active .l-header__toggle-bar:nth-child(1) {
+.l-header__toggle.-active .l-header__toggle-icon .l-header__toggle-bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
 
-.l-header__toggle.-active .l-header__toggle-bar:nth-child(2) {
+.l-header__toggle.-active .l-header__toggle-icon .l-header__toggle-bar:nth-child(2) {
     opacity: 0;
 }
 
-.l-header__toggle.-active .l-header__toggle-bar:nth-child(3) {
+.l-header__toggle.-active .l-header__toggle-icon .l-header__toggle-bar:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
 }
 
@@ -1291,7 +1319,7 @@ body {
     }
 
     .l-header__gnav::before {
-        content: '株式会社ユニ';
+        content: '株式会社Euni';
         position: absolute;
         top: 2rem;
         left: 50%;

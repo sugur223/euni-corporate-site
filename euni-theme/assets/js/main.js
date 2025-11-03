@@ -254,8 +254,27 @@
         const menuToggle = document.getElementById('menuToggle');
         const gnav = document.getElementById('gnav');
         const body = document.body;
+        const menuToggleLabel = menuToggle ? menuToggle.querySelector('.l-header__toggle-label') : null;
 
         if (!menuToggle || !gnav) return;
+
+        function setMenuState(isOpen) {
+            if (isOpen) {
+                gnav.classList.add('-active');
+                menuToggle.classList.add('-active');
+                body.classList.add('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'true');
+                menuToggle.setAttribute('aria-label', 'メニューを閉じる');
+                if (menuToggleLabel) menuToggleLabel.textContent = 'close';
+            } else {
+                gnav.classList.remove('-active');
+                menuToggle.classList.remove('-active');
+                body.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'メニューを開く');
+                if (menuToggleLabel) menuToggleLabel.textContent = 'menu';
+            }
+        }
 
         // Toggle menu function
         function toggleMenu(e) {
@@ -266,21 +285,7 @@
 
             const isActive = gnav.classList.contains('-active');
 
-            if (isActive) {
-                // Close menu
-                gnav.classList.remove('-active');
-                menuToggle.classList.remove('-active');
-                body.classList.remove('menu-open');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuToggle.setAttribute('aria-label', 'メニューを開く');
-            } else {
-                // Open menu
-                gnav.classList.add('-active');
-                menuToggle.classList.add('-active');
-                body.classList.add('menu-open');
-                menuToggle.setAttribute('aria-expanded', 'true');
-                menuToggle.setAttribute('aria-label', 'メニューを閉じる');
-            }
+            setMenuState(!isActive);
         }
 
         // Add both click and touchstart listeners for better mobile support
@@ -295,11 +300,7 @@
             link.addEventListener('click', function(e) {
                 // Allow the link to work, then close menu after a short delay
                 setTimeout(function() {
-                    gnav.classList.remove('-active');
-                    menuToggle.classList.remove('-active');
-                    body.classList.remove('menu-open');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    menuToggle.setAttribute('aria-label', 'メニューを開く');
+                    setMenuState(false);
                 }, 100);
             });
         });
@@ -314,11 +315,7 @@
 
                 // Don't close if clicking on a link (let the link handler do it)
                 if (!isClickInsideMenu && !isClickOnToggle && !isClickOnLink) {
-                    gnav.classList.remove('-active');
-                    menuToggle.classList.remove('-active');
-                    body.classList.remove('menu-open');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    menuToggle.setAttribute('aria-label', 'メニューを開く');
+                    setMenuState(false);
                 }
             }
         }
@@ -329,22 +326,14 @@
         // Close menu on ESC key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && gnav.classList.contains('-active')) {
-                gnav.classList.remove('-active');
-                menuToggle.classList.remove('-active');
-                body.classList.remove('menu-open');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuToggle.setAttribute('aria-label', 'メニューを開く');
+                setMenuState(false);
             }
         });
 
         // Close menu on window resize if > 768px
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768 && gnav.classList.contains('-active')) {
-                gnav.classList.remove('-active');
-                menuToggle.classList.remove('-active');
-                body.classList.remove('menu-open');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuToggle.setAttribute('aria-label', 'メニューを開く');
+                setMenuState(false);
             }
         });
     }

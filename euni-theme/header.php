@@ -41,9 +41,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
             <!-- ハンバーガーメニューボタン -->
             <button class="l-header__toggle" id="menuToggle" aria-label="メニューを開く" aria-expanded="false">
-                <span class="l-header__toggle-bar"></span>
-                <span class="l-header__toggle-bar"></span>
-                <span class="l-header__toggle-bar"></span>
+                <span class="l-header__toggle-icon" aria-hidden="true">
+                    <span class="l-header__toggle-bar"></span>
+                    <span class="l-header__toggle-bar"></span>
+                    <span class="l-header__toggle-bar"></span>
+                </span>
+                <span class="l-header__toggle-label">menu</span>
             </button>
 
             <nav id="gnav" class="l-header__gnav c-gnavWrap">
