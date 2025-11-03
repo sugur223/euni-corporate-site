@@ -24,11 +24,17 @@
         maxNodes: 18,           // 最大ノード数
         initialNodes: 5,        // 初期ノード数
         nodeSpawnInterval: 200, // ノード追加間隔（ms）
-        nodeRadius: 8,          // ノードの半径
+        nodeRadius: 8,          // ノードの基本半径
+        minNodeRadius: 4,       // 最小半径（奥）
+        maxNodeRadius: 12,      // 最大半径（手前）
         expandDuration: 3000,   // 広がるアニメーションの時間（ms）
         fadeInDuration: 2000,   // フェードインの時間（ms）
         floatSpeed: 0.00014,    // 浮遊速度
         lineOpacity: 0.25,      // 線の透明度
+        minLineOpacity: 0.08,   // 最小線透明度（奥）
+        maxLineOpacity: 0.35,   // 最大線透明度（手前）
+        minLineWidth: 1,        // 最小線太さ（奥）
+        maxLineWidth: 3,        // 最大線太さ（手前）
         nodeColor: '#666666',   // ノードの色
         lineColor: '#999999',   // 線の色
         mouseRadius: 280,       // マウスの影響範囲（さらに広く）
@@ -38,6 +44,7 @@
         minDistanceFactor: 0.16, // ノード生成距離の最小係数
         maxDistanceFactor: 0.58,// ノード生成距離の最大係数
         edgePadding: 16,        // キャンバス端の余白（変動可能）
+        topPadding: 80,         // 上方向の余白（PC時にヘッダーまで届かないように）
         driftAmplitude: 0.25,   // ノードの揺らぎ幅（ラジアン）
         separationDistance: 120,// ノード間の理想距離
         separationStrength: 0.18,// ノード間の離反強度
@@ -58,6 +65,7 @@
         config.minDistanceFactor = isMobile ? 0.08 : 0.16;
         config.maxDistanceFactor = isMobile ? 0.85 : 0.62;
         config.edgePadding = isMobile ? -40 : 16; // モバイルは余白なしでヒーロー外にも広げる
+        config.topPadding = isMobile ? -40 : 80; // PCは上方向に余白を設ける（ヘッダーまで届かないように）
         config.driftAmplitude = isMobile ? 0.32 : 0.22;
         config.separationDistance = Math.min(minDimension * (isMobile ? 0.34 : 0.28), (effectiveWidth / 2) * 0.9);
         config.separationStrength = isMobile ? 0.1 : 0.16;
@@ -68,7 +76,9 @@
     function updateDistanceBounds() {
         const minDimension = Math.min(width, height);
         const widthLimit = Math.max((width / 2) - config.edgePadding, minDimension * 0.25);
-        const heightLimit = Math.max((height / 2) - config.edgePadding, minDimension * 0.3);
+        const heightLimitTop = Math.max((height / 2) - config.topPadding, minDimension * 0.25); // 上方向の制限
+        const heightLimitBottom = Math.max((height / 2) - config.edgePadding, minDimension * 0.3); // 下方向の制限
+        const heightLimit = Math.min(heightLimitTop, heightLimitBottom); // より小さい方を採用
         let radialLimit = Math.min(minDimension * config.maxDistanceFactor, widthLimit);
 
         if (!isFinite(radialLimit) || radialLimit <= 0) {
@@ -85,6 +95,8 @@
             max: radialLimit,
             widthLimit,
             heightLimit,
+            heightLimitTop,
+            heightLimitBottom,
             aspect: Math.min(heightLimit / Math.max(widthLimit, 1), 1.6)
         };
 
@@ -108,13 +120,27 @@
             this.index = index;
             this.spawnTime = spawnTime;  // 生成時刻
             this.opacity = 0;            // 透明度（フェードイン用）
+            this.lineOpacity = 0;        // 線の透明度（ノードより遅れてフェードイン）
             this.driftPhase = Math.random() * Math.PI * 2;
             this.driftSpeed = (0.0002 + Math.random() * 0.00025) * (Math.random() < 0.5 ? -1 : 1);
+
+            // 深度（0-1: 0=奥、1=手前）を追加
+            this.baseDepth = 0.45 + Math.random() * 0.3; // 基本深度を中間付近に（0.45〜0.75）
+            this.depth = this.baseDepth; // 現在の深度（動的に変化）
+
+            // 奥行き方向の浮遊用パラメータ
+            this.depthPhase = Math.random() * Math.PI * 2; // 深度変化の位相
+            this.depthSpeed = (0.00025 + Math.random() * 0.00025) * (Math.random() < 0.5 ? -1 : 1); // ゆっくりとした速度に調整
+            this.depthAmplitude = 0.35 + Math.random() * 0.2; // 深度変化幅を大きく（±0.35〜0.55）
+
+            // 深度に応じたサイズを計算（updatePositionで更新）
+            this.radius = config.minNodeRadius + (config.maxNodeRadius - config.minNodeRadius) * this.depth;
 
             // 浮遊用のパラメータ
             this.floatAngle = Math.random() * Math.PI * 2;
             this.floatSpeed = config.floatSpeed * (0.5 + Math.random() * 0.5);
-            this.floatRadius = 15 + Math.random() * 25;
+            this.baseFloatRadius = 15 + Math.random() * 25; // 基本浮遊範囲
+            this.floatRadius = this.baseFloatRadius * this.depth; // 深度に応じて浮遊範囲も調整
 
             // マウス追従用
             this.targetX = centerX;
@@ -138,9 +164,23 @@
             const fadeProgress = Math.min(timeSinceSpawn / config.fadeInDuration, 1);
             this.opacity = this.easeOutCubic(fadeProgress);
 
+            // 線のフェードイン（ノードが70%表示されてから開始）
+            const lineStartDelay = config.fadeInDuration * 0.7; // ノードフェードインの70%後に開始
+            const lineFadeDuration = config.fadeInDuration * 0.8; // 線のフェードイン時間
+            const lineFadeProgress = Math.max(0, Math.min((timeSinceSpawn - lineStartDelay) / lineFadeDuration, 1));
+            this.lineOpacity = this.easeOutCubic(lineFadeProgress);
+
             // ベース角度に揺らぎを追加
             const drift = lockMovement ? 0 : Math.sin(timeSinceSpawn * this.driftSpeed + this.driftPhase) * config.driftAmplitude;
             this.angle = this.baseAngle + drift;
+
+            // 奥行き方向の浮遊（深度の動的変化）
+            const depthDrift = lockMovement ? 0 : Math.sin(timeSinceSpawn * this.depthSpeed + this.depthPhase) * this.depthAmplitude;
+            this.depth = Math.max(0.15, Math.min(1.0, this.baseDepth + depthDrift)); // 0.15〜1.0の範囲に制限（極端に薄くなりすぎないように）
+
+            // 深度に応じてサイズと浮遊範囲を更新
+            this.radius = config.minNodeRadius + (config.maxNodeRadius - config.minNodeRadius) * this.depth;
+            this.floatRadius = this.baseFloatRadius * this.depth; // 深度に応じて浮遊範囲を動的に調整
 
             // 浮遊効果を追加
             const floatX = lockMovement ? 0 : Math.cos(this.floatAngle) * this.floatRadius * easedProgress;
@@ -216,9 +256,9 @@
                 }
             }
 
-            // キャンバス外へ出ないようにクランプ
+            // キャンバス外へ出ないようにクランプ（上下で異なる制限を適用）
             this.targetX = Math.max(centerX - distanceBounds.widthLimit, Math.min(centerX + distanceBounds.widthLimit, this.targetX));
-            this.targetY = Math.max(centerY - distanceBounds.heightLimit, Math.min(centerY + distanceBounds.heightLimit, this.targetY));
+            this.targetY = Math.max(centerY - distanceBounds.heightLimitTop, Math.min(centerY + distanceBounds.heightLimitBottom, this.targetY));
 
             // 緩やかに目標位置へ補間
             this.currentX += (this.targetX - this.currentX) * config.moveSmoothing;
@@ -237,18 +277,22 @@
         }
 
         draw() {
-            // ノードをシンプルに描画（サイズ固定）
-            ctx.globalAlpha = this.opacity;
+            // 深度に応じた透明度（奥ほど薄く、よりコントラスト強く）
+            const depthOpacity = 0.2 + this.depth * 0.8; // 0.32-1.0
+            const finalOpacity = this.opacity * depthOpacity;
+
+            // ノードを描画（深度に応じたサイズ）
+            ctx.globalAlpha = finalOpacity;
             ctx.beginPath();
-            ctx.arc(this.x, this.y, config.nodeRadius, 0, Math.PI * 2);
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fillStyle = config.nodeColor;
             ctx.fill();
 
-            // アウトライン
-            if (this.opacity > 0.9) {
+            // アウトライン（手前のノードほど強調、より動的に）
+            if (this.opacity > 0.9 && this.depth > 0.6) {
                 ctx.strokeStyle = config.nodeColor;
-                ctx.lineWidth = 1.5;
-                ctx.globalAlpha = this.opacity * 0.4;
+                ctx.lineWidth = 1.5 * this.depth;
+                ctx.globalAlpha = finalOpacity * 0.5; // 少し濃く
                 ctx.stroke();
             }
 
@@ -341,14 +385,28 @@
 
                 if (distance < config.maxDistance) {
                     const nodeOpacity = Math.min(nodes[i].opacity, nodes[j].opacity);
-                    const opacity = (1 - distance / config.maxDistance) * config.lineOpacity * nodeOpacity;
+                    const lineOpacity = Math.min(nodes[i].lineOpacity, nodes[j].lineOpacity); // 線専用の透明度
+
+                    // 線がまだ表示されていない場合はスキップ
+                    if (lineOpacity <= 0) continue;
+
+                    // 両端のノードの平均深度を計算
+                    const avgDepth = (nodes[i].depth + nodes[j].depth) / 2;
+
+                    // 深度に応じた線の透明度（奥ほど薄く）
+                    const depthOpacity = config.minLineOpacity + (config.maxLineOpacity - config.minLineOpacity) * avgDepth;
+                    const distanceFactor = 1 - distance / config.maxDistance;
+                    const opacity = distanceFactor * depthOpacity * nodeOpacity * lineOpacity; // lineOpacityを追加
+
+                    // 深度に応じた線の太さ（奥ほど細く）
+                    const lineWidth = config.minLineWidth + (config.maxLineWidth - config.minLineWidth) * avgDepth;
 
                     ctx.beginPath();
                     ctx.moveTo(nodes[i].x, nodes[i].y);
                     ctx.lineTo(nodes[j].x, nodes[j].y);
                     ctx.strokeStyle = config.lineColor;
                     ctx.globalAlpha = opacity;
-                    ctx.lineWidth = 2;
+                    ctx.lineWidth = lineWidth;
                     ctx.stroke();
                     ctx.globalAlpha = 1;
                 }
@@ -391,11 +449,14 @@
         const lockMovement = shouldLockNodes();
         nodes.forEach(node => node.updatePosition(nodes, lockMovement));
 
-        // 線を描画
+        // 深度順にソート（奥から手前に描画するため）
+        const sortedNodes = [...nodes].sort((a, b) => a.depth - b.depth);
+
+        // 線を描画（奥から手前へ）
         drawConnections();
 
-        // ノードを描画
-        nodes.forEach(node => node.draw());
+        // ノードを描画（奥から手前へ）
+        sortedNodes.forEach(node => node.draw());
 
         animationId = requestAnimationFrame(animate);
     }

@@ -8,6 +8,23 @@
     'use strict';
 
     /**
+     * Prevent scroll position restoration on page load
+     */
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    /**
+     * Force scroll to top on page load
+     */
+    window.addEventListener('beforeunload', function() {
+        window.scrollTo(0, 0);
+    });
+
+    // Immediate scroll to top on load
+    window.scrollTo(0, 0);
+
+    /**
      * Smooth scroll for anchor links
      */
     function initSmoothScroll() {
@@ -477,6 +494,9 @@
      * Initialize all functions when DOM is ready
      */
     function init() {
+        // Ensure scroll is at top on init
+        window.scrollTo(0, 0);
+
         initSmoothScroll();
         initHeaderScroll();
         initScrollAnimations();
