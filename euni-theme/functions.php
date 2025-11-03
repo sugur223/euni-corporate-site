@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define theme constants
  */
-define( 'EUNI_THEME_VERSION', '2.1.0' );
+define( 'EUNI_THEME_VERSION', '2.2.1' );
 define( 'EUNI_THEME_DIR', get_template_directory() );
 define( 'EUNI_THEME_URI', get_template_directory_uri() );
 
@@ -255,3 +255,27 @@ function euni_handle_contact_form() {
 }
 add_action( 'admin_post_nopriv_euni_contact_form', 'euni_handle_contact_form' );
 add_action( 'admin_post_euni_contact_form', 'euni_handle_contact_form' );
+
+/**
+ * Auto-create Philosophy page on theme activation
+ * テーマ有効化時に「社名に込めた想い」ページを自動作成
+ */
+function euni_create_philosophy_page() {
+    // Check if page already exists
+    $page = get_page_by_path( 'philosophy' );
+    
+    if ( ! $page ) {
+        // Create the page
+        $page_data = array(
+            'post_title'    => '社名に込めた想い',
+            'post_content'  => '', // Content is handled by template
+            'post_status'   => 'publish',
+            'post_type'     => 'page',
+            'post_name'     => 'philosophy',
+            'page_template' => 'page-philosophy.php',
+        );
+        
+        wp_insert_post( $page_data );
+    }
+}
+add_action( 'after_switch_theme', 'euni_create_philosophy_page' );

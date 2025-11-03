@@ -20,10 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="c-logo" rel="home">
                             <span class="c-logo__text">株式会社ユニ / Euni Inc.</span>
                         </a>
-                        <p class="l-footer__tagline">つながろう。あなたの未来のために。</p>
+                        <p class="l-footer__tagline">つながりで、未来をひらく</p>
                         <p class="l-footer__description">
-                            誰もがつながりの中で生きる社会へ。<br>
-                            人と人をつなぐ接点となり、善いつながりを育む。
+                            豊かな発想と高い技術力によって、<br>
+                            善いつながりを育み、<br>
+                            すべての人々の可能性を広げる。
                         </p>
 
                         <!-- SNS Links -->
@@ -55,8 +56,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                     <nav class="l-footer__nav">
                         <h3 class="l-footer__navTitle">会社情報</h3>
                         <ul class="c-footer-nav">
+                            <li><a href="<?php echo esc_url( home_url( '/#news' ) ); ?>">ニュース</a></li>
                             <li><a href="<?php echo esc_url( home_url( '/#mvv' ) ); ?>">企業理念</a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/#philosophy' ) ); ?>">社名の由来</a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/philosophy/' ) ); ?>">社名に込めた想い</a></li>
                             <li><a href="<?php echo esc_url( home_url( '/#message' ) ); ?>">代表メッセージ</a></li>
                             <li><a href="<?php echo esc_url( home_url( '/#company' ) ); ?>">会社概要</a></li>
                         </ul>
@@ -67,7 +69,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                         <h3 class="l-footer__navTitle">サービス</h3>
                         <ul class="c-footer-nav">
                             <li><a href="<?php echo esc_url( home_url( '/#business' ) ); ?>">事業内容</a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/#news' ) ); ?>">ニュース</a></li>
                         </ul>
                     </nav>
 

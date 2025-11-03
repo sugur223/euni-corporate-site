@@ -48,11 +48,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
             <nav id="gnav" class="l-header__gnav c-gnavWrap">
                 <ul class="c-gnav" id="primary-menu">
-                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#mvv' ) ); ?>">企業理念</a></li>
-                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#philosophy' ) ); ?>">社名の由来</a></li>
-                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#business' ) ); ?>">事業概要</a></li>
-                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#message' ) ); ?>">代表メッセージ</a></li>
                     <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#news' ) ); ?>">ニュース</a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#business' ) ); ?>">事業概要</a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#mvv' ) ); ?>">企業理念</a></li>
+                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#message' ) ); ?>">代表メッセージ</a></li>
                     <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#company' ) ); ?>">会社概要</a></li>
                     <li class="menu-item"><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">お問い合わせ</a></li>
                 </ul>

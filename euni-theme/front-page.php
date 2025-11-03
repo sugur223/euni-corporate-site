@@ -48,434 +48,6 @@ get_header();
 
 <div class="l-mainContent">
 
-    <!-- Purpose & MVV Section -->
-    <section id="mvv" class="p-section p-mvv js-parallax-trigger">
-        <div class="l-container">
-            <div class="p-section__head">
-                <span class="c-secLabel">PHILOSOPHY</span>
-                <h2 class="c-secHeading">企業理念</h2>
-            </div>
-
-            <div class="p-section__body">
-                <!-- Decorative shapes -->
-                <div class="p-mvv__shape1 js-parallax">
-                    <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M100 20 L170 60 L170 140 L100 180 L30 140 L30 60 Z" stroke="currentColor" stroke-width="2.5" opacity="0.25" stroke-linejoin="round"/>
-                        <path d="M100 40 L150 70 L150 130 L100 160 L50 130 L50 70 Z" stroke="currentColor" stroke-width="2.5" opacity="0.35" stroke-linejoin="round"/>
-                        <path d="M100 60 L130 80 L130 120 L100 140 L70 120 L70 80 Z" stroke="currentColor" stroke-width="2" opacity="0.45" stroke-linejoin="round"/>
-                        <line x1="100" y1="20" x2="100" y2="180" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="30" y1="60" x2="170" y2="140" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="170" y1="60" x2="30" y2="140" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                    </svg>
-                </div>
-                <div class="p-mvv__shape2 js-parallax2">
-                    <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="90" cy="90" r="70" stroke="currentColor" stroke-width="2.5" opacity="0.25"/>
-                        <circle cx="90" cy="90" r="52" stroke="currentColor" stroke-width="2.5" opacity="0.35"/>
-                        <circle cx="90" cy="90" r="34" stroke="currentColor" stroke-width="2" opacity="0.45"/>
-                        <line x1="90" y1="20" x2="90" y2="160" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="20" y1="90" x2="160" y2="90" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="35" y1="35" x2="145" y2="145" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="145" y1="35" x2="35" y2="145" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <circle cx="90" cy="20" r="4" fill="currentColor" opacity="0.3"/>
-                        <circle cx="160" cy="90" r="4" fill="currentColor" opacity="0.3"/>
-                        <circle cx="90" cy="160" r="4" fill="currentColor" opacity="0.3"/>
-                        <circle cx="20" cy="90" r="4" fill="currentColor" opacity="0.3"/>
-                    </svg>
-                </div>
-
-                <!-- Purpose Statement -->
-                <div class="p-mvvPurpose">
-                    <p class="p-mvvPurpose__text">出会いが、人生を変える<br>瞬間がある。</p>
-                    <div class="p-mvvPurpose__detail">
-                        <p>ふとした会話が、新しい道を見せてくれた日。<br>
-                        誰かの言葉が、背中を押してくれた日。</p>
-
-                        <p>Euniは、そんな出会いと関係が生まれる場を整えます。<br>
-                        一人ひとりの可能性が、誰かとつながることで広がっていく。<br>
-                        迷いながらでも、一歩ずつ前へ進める関係を、もっと当たり前にしたい。</p>
-
-                        <p>人と人がつながることで、未来は変わっていく。</p>
-
-                        <p class="p-mvvPurpose__tagline">Connect to possibilities.</p>
-                    </div>
-                </div>
-
-                <div class="p-mvvContent">
-                    <div class="p-mvvItem">
-                        <div class="p-mvvItem__label">
-                            <span class="p-mvvItem__en">Mission</span>
-                            <span class="p-mvvItem__jp">使命</span>
-                        </div>
-                        <p class="p-mvvItem__text">
-                            つながりで、未来をひらく
-                        </p>
-                    </div>
-
-                    <div class="p-mvvItem">
-                        <div class="p-mvvItem__label">
-                            <span class="p-mvvItem__en">Vision</span>
-                            <span class="p-mvvItem__jp">企業のありたい姿</span>
-                        </div>
-                        <p class="p-mvvItem__text">
-                            善いつながりを築く<br>
-                            インターフェースとして<br>
-                            信頼されている。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Values Section -->
-                <div class="p-values">
-                    <div class="p-values__shape js-parallax">
-                        <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="150" cy="150" r="120" stroke="currentColor" stroke-width="2" opacity="0.2"/>
-                            <circle cx="150" cy="150" r="90" stroke="currentColor" stroke-width="2" opacity="0.3"/>
-                            <circle cx="150" cy="150" r="60" stroke="currentColor" stroke-width="2" opacity="0.4"/>
-                        </svg>
-                    </div>
-                    <div class="p-values__inner">
-                        <div class="p-values__head">
-                            <div class="p-values__icon">
-                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 30 L30 10 L50 30 L30 50 Z" stroke="currentColor" stroke-width="2" opacity="0.7"/>
-                                    <path d="M18 30 L30 18 L42 30 L30 42 Z" stroke="currentColor" stroke-width="2" opacity="0.9"/>
-                                </svg>
-                            </div>
-                            <h3 class="c-subTitle">
-                                <span class="c-subTitle__en">Values</span>
-                                <span class="c-subTitle__jp">私たちの価値観</span>
-                            </h3>
-                        </div>
-                        <ul class="p-values__list">
-                            <li class="p-values__item">
-                                <div class="p-values__num">01</div>
-                                <dl class="p-values__content">
-                                    <dt class="p-values__title">問い続けよう</dt>
-                                    <dd class="p-values__text">本当に大切なことは何か。<br>当たり前を疑って、本質を探ろう。</dd>
-                                </dl>
-                            </li>
-                            <li class="p-values__item">
-                                <div class="p-values__num">02</div>
-                                <dl class="p-values__content">
-                                    <dt class="p-values__title">人として信じよう</dt>
-                                    <dd class="p-values__text">誰もが弱さを抱えている。<br>見えている姿だけで判断せず、人として信じ合う。</dd>
-                                </dl>
-                            </li>
-                            <li class="p-values__item">
-                                <div class="p-values__num">03</div>
-                                <dl class="p-values__content">
-                                    <dt class="p-values__title">心から楽しもう</dt>
-                                    <dd class="p-values__text">楽しむことを、忘れない。<br>遊び心を持って、わくわくしながら、やってみよう。</dd>
-                                </dl>
-                            </li>
-                            <li class="p-values__item">
-                                <div class="p-values__num">04</div>
-                                <dl class="p-values__content">
-                                    <dt class="p-values__title">循環を創ろう</dt>
-                                    <dd class="p-values__text">受け取ったものを、また誰かに。<br>善意が巡る流れを創ろう。</dd>
-                                </dl>
-                            </li>
-                            <li class="p-values__item">
-                                <div class="p-values__num">05</div>
-                                <dl class="p-values__content">
-                                    <dt class="p-values__title">矛盾を受け入れよう</dt>
-                                    <dd class="p-values__text">完璧じゃなくていい。<br>矛盾も、不完全も受け入れる。それでも、少しずつ前へ。</dd>
-                                </dl>
-                            </li>
-                        </ul>
-                        <div class="p-values__link">
-                            <a class="c-linkMore" href="#philosophy">
-                                <span class="c-linkMore__text">企業理念</span>
-                                <svg class="c-linkMore__arrow" width="48" height="12" viewBox="0 0 48 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <line x1="0.5" y1="5.63672" x2="46.5" y2="5.63672" stroke="currentColor" stroke-linecap="round"/>
-                                    <path d="M41.8633 1L46.7954 5.93209L41.8633 10.8642" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section id="philosophy" class="p-section -bg p-philosophy js-parallax-trigger">
-        <div class="l-container">
-            <div class="p-section__head">
-                <span class="c-secLabel">ORIGIN</span>
-                <h2 class="c-secHeading">社名に込めた想い</h2>
-            </div>
-
-            <div class="p-section__body">
-                <!-- Decorative shapes -->
-                <div class="p-philosophy__shape1 js-parallax">
-                    <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M100 20 L180 180 L20 180 Z" stroke="currentColor" stroke-width="2" opacity="0.3"/>
-                        <path d="M100 50 L150 150 L50 150 Z" stroke="currentColor" stroke-width="2" opacity="0.5"/>
-                    </svg>
-                </div>
-                <div class="p-philosophy__shape2 js-parallax2">
-                    <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="75" cy="75" r="60" stroke="currentColor" stroke-width="2" opacity="0.4"/>
-                        <circle cx="75" cy="75" r="45" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                        <circle cx="75" cy="75" r="30" stroke="currentColor" stroke-width="2" opacity="0.7"/>
-                    </svg>
-                </div>
-
-                <div class="p-philosophyOrigin">
-                    <h3 class="p-philosophyOrigin__title">社名の由来</h3>
-                    <p class="p-philosophyOrigin__intro">
-                        私たちの社名「Euni（ユニ）」には、<br>
-                        3つの想いが込められています。
-                    </p>
-                    <div class="p-philosophyOrigin__list">
-                        <div class="p-philosophyOrigin__item">
-                            <div class="p-philosophyOrigin__label">
-                                <span class="p-philosophyOrigin__name">Eunoia</span>
-                                <span class="p-philosophyOrigin__reading">ユーノイア</span>
-                            </div>
-                            <p class="p-philosophyOrigin__text">
-                                ギリシャ語で「善き心、美しい思考」を意味します。<br>
-                                自分も相手も大切にする、利己と利他を両立する心。<br>
-                                私たちは、この「善き心」を大切にし、<br>
-                                すべての活動の基盤としています。
-                            </p>
-                        </div>
-
-                        <div class="p-philosophyOrigin__item">
-                            <div class="p-philosophyOrigin__label">
-                                <span class="p-philosophyOrigin__name">UNI</span>
-                                <span class="p-philosophyOrigin__reading">User Network Interface</span>
-                            </div>
-                            <p class="p-philosophyOrigin__text">
-                                人と人を繋ぐインターフェース。<br>
-                                私たちは、出会いと関係性を創る接点となり、<br>
-                                人々の可能性を広げる架け橋でありたいと考えています。
-                            </p>
-                        </div>
-
-                        <div class="p-philosophyOrigin__item">
-                            <div class="p-philosophyOrigin__label">
-                                <span class="p-philosophyOrigin__name">Uni</span>
-                                <span class="p-philosophyOrigin__reading">ユニ</span>
-                            </div>
-                            <p class="p-philosophyOrigin__text">
-                                ラテン語で「一つ」を意味します。<br>
-                                善意の循環、つながりの循環。<br>
-                                一人ひとりの小さな善意が、<br>
-                                大きな温かい流れを生み出す。<br>
-                                そんな社会を目指しています。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Business Overview Section -->
-    <section id="business" class="p-section p-business js-parallax-trigger">
-        <div class="l-container">
-            <div class="p-section__head">
-                <div class="p-section__icon">
-                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Network/connection pattern -->
-                        <circle cx="35" cy="15" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                        <circle cx="15" cy="35" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                        <circle cx="55" cy="35" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                        <circle cx="25" cy="55" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                        <circle cx="45" cy="55" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                        <circle cx="35" cy="35" r="8" stroke="currentColor" stroke-width="2.5" opacity="0.85"/>
-                        <circle cx="35" cy="35" r="3" fill="currentColor" opacity="0.7"/>
-                        <!-- Connection lines -->
-                        <line x1="35" y1="20" x2="35" y2="27" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                        <line x1="20" y1="35" x2="27" y2="35" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                        <line x1="43" y1="35" x2="50" y2="35" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                        <line x1="30" y1="41" x2="27" y2="52" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                        <line x1="40" y1="41" x2="43" y2="52" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                    </svg>
-                </div>
-                <span class="c-secLabel">BUSINESS</span>
-                <h2 class="c-secHeading">事業概要</h2>
-                <p class="c-secDscr">
-                    Euniでは<br>
-                    3つの事業を展開しています。</p>
-            </div>
-
-            <div class="p-section__body">
-                <!-- Decorative shapes -->
-                <div class="p-business__shape1 js-parallax">
-                    <svg width="190" height="190" viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Triangular grid pattern -->
-                        <path d="M95 20 L165 85 L95 150 L25 85 Z" stroke="currentColor" stroke-width="2.5" opacity="0.25" stroke-linejoin="round"/>
-                        <path d="M95 40 L145 95 L95 130 L45 95 Z" stroke="currentColor" stroke-width="2.5" opacity="0.35" stroke-linejoin="round"/>
-                        <path d="M95 60 L125 95 L95 110 L65 95 Z" stroke="currentColor" stroke-width="2" opacity="0.45" stroke-linejoin="round"/>
-                        <!-- Internal triangles -->
-                        <path d="M95 20 L95 85 L25 85 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <path d="M95 20 L95 85 L165 85 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <path d="M95 85 L25 85 L95 150 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <path d="M95 85 L165 85 L95 150 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <!-- Center point -->
-                        <circle cx="95" cy="85" r="5" fill="currentColor" opacity="0.35"/>
-                    </svg>
-                </div>
-                <div class="p-business__shape2 js-parallax2">
-                    <svg width="170" height="170" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Pentagon pattern -->
-                        <path d="M85 15 L155 60 L130 135 L40 135 L15 60 Z" stroke="currentColor" stroke-width="2.5" opacity="0.25" stroke-linejoin="round"/>
-                        <path d="M85 35 L135 70 L115 125 L55 125 L35 70 Z" stroke="currentColor" stroke-width="2.5" opacity="0.35" stroke-linejoin="round"/>
-                        <path d="M85 55 L115 80 L100 115 L70 115 L55 80 Z" stroke="currentColor" stroke-width="2" opacity="0.45" stroke-linejoin="round"/>
-                        <!-- Star lines from center -->
-                        <line x1="85" y1="85" x2="85" y2="15" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="85" y1="85" x2="155" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="85" y1="85" x2="130" y2="135" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="85" y1="85" x2="40" y2="135" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="85" y1="85" x2="15" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <!-- Center circle -->
-                        <circle cx="85" cy="85" r="6" fill="currentColor" opacity="0.35"/>
-                    </svg>
-                </div>
-                <div class="p-cardGrid -col3">
-                    <div class="c-card">
-                        <div class="c-card__icon -svg">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="32" cy="20" r="8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M20 44 C20 36 25 32 32 32 C39 32 44 36 44 44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                                <circle cx="16" cy="24" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-                                <path d="M8 44 C8 38 11 35 16 35" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-                                <circle cx="48" cy="24" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-                                <path d="M56 44 C56 38 53 35 48 35" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-                            </svg>
-                        </div>
-                        <h3 class="c-card__title">成長支援コミュニティ事業</h3>
-                        <p class="c-card__text">
-                            学びと交流の場を提供し、若手社会人の成長を支援します。<br>
-                            多様な出会いと対話の機会を通じて、善いつながりを育てます。
-                        </p>
-                        <a href="https://service.euni.jp" class="c-btn-link" target="_blank" rel="noopener">サービスサイトで詳細を見る →</a>
-                    </div>
-
-                    <div class="c-card">
-                        <div class="c-card__icon -svg">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="8" y="12" width="48" height="36" rx="3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                                <line x1="8" y1="20" x2="56" y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                                <rect x="16" y="28" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-                                <line x1="36" y1="30" x2="48" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-                                <line x1="36" y1="36" x2="48" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-                                <circle cx="32" cy="52" r="4" fill="currentColor" opacity="0.6"/>
-                            </svg>
-                        </div>
-                        <h3 class="c-card__title">ITソリューション事業</h3>
-                        <p class="c-card__text">
-                            つながり支援プラットフォームの開発・運営。<br>
-                            システム開発、AI活用コンサルティング。<br>
-                            デジタル化支援、プロトタイプ開発。
-                        </p>
-                        <a href="#contact" class="c-btn-link">お問い合わせ →</a>
-                    </div>
-
-                    <div class="c-card">
-                        <div class="c-card__icon -svg">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="12" y1="52" x2="52" y2="52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                                <line x1="12" y1="12" x2="12" y2="52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                                <polyline points="20,40 26,32 32,36 38,24 44,28 50,16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                                <circle cx="20" cy="40" r="2.5" fill="currentColor"/>
-                                <circle cx="26" cy="32" r="2.5" fill="currentColor"/>
-                                <circle cx="32" cy="36" r="2.5" fill="currentColor"/>
-                                <circle cx="38" cy="24" r="2.5" fill="currentColor"/>
-                                <circle cx="44" cy="28" r="2.5" fill="currentColor"/>
-                                <circle cx="50" cy="16" r="2.5" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <h3 class="c-card__title">コンサルティング事業</h3>
-                        <p class="c-card__text">
-                            組織開発支援や人材育成プログラム設計を通じて、<br>
-                            企業の成長と人材の活躍を支援します。
-                        </p>
-                        <a href="#contact" class="c-btn-link">お問い合わせ →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CEO Message Section -->
-    <section id="message" class="p-section -bg p-ceo js-parallax-trigger">
-        <div class="l-container">
-            <div class="p-section__head">
-                <span class="c-secLabel">CEO MESSAGE</span>
-                <h2 class="c-secHeading">代表メッセージ</h2>
-            </div>
-
-            <div class="p-section__body">
-                <!-- Decorative shapes -->
-                <div class="p-ceo__shape1 js-parallax">
-                    <svg width="190" height="190" viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="95" cy="95" r="75" stroke="currentColor" stroke-width="2" opacity="0.3"/>
-                        <circle cx="95" cy="95" r="55" stroke="currentColor" stroke-width="2" opacity="0.5"/>
-                        <circle cx="95" cy="95" r="35" stroke="currentColor" stroke-width="2" opacity="0.7"/>
-                    </svg>
-                </div>
-                <div class="p-ceo__shape2 js-parallax2">
-                    <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="30" y="30" width="100" height="100" stroke="currentColor" stroke-width="2" opacity="0.4" rx="10"/>
-                        <rect x="50" y="50" width="60" height="60" stroke="currentColor" stroke-width="2" opacity="0.6" rx="6"/>
-                    </svg>
-                </div>
-
-                <div class="p-ceoMessageCard">
-                    <div class="p-ceoMessageCard__profile">
-                        <div class="p-ceoProfile">
-                            <div class="p-ceoProfile__photo">
-                                <?php if ( get_theme_mod( 'euni_ceo_photo' ) ) : ?>
-                                    <img src="<?php echo esc_url( get_theme_mod( 'euni_ceo_photo' ) ); ?>" alt="代表者写真">
-                                <?php else : ?>
-                                    <div class="p-ceoProfile__placeholder">👤</div>
-                                <?php endif; ?>
-                            </div>
-                            <div class="p-ceoProfile__info">
-                                <p class="p-ceoProfile__title">代表取締役</p>
-                                <p class="p-ceoProfile__name">
-                                    <?php echo esc_html( get_theme_mod( 'euni_ceo_name', '代表者名' ) ); ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-ceoMessageCard__content">
-                        <?php if ( get_theme_mod( 'euni_ceo_message' ) ) : ?>
-                            <div class="p-ceoMessageCard__text">
-                                <?php echo nl2br( esc_html( get_theme_mod( 'euni_ceo_message' ) ) ); ?>
-                            </div>
-                        <?php else : ?>
-                            <div class="p-ceoMessageCard__text">
-                                <p>あなたは今、どんな分岐点に立っていますか？</p>
-                                <p>人生には、無数の選択肢があります。でも、その一つ一つの選択に最も影響を与えるのは、実は「人」なんです。</p>
-                                <p>誰かとの出会いが、新しい道を見せてくれる。誰かの言葉が、一歩を踏み出す勇気をくれる。誰かとの関係が、あなたの可能性を広げてくれる。</p>
-                                <p>私自身、深い孤独を経験した時期がありました。その時、救ってくれたのは人とのつながりでした。一つの出会いが、閉じていた道を開いてくれる。一つの関係が、前を向く力をくれる。</p>
-                                <p>だからこそ、思うのです。より良い出会いを創ること。より深い関係を育むこと。善いつながりを循環させること。それが、一人ひとりの人生をより豊かにする。</p>
-                                <p>Euniは、あなたの人生の分岐点で、より良い選択を後押しする「きっかけ」となりたい。人と可能性を繋ぐインターフェースとして、あなたの未来に寄り添いたいと考えています。</p>
-                                <p>一緒に、つながりの中で生きる社会を創りませんか？</p>
-                            </div>
-                            <div class="p-ceoMessageCard__signature">
-                                <p>代表取締役 <?php echo esc_html( get_theme_mod( 'euni_ceo_name', '代表者名' ) ); ?></p>
-                            </div>
-                            <?php if ( get_theme_mod( 'euni_ceo_career' ) ) : ?>
-                                <div class="p-ceoMessageCard__career">
-                                    <h4>略歴</h4>
-                                    <p><?php echo nl2br( esc_html( get_theme_mod( 'euni_ceo_career' ) ) ); ?></p>
-                                </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- News Section -->
     <section id="news" class="p-section p-news js-parallax-trigger">
         <div class="l-container">
@@ -578,6 +150,354 @@ get_header();
         </div>
     </section>
 
+    <!-- Business Overview Section -->
+    <section id="business" class="p-section -bg p-business js-parallax-trigger">
+        <div class="l-container">
+            <div class="p-section__head">
+                <div class="p-section__icon">
+                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Network/connection pattern -->
+                        <circle cx="35" cy="15" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+                        <circle cx="15" cy="35" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+                        <circle cx="55" cy="35" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+                        <circle cx="25" cy="55" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+                        <circle cx="45" cy="55" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
+                        <circle cx="35" cy="35" r="8" stroke="currentColor" stroke-width="2.5" opacity="0.85"/>
+                        <circle cx="35" cy="35" r="3" fill="currentColor" opacity="0.7"/>
+                        <!-- Connection lines -->
+                        <line x1="35" y1="20" x2="35" y2="27" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+                        <line x1="20" y1="35" x2="27" y2="35" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+                        <line x1="43" y1="35" x2="50" y2="35" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+                        <line x1="30" y1="41" x2="27" y2="52" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+                        <line x1="40" y1="41" x2="43" y2="52" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+                    </svg>
+                </div>
+                <span class="c-secLabel">BUSINESS</span>
+                <h2 class="c-secHeading">事業概要</h2>
+                <p class="c-secDscr">
+                    Euniでは<br>
+                    3つの事業を展開しています。</p>
+            </div>
+
+            <div class="p-section__body">
+                <!-- Decorative shapes -->
+                <div class="p-business__shape1 js-parallax">
+                    <svg width="190" height="190" viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Triangular grid pattern -->
+                        <path d="M95 20 L165 85 L95 150 L25 85 Z" stroke="currentColor" stroke-width="2.5" opacity="0.25" stroke-linejoin="round"/>
+                        <path d="M95 40 L145 95 L95 130 L45 95 Z" stroke="currentColor" stroke-width="2.5" opacity="0.35" stroke-linejoin="round"/>
+                        <path d="M95 60 L125 95 L95 110 L65 95 Z" stroke="currentColor" stroke-width="2" opacity="0.45" stroke-linejoin="round"/>
+                        <!-- Internal triangles -->
+                        <path d="M95 20 L95 85 L25 85 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <path d="M95 20 L95 85 L165 85 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <path d="M95 85 L25 85 L95 150 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <path d="M95 85 L165 85 L95 150 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <!-- Center point -->
+                        <circle cx="95" cy="85" r="5" fill="currentColor" opacity="0.35"/>
+                    </svg>
+                </div>
+                <div class="p-business__shape2 js-parallax2">
+                    <svg width="170" height="170" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Pentagon pattern -->
+                        <path d="M85 15 L155 60 L130 135 L40 135 L15 60 Z" stroke="currentColor" stroke-width="2.5" opacity="0.25" stroke-linejoin="round"/>
+                        <path d="M85 35 L135 70 L115 125 L55 125 L35 70 Z" stroke="currentColor" stroke-width="2.5" opacity="0.35" stroke-linejoin="round"/>
+                        <path d="M85 55 L115 80 L100 115 L70 115 L55 80 Z" stroke="currentColor" stroke-width="2" opacity="0.45" stroke-linejoin="round"/>
+                        <!-- Star lines from center -->
+                        <line x1="85" y1="85" x2="85" y2="15" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <line x1="85" y1="85" x2="155" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <line x1="85" y1="85" x2="130" y2="135" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <line x1="85" y1="85" x2="40" y2="135" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <line x1="85" y1="85" x2="15" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <!-- Center circle -->
+                        <circle cx="85" cy="85" r="6" fill="currentColor" opacity="0.35"/>
+                    </svg>
+                </div>
+                <div class="p-cardGrid -col3">
+                    <div class="c-card">
+                        <div class="c-card__icon -svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="20" r="8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M20 44 C20 36 25 32 32 32 C39 32 44 36 44 44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <circle cx="16" cy="24" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                                <path d="M8 44 C8 38 11 35 16 35" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                                <circle cx="48" cy="24" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                                <path d="M56 44 C56 38 53 35 48 35" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                            </svg>
+                        </div>
+                        <h3 class="c-card__title">成長支援コミュニティ事業</h3>
+                        <p class="c-card__text">
+                            キャリアに悩む人に、学びと対話の場を提供します。<br>
+                            多様な出会いと気づきを通じて、一人ひとりが自分らしい選択を見つけ、<br>
+                            前へ進む力を育むコミュニティを運営しています。
+                        </p>
+                        <a href="https://service.euni.jp" class="c-btn-link" target="_blank" rel="noopener">サービスサイトを見る</a>
+                    </div>
+
+                    <div class="c-card">
+                        <div class="c-card__icon -svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="8" y="12" width="48" height="36" rx="3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <line x1="8" y1="20" x2="56" y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <rect x="16" y="28" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                                <line x1="36" y1="30" x2="48" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                                <line x1="36" y1="36" x2="48" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                                <circle cx="32" cy="52" r="4" fill="currentColor" opacity="0.6"/>
+                            </svg>
+                        </div>
+                        <h3 class="c-card__title">ITソリューション事業</h3>
+                        <p class="c-card__text">
+                            コミュニティ運営に取り組む企業・団体へ、プラットフォーム開発から運用まで伴走します。<br>
+                            システム開発・AI活用で、メンバー同士の自発的なつながりを促進し、<br>
+                            長期的な関係性を育む仕組みを共に創ります。
+                        </p>
+                        <a href="#contact" class="c-btn-link">お問い合わせ</a>
+                    </div>
+
+                    <div class="c-card">
+                        <div class="c-card__icon -svg">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="12" y1="52" x2="52" y2="52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <line x1="12" y1="12" x2="12" y2="52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <polyline points="20,40 26,32 32,36 38,24 44,28 50,16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <circle cx="20" cy="40" r="2.5" fill="currentColor"/>
+                                <circle cx="26" cy="32" r="2.5" fill="currentColor"/>
+                                <circle cx="32" cy="36" r="2.5" fill="currentColor"/>
+                                <circle cx="38" cy="24" r="2.5" fill="currentColor"/>
+                                <circle cx="44" cy="28" r="2.5" fill="currentColor"/>
+                                <circle cx="50" cy="16" r="2.5" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="c-card__title">コンサルティング事業</h3>
+                        <p class="c-card__text">
+                            組織内のつながりを強化したい企業へ、組織開発・人材育成をサポートします。<br>
+                            関係性の質を高めるプログラムを通じて、<br>
+                            一人ひとりが安心して力を発揮できる組織文化を共に育てます。
+                        </p>
+                        <a href="#contact" class="c-btn-link">お問い合わせ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purpose & MVV Section -->
+    <section id="mvv" class="p-section p-mvv js-parallax-trigger">
+        <div class="l-container">
+            <div class="p-section__head">
+                <span class="c-secLabel">PHILOSOPHY</span>
+                <h2 class="c-secHeading">企業理念</h2>
+            </div>
+
+            <div class="p-section__body">
+                <!-- Decorative shapes -->
+                <div class="p-mvv__shape1 js-parallax">
+                    <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 20 L170 60 L170 140 L100 180 L30 140 L30 60 Z" stroke="currentColor" stroke-width="2.5" opacity="0.25" stroke-linejoin="round"/>
+                        <path d="M100 40 L150 70 L150 130 L100 160 L50 130 L50 70 Z" stroke="currentColor" stroke-width="2.5" opacity="0.35" stroke-linejoin="round"/>
+                        <path d="M100 60 L130 80 L130 120 L100 140 L70 120 L70 80 Z" stroke="currentColor" stroke-width="2" opacity="0.45" stroke-linejoin="round"/>
+                        <line x1="100" y1="20" x2="100" y2="180" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <line x1="30" y1="60" x2="170" y2="140" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <line x1="170" y1="60" x2="30" y2="140" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                    </svg>
+                </div>
+                <div class="p-mvv__shape2 js-parallax2">
+                    <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="90" cy="90" r="70" stroke="currentColor" stroke-width="2.5" opacity="0.25"/>
+                        <circle cx="90" cy="90" r="52" stroke="currentColor" stroke-width="2.5" opacity="0.35"/>
+                        <circle cx="90" cy="90" r="34" stroke="currentColor" stroke-width="2" opacity="0.45"/>
+                        <line x1="90" y1="20" x2="90" y2="160" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <line x1="20" y1="90" x2="160" y2="90" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <line x1="35" y1="35" x2="145" y2="145" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <line x1="145" y1="35" x2="35" y2="145" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+                        <circle cx="90" cy="20" r="4" fill="currentColor" opacity="0.3"/>
+                        <circle cx="160" cy="90" r="4" fill="currentColor" opacity="0.3"/>
+                        <circle cx="90" cy="160" r="4" fill="currentColor" opacity="0.3"/>
+                        <circle cx="20" cy="90" r="4" fill="currentColor" opacity="0.3"/>
+                    </svg>
+                </div>
+
+                <!-- Purpose Statement -->
+                <div class="p-mvvPurpose">
+                    <p class="p-mvvPurpose__text">人と人とのつながりが<br>人生を拓く</p>
+                    <div class="p-mvvPurpose__detail">
+                        <p>ふとした会話が、新しい道を見せてくれた日<br>
+                        誰かの言葉が、背中を押してくれた日</p>
+
+                        <p>Euniは、そんなつながりや関係性が生まれる場を整えます<br>
+                        一人ひとりの可能性が、誰かとつながることで広がっていく<br>
+                        迷いながらでも、一歩ずつ前へ進める関係を、もっと当たり前にしたい</p>
+
+                        <p>人と人がつながることで、未来は変わっていく</p>
+
+                        <p class="p-mvvPurpose__tagline">Connect to possibilities.</p>
+                    </div>
+                </div>
+
+                <div class="p-mvvContent">
+                    <div class="p-mvvItem">
+                        <div class="p-mvvItem__label">
+                            <span class="p-mvvItem__en">Mission</span>
+                            <span class="p-mvvItem__jp">使命</span>
+                        </div>
+                        <p class="p-mvvItem__text">
+                            豊かな発想と高い技術力によって、<br>
+                            善いつながりを育み、<br>
+                            すべての人々の可能性を広げる
+                        </p>
+                    </div>
+
+                    <div class="p-mvvItem">
+                        <div class="p-mvvItem__label">
+                            <span class="p-mvvItem__en">Vision</span>
+                            <span class="p-mvvItem__jp">企業のありたい姿</span>
+                        </div>
+                        <p class="p-mvvItem__text">
+                            人と人との善いつながりを築く<br>
+                            インターフェースとして<br>
+                            信頼される存在になる
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Values Section -->
+                <div class="p-values">
+                    <div class="p-values__shape js-parallax">
+                        <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="150" cy="150" r="120" stroke="currentColor" stroke-width="2" opacity="0.2"/>
+                            <circle cx="150" cy="150" r="90" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+                            <circle cx="150" cy="150" r="60" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+                        </svg>
+                    </div>
+                    <div class="p-values__inner">
+                        <div class="p-values__head">
+                            <div class="p-values__icon">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 30 L30 10 L50 30 L30 50 Z" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+                                    <path d="M18 30 L30 18 L42 30 L30 42 Z" stroke="currentColor" stroke-width="2" opacity="0.9"/>
+                                </svg>
+                            </div>
+                            <h3 class="c-subTitle">
+                                <span class="c-subTitle__en">Values</span>
+                                <span class="c-subTitle__jp">私たちの価値観</span>
+                            </h3>
+                        </div>
+                        <ul class="p-values__list">
+                            <li class="p-values__item">
+                                <div class="p-values__num">01</div>
+                                <dl class="p-values__content">
+                                    <dt class="p-values__title">問い続けよう</dt>
+                                    <dd class="p-values__text">本当に大切なことは何か<br>当たり前を疑って、本質を探ろう</dd>
+                                </dl>
+                            </li>
+                            <li class="p-values__item">
+                                <div class="p-values__num">02</div>
+                                <dl class="p-values__content">
+                                    <dt class="p-values__title">近くから幸せに</dt>
+                                    <dd class="p-values__text">目の前の人を、まず幸せに<br>その小さな輪が広がって、社会を温かくする</dd>
+                                </dl>
+                            </li>
+                            <li class="p-values__item">
+                                <div class="p-values__num">03</div>
+                                <dl class="p-values__content">
+                                    <dt class="p-values__title">心から楽しもう</dt>
+                                    <dd class="p-values__text">楽しむ心で、自分の意思に正直に<br>遊び心を持って、わくわくしながら、まずやってみよう</dd>
+                                </dl>
+                            </li>
+                            <li class="p-values__item">
+                                <div class="p-values__num">04</div>
+                                <dl class="p-values__content">
+                                    <dt class="p-values__title">循環を創ろう</dt>
+                                    <dd class="p-values__text">受け取ったものへの感謝を胸に、また誰かに<br>善意と感謝が巡る流れを創ろう</dd>
+                                </dl>
+                            </li>
+                            <li class="p-values__item">
+                                <div class="p-values__num">05</div>
+                                <dl class="p-values__content">
+                                    <dt class="p-values__title">矛盾を受け入れよう</dt>
+                                    <dd class="p-values__text">完璧じゃなくていい<br>矛盾も、不完全も受け入れる。それでも、少しずつ前へ</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Message Section -->
+    <section id="message" class="p-section -bg p-ceo js-parallax-trigger">
+        <div class="l-container">
+            <div class="p-section__head">
+                <span class="c-secLabel">CEO MESSAGE</span>
+                <h2 class="c-secHeading">代表メッセージ</h2>
+            </div>
+
+            <div class="p-section__body">
+                <!-- Decorative shapes -->
+                <div class="p-ceo__shape1 js-parallax">
+                    <svg width="190" height="190" viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="95" cy="95" r="75" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+                        <circle cx="95" cy="95" r="55" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+                        <circle cx="95" cy="95" r="35" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+                    </svg>
+                </div>
+                <div class="p-ceo__shape2 js-parallax2">
+                    <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="30" y="30" width="100" height="100" stroke="currentColor" stroke-width="2" opacity="0.4" rx="10"/>
+                        <rect x="50" y="50" width="60" height="60" stroke="currentColor" stroke-width="2" opacity="0.6" rx="6"/>
+                    </svg>
+                </div>
+
+                <div class="p-ceoMessageCard">
+                    <div class="p-ceoMessageCard__profile">
+                        <div class="p-ceoProfile">
+                            <div class="p-ceoProfile__photo">
+                                <?php if ( get_theme_mod( 'euni_ceo_photo' ) ) : ?>
+                                    <img src="<?php echo esc_url( get_theme_mod( 'euni_ceo_photo' ) ); ?>" alt="代表者写真">
+                                <?php else : ?>
+                                    <div class="p-ceoProfile__placeholder">👤</div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="p-ceoProfile__info">
+                                <p class="p-ceoProfile__title">代表取締役</p>
+                                <p class="p-ceoProfile__name">
+                                    <?php echo esc_html( get_theme_mod( 'euni_ceo_name', '代表者名' ) ); ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-ceoMessageCard__content">
+                        <?php if ( get_theme_mod( 'euni_ceo_message' ) ) : ?>
+                            <div class="p-ceoMessageCard__text">
+                                <?php echo nl2br( esc_html( get_theme_mod( 'euni_ceo_message' ) ) ); ?>
+                            </div>
+                        <?php else : ?>
+                            <div class="p-ceoMessageCard__text">
+                                <p>あなたは今、どんな分岐点に立っていますか？</p>
+                                <p>人生には、無数の選択肢があります。でも、その一つ一つの選択に最も影響を与えるのは、実は「人」なんです。</p>
+                                <p>誰かとの出会いが、新しい道を見せてくれる。誰かの言葉が、一歩を踏み出す勇気をくれる。誰かとの関係が、あなたの可能性を広げてくれる。</p>
+                                <p>私自身、深い孤独を経験した時期がありました。その時、救ってくれたのは人とのつながりでした。一つの出会いが、閉じていた道を開いてくれる。一つの関係が、前を向く力をくれる。</p>
+                                <p>だからこそ、思うのです。より良い出会いを創ること。より深い関係を育むこと。善いつながりを循環させること。それが、一人ひとりの人生をより豊かにする。</p>
+                                <p>Euniは、あなたの人生の分岐点で、より良い選択を後押しする「きっかけ」となりたい。人と可能性を繋ぐインターフェースとして、あなたの未来に寄り添いたいと考えています。</p>
+                                <p>一緒に、つながりの中で生きる社会を創りませんか？</p>
+                            </div>
+                            <div class="p-ceoMessageCard__signature">
+                                <p>代表取締役 <?php echo esc_html( get_theme_mod( 'euni_ceo_name', '代表者名' ) ); ?></p>
+                            </div>
+                            <?php if ( get_theme_mod( 'euni_ceo_career' ) ) : ?>
+                                <div class="p-ceoMessageCard__career">
+                                    <h4>略歴</h4>
+                                    <p><?php echo nl2br( esc_html( get_theme_mod( 'euni_ceo_career' ) ) ); ?></p>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Company Section -->
     <section id="company" class="p-section -bg p-company js-parallax-trigger">
         <div class="l-container">
@@ -635,7 +555,7 @@ get_header();
                                 <th>事業内容</th>
                                 <td>
                                     <ul class="c-list">
-                                        <li>組織コミュニティ支援事業</li>
+                                        <li>成長支援コミュニティ事業</li>
                                         <li>ITソリューション事業</li>
                                         <li>コンサルティング事業</li>
                                     </ul>
