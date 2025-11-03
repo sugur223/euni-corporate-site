@@ -301,10 +301,10 @@ get_header();
 
                 <!-- Purpose Statement -->
                 <div class="p-mvvPurpose">
-                    <p class="p-mvvPurpose__text">人と人とのつながりが<br>人生を拓く</p>
+                    <p class="p-mvvPurpose__text">人と人とのつながりが<br>可能性を拓く</p>
                     <div class="p-mvvPurpose__detail">
-                        <p>ふとした会話が、新しい道を見せてくれた日<br>
-                        誰かの言葉が、背中を押してくれた日</p>
+                        <p>ふとした会話が、新しい道を見せてくれる<br>
+                        誰かの言葉が、背中を押してくれる</p>
 
                         <p>Euniは、そんなつながりや関係性が生まれる場を整えます<br>
                         一人ひとりの可能性が、誰かとつながることで広がっていく<br>
@@ -458,12 +458,13 @@ get_header();
                         <?php else : ?>
                             <div class="p-ceoMessageCard__text">
                                 <p>あなたは今、どんな分岐点に立っていますか？</p>
-                                <p>人生には、無数の選択肢があります。でも、その一つ一つの選択に最も影響を与えるのは、実は「人」なんです。</p>
+                                <p>人生には、無数の選択肢があります。その一つ一つの選択に最も影響を与える存在が、「人」なのではないでしょうか。</p>
                                 <p>誰かとの出会いが、新しい道を見せてくれる。誰かの言葉が、一歩を踏み出す勇気をくれる。誰かとの関係が、あなたの可能性を広げてくれる。</p>
                                 <p>私自身、深い孤独を経験した時期がありました。その時、救ってくれたのは人とのつながりでした。一つの出会いが、閉じていた道を開いてくれる。一つの関係が、前を向く力をくれる。</p>
                                 <p>だからこそ、思うのです。より良い出会いを創ること。より深い関係を育むこと。善いつながりを循環させること。それが、一人ひとりの人生をより豊かにする。</p>
                                 <p>Euniは、あなたの人生の分岐点で、より良い選択を後押しする「きっかけ」となりたい。人と可能性を繋ぐインターフェースとして、あなたの未来に寄り添いたいと考えています。</p>
-                                <p>一緒に、つながりの中で生きる社会を創りませんか？</p>
+                                <p><strong>私たちは、善いつながりが循環する社会を創ります。</strong><br>
+                                一人ひとりが、自分らしく可能性を広げられる。互いに支え合い、高め合える関係が、当たり前にある。そんな未来を、共に築いていきましょう。</p>
                             </div>
                             <div class="p-ceoMessageCard__signature">
                                 <p>代表取締役 <?php echo esc_html( get_theme_mod( 'euni_ceo_name', '代表者名' ) ); ?></p>
@@ -516,7 +517,7 @@ get_header();
                             </tr>
                             <tr>
                                 <th>代表取締役</th>
-                                <td><?php echo esc_html( get_theme_mod( 'euni_ceo_name', '代表取締役名（準備中）' ) ); ?></td>
+                                <td><?php echo esc_html( get_theme_mod( 'euni_ceo_name', '松本卓' ) ); ?></td>
                             </tr>
                             <tr>
                                 <th>設立</th>
@@ -524,15 +525,11 @@ get_header();
                             </tr>
                             <tr>
                                 <th>資本金</th>
-                                <td><?php echo esc_html( get_theme_mod( 'euni_capital', '準備中' ) ); ?></td>
+                                <td><?php echo esc_html( get_theme_mod( 'euni_capital', '300万円' ) ); ?></td>
                             </tr>
                             <tr>
                                 <th>所在地</th>
-                                <td><?php echo nl2br( esc_html( get_theme_mod( 'euni_address', "〒XXX-XXXX\n東京都XX区XXXX" ) ) ); ?></td>
-                            </tr>
-                            <tr>
-                                <th>従業員数</th>
-                                <td><?php echo esc_html( get_theme_mod( 'euni_employees', 'X名（2025年11月現在）' ) ); ?></td>
+                                <td><?php echo nl2br( esc_html( get_theme_mod( 'euni_address', "〒150-0041\n東京都渋谷区神南一丁目１１番地４号　ＦＰＧリンクス神南 5階" ) ) ); ?></td>
                             </tr>
                             <tr>
                                 <th>事業内容</th>

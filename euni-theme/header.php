@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 } else {
                     ?>
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="c-logo" rel="home">
-                        <span class="c-logo__text">株式会社ユニ</span>
+                        <span class="c-logo__text">株式会社Euni</span>
                     </a>
                     <?php
                 }

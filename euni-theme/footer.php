@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                     <!-- Company Info -->
                     <div class="l-footer__brand">
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="c-logo" rel="home">
-                            <span class="c-logo__text">株式会社ユニ / Euni Inc.</span>
+                            <span class="c-logo__text">株式会社Euni / Euni Inc.</span>
                         </a>
                         <p class="l-footer__tagline">つながりで、未来をひらく</p>
                         <p class="l-footer__description">
@@ -89,7 +89,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                     <div class="c-copyright">
                         <p>&copy; <?php echo esc_html( date_i18n( 'Y' ) ); ?>
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-                            株式会社ユニ
+                            株式会社Euni
                         </a>
                         All rights reserved.</p>
                     </div>
