@@ -18,7 +18,7 @@ get_header();
             <div class="p-hero__content">
                 <p class="p-hero__subtitle">Connect to possibilities.</p>
                 <h1 class="p-hero__title">つながりが<br>可能性を拓く</h1>
-                <p class="p-hero__lead">一人ひとりの可能性は、<br>他の誰かとつながることで拓いていく。</p>
+                <p class="p-hero__lead">一人ひとりの可能性は、<br>他の誰かとつながることで広がっていく。</p>
             </div>
 
             <!-- Right: Network Animation -->
