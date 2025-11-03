@@ -39,6 +39,15 @@ function euni_enqueue_scripts() {
         true
     );
 
+    // Enqueue network animation JavaScript
+    wp_enqueue_script(
+        'euni-network-animation',
+        EUNI_THEME_URI . '/assets/js/network-animation.js',
+        array(),
+        EUNI_THEME_VERSION,
+        true
+    );
+
     // Add inline script for AJAX URL
     wp_localize_script(
         'euni-main-script',

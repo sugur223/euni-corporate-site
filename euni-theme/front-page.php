@@ -11,37 +11,20 @@ get_header();
 ?>
 
 <!-- Hero Section -->
-<div class="p-hero js-parallax-trigger">
-    <!-- Decorative shapes -->
-    <div class="p-hero__shape1 js-parallax">
-        <svg width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="125" cy="125" r="100" stroke="currentColor" stroke-width="2" opacity="0.15"/>
-            <circle cx="125" cy="125" r="75" stroke="currentColor" stroke-width="2" opacity="0.2"/>
-            <circle cx="125" cy="125" r="50" stroke="currentColor" stroke-width="2" opacity="0.25"/>
-            <circle cx="125" cy="125" r="25" stroke="currentColor" stroke-width="2" opacity="0.3"/>
-        </svg>
-    </div>
-    <div class="p-hero__shape2 js-parallax2">
-        <svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="20" y="20" width="180" height="180" stroke="currentColor" stroke-width="2" opacity="0.15" rx="90"/>
-            <rect x="40" y="40" width="140" height="140" stroke="currentColor" stroke-width="2" opacity="0.2" rx="70"/>
-            <rect x="60" y="60" width="100" height="100" stroke="currentColor" stroke-width="2" opacity="0.25" rx="50"/>
-            <rect x="80" y="80" width="60" height="60" stroke="currentColor" stroke-width="2" opacity="0.3" rx="30"/>
-        </svg>
-    </div>
-    <div class="p-hero__shape3 js-parallax">
-        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M100 10 L170 60 L170 140 L100 190 L30 140 L30 60 Z" stroke="currentColor" stroke-width="2" opacity="0.15" stroke-linejoin="round"/>
-            <path d="M100 30 L150 70 L150 130 L100 170 L50 130 L50 70 Z" stroke="currentColor" stroke-width="2" opacity="0.2" stroke-linejoin="round"/>
-            <path d="M100 50 L130 80 L130 120 L100 150 L70 120 L70 80 Z" stroke="currentColor" stroke-width="2" opacity="0.25" stroke-linejoin="round"/>
-        </svg>
-    </div>
-
+<div class="p-hero">
     <div class="p-hero__inner l-container">
-        <div class="p-hero__content">
-            <p class="p-hero__subtitle">Connect to possibilities.</p>
-            <h1 class="p-hero__title">つながりで<br>未来をひらく</h1>
-            <p class="p-hero__lead">一人ひとりの可能性が、誰かとつながることで広がっていく。</p>
+        <div class="p-hero__grid">
+            <!-- Left: Text Content -->
+            <div class="p-hero__content">
+                <p class="p-hero__subtitle">Connect to possibilities.</p>
+                <h1 class="p-hero__title">つながりで<br>未来をひらく</h1>
+                <p class="p-hero__lead">一人ひとりの可能性が、誰かとつながることで広がっていく。</p>
+            </div>
+
+            <!-- Right: Network Animation -->
+            <div class="p-hero__visual">
+                <canvas id="networkCanvas" class="p-hero__canvas"></canvas>
+            </div>
         </div>
     </div>
 </div>
