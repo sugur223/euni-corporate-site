@@ -3827,7 +3827,7 @@ body.admin-bar .l-header {
         position: absolute;
         top: -70%;
         left: 50%;
-        width: 250%;
+        width: 150%;
         height: 250%;
         z-index: 1;
         opacity: 1;
@@ -3864,7 +3864,7 @@ body.admin-bar .l-header {
     .p-hero__visual {
         top: -75%;
         left: 50%;
-        width: 280%;
+        width: 160%;
         height: 280%;
         transform: translate(-50%, -8%);
     }
