@@ -3825,10 +3825,10 @@ body.admin-bar .l-header {
 
     .p-hero__visual {
         position: absolute;
-        top: -20%;
+        top: -70%;
         left: 50%;
-        width: 200%;
-        height: 200%;
+        width: 250%;
+        height: 250%;
         z-index: 1;
         opacity: 1;
         transform: translate(-50%, -6%);
@@ -3862,10 +3862,10 @@ body.admin-bar .l-header {
     }
 
     .p-hero__visual {
-        top: -24%;
+        top: -75%;
         left: 50%;
-        width: 215%;
-        height: 212%;
+        width: 280%;
+        height: 280%;
         transform: translate(-50%, -8%);
     }
 }
