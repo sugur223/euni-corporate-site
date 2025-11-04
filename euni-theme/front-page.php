@@ -139,15 +139,17 @@ get_header();
                 <span class="c-secLabel">BUSINESS</span>
                 <h2 class="c-secHeading">事業内容</h2>
                 <p class="c-secDscr">
-                    Euniでは<br>
-                    3つの事業を展開しています。
+                    新しい出会いを生み出し、既存の関係を深める。<br>
+                    IT技術で「つながり」を創り、育てます。
                 </p>
             </div>
 
             <div class="p-section__body">
-                <div class="p-businessStack">
-                    <article class="p-businessStack__item c-card">
-                        <div class="p-businessStack__icon c-card__icon -svg">
+                <!-- Main Business: IT Business (2 columns) -->
+                <div class="p-businessGrid">
+                    <!-- Left: Create Connections -->
+                    <article class="p-businessGrid__item c-card">
+                        <div class="p-businessGrid__icon c-card__icon -svg">
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="32" cy="20" r="8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                                 <path d="M20 44 C20 36 25 32 32 32 C39 32 44 36 44 44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
@@ -157,21 +159,27 @@ get_header();
                                 <path d="M56 44 C56 38 53 35 48 35" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
                             </svg>
                         </div>
-                        <div class="p-businessStack__content">
-                            <h3 class="c-card__title">成長支援コミュニティ<span class="u-nowrap">事業</span></h3>
+                        <div class="p-businessGrid__content">
+                            <h3 class="c-card__title">つながりを創る</h3>
                             <p class="c-card__text">
-                                キャリアに悩む人に、学びと対話の場を提供します。多様な出会いと気づきを通じて、一人ひとりが自分らしい選択を見つけ、前へ進む力を育むコミュニティを運営しています。
+                                新しい出会いと関係性を生み出します。企業と顧客、人と人の最初の接点を創ります。
                             </p>
-                            <div class="p-businessStack__cta">
-                                <a href="https://service.euni.jp" class="c-btn c-btn--outline-dark" target="_blank" rel="noopener">
-                                    サービスサイトを見る
+                            <ul class="p-businessGrid__services">
+                                <li>HP/LP制作・Webアプリ開発</li>
+                                <li>マッチングシステム開発</li>
+                                <li>生成AI活用・チャットボット開発</li>
+                            </ul>
+                            <div class="p-businessGrid__cta">
+                                <a href="#contact" class="c-btn c-btn--outline-dark">
+                                    お問い合わせ
                                 </a>
                             </div>
                         </div>
                     </article>
 
-                    <article class="p-businessStack__item c-card">
-                        <div class="p-businessStack__icon c-card__icon -svg">
+                    <!-- Right: Nurture Connections -->
+                    <article class="p-businessGrid__item c-card">
+                        <div class="p-businessGrid__icon c-card__icon -svg">
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="8" y="12" width="48" height="36" rx="3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                                 <line x1="8" y1="20" x2="56" y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
@@ -181,39 +189,17 @@ get_header();
                                 <circle cx="32" cy="52" r="4" fill="currentColor" opacity="0.6"/>
                             </svg>
                         </div>
-                        <div class="p-businessStack__content">
-                            <h3 class="c-card__title">ITソリューション<span class="u-nowrap">事業</span></h3>
+                        <div class="p-businessGrid__content">
+                            <h3 class="c-card__title">つながりを育てる</h3>
                             <p class="c-card__text">
-                                コミュニティ運営に取り組む企業・団体へ、プラットフォーム開発から運用まで伴走します。システム開発・AI活用で、メンバー同士の自発的なつながりを促進し、長期的な関係性を育む仕組みを共に創ります。
+                                既存の関係性を深め、継続させます。顧客・社員との信頼関係を強化します。
                             </p>
-                            <div class="p-businessStack__cta">
-                                <a href="#contact" class="c-btn c-btn--outline-dark">
-                                    お問い合わせ
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="p-businessStack__item c-card">
-                        <div class="p-businessStack__icon c-card__icon -svg">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="12" y1="52" x2="52" y2="52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                                <line x1="12" y1="12" x2="12" y2="52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                                <polyline points="20,40 26,32 32,36 38,24 44,28 50,16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                                <circle cx="20" cy="40" r="2.5" fill="currentColor"/>
-                                <circle cx="26" cy="32" r="2.5" fill="currentColor"/>
-                                <circle cx="32" cy="36" r="2.5" fill="currentColor"/>
-                                <circle cx="38" cy="24" r="2.5" fill="currentColor"/>
-                                <circle cx="44" cy="28" r="2.5" fill="currentColor"/>
-                                <circle cx="50" cy="16" r="2.5" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <div class="p-businessStack__content">
-                            <h3 class="c-card__title">コンサルティング<span class="u-nowrap">事業</span></h3>
-                            <p class="c-card__text">
-                                組織内のつながりを強化したい企業へ、組織開発・人材育成をサポートします。関係性の質を高めるプログラムを通じて、一人ひとりが安心して力を発揮できる組織文化を共に育てます。
-                            </p>
-                            <div class="p-businessStack__cta">
+                            <ul class="p-businessGrid__services">
+                                <li>CRM・顧客管理システム開発</li>
+                                <li>コミュニティプラットフォーム開発</li>
+                                <li>データ分析・AI活用システム開発</li>
+                            </ul>
+                            <div class="p-businessGrid__cta">
                                 <a href="#contact" class="c-btn c-btn--outline-dark">
                                     お問い合わせ
                                 </a>
@@ -263,7 +249,7 @@ get_header();
 
                 <!-- Purpose Statement -->
                 <div class="p-mvvPurpose">
-                    <p class="p-mvvPurpose__text">人と人とのつながりが<br>可能性を拓く</p>
+                    <p class="p-mvvPurpose__text">人と人のつながりが<br>可能性を拓く</p>
                     <div class="p-mvvPurpose__detail">
                         <p>ふとした出会いが、新しい道を見せてくれる<br>
                         誰かの言葉が、背中を押してくれる</p>
@@ -297,7 +283,7 @@ get_header();
                             <span class="p-mvvItem__jp">企業のありたい姿</span>
                         </div>
                         <p class="p-mvvItem__text">
-                            人と人との善いつながりを築く<br>
+                            人と人の善いつながりを築く<br>
                             インターフェースとして<br>
                             信頼される存在になる
                         </p>

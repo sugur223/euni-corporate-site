@@ -4024,3 +4024,127 @@ body.admin-bar .l-header {
         max-width: 90%;
     }
 }
+
+/* ====================
+   Business Grid (New 2-column layout)
+   ==================== */
+.p-businessGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(2rem, 4vw, 3rem);
+}
+
+.p-businessGrid__item {
+    display: grid;
+    gap: clamp(1rem, 3vw, 1.6rem);
+    padding: clamp(1.8rem, 4vw, 2.5rem);
+    background: var(--color-bg-white);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.p-businessGrid__item:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+}
+
+.p-businessGrid__icon {
+    display: flex;
+    justify-content: center;
+}
+
+.p-businessGrid__content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.9rem, 2.4vw, 1.4rem);
+    text-align: center;
+}
+
+.p-businessGrid__content .c-card__title {
+    margin-bottom: 0;
+}
+
+.p-businessGrid__content .c-card__text {
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.p-businessGrid__services {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.6rem, 1.5vw, 0.9rem);
+    text-align: center;
+}
+
+.p-businessGrid__services li {
+    padding: clamp(0.65rem, 1.5vw, 0.9rem) 0;
+    background-color: transparent;
+    border-bottom: 1px solid var(--color-border);
+    font-size: clamp(0.875rem, 1.8vw, 0.95rem);
+    line-height: 1.6;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    transition: color 0.2s ease;
+}
+
+.p-businessGrid__services li:hover {
+    color: var(--color-text-medium);
+}
+
+.p-businessGrid__cta {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.p-businessGrid__cta .c-btn {
+    width: fit-content;
+}
+
+/* Sub Business (Consulting) */
+.p-businessSub {
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.p-businessSub__label {
+    font-size: clamp(0.875rem, 1.8vw, 1rem);
+    font-weight: 600;
+    color: var(--color-text-medium);
+    margin-bottom: 0.5rem;
+}
+
+.p-businessSub__text {
+    font-size: clamp(0.875rem, 1.8vw, 0.95rem);
+    color: var(--color-text-medium);
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .p-businessGrid {
+        grid-template-columns: 1fr;
+        gap: clamp(2rem, 6vw, 2.5rem);
+    }
+
+    .p-businessGrid__item {
+        gap: clamp(0.9rem, 5vw, 1.3rem);
+    }
+
+    .p-businessGrid__cta .c-btn {
+        width: fit-content;
+        max-width: 90%;
+    }
+
+    .p-businessSub {
+        margin-top: clamp(2rem, 5vw, 2.5rem);
+        padding: clamp(1.2rem, 4vw, 1.5rem);
+    }
+}
