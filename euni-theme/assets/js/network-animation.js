@@ -24,8 +24,10 @@
         initialNodes: 5,        // 初期ノード数
         nodeSpawnInterval: 200, // ノード追加間隔（ms）
         nodeRadius: 8,          // ノードの基本半径
-        minNodeRadius: 5.5,     // 最小半径（奥）
-        maxNodeRadius: 10.5,    // 最大半径（手前）
+        minNodeRadius: 3.5,     // 最小半径（奥） - PC版用に縮小
+        maxNodeRadius: 6.5,     // 最大半径（手前） - PC版用に縮小
+        minNodeRadiusMobile: 5.5,     // モバイル用最小半径
+        maxNodeRadiusMobile: 10.5,    // モバイル用最大半径
         expandDuration: 3000,   // 広がるアニメーションの時間（ms）
         fadeInDuration: 2000,   // フェードインの時間（ms）
         floatSpeed: 0.00014,    // 浮遊速度
@@ -107,7 +109,7 @@
         config.avoidCenter = false; // モバイルでも中央含め縦方向へ広げる
         config.mouseForce = isMobile ? 0.35 : 0.45;
         config.minDistanceFactor = isMobile ? 0.08 : 0.16;
-        config.maxDistanceFactor = isMobile ? 0.50 : 0.30; // PC版はさらにコンパクトに
+        config.maxDistanceFactor = isMobile ? 0.50 : 0.35; // PC版はさらにコンパクトに
         config.edgePadding = isMobile ? -40 : 16; // モバイルは余白なしでヒーロー外にも広げる
         config.topPadding = isMobile ? -40 : 80; // PCは上方向に余白を設ける（ヘッダーまで届かないように）
         config.driftAmplitude = isMobile ? 0.28 : 0.22;
@@ -118,6 +120,10 @@
         config.maxMoveStep = isMobile ? 0.6 : 0.9;
         config.nodePalette = isMobile ? { ...config.nodePaletteMobile } : { ...config.nodePaletteDesktop };
         config.lineGradient = isMobile ? { ...config.lineGradientMobile } : { ...config.lineGradientDesktop };
+
+        // ノードサイズをレスポンシブで切り替え
+        config.minNodeRadius = isMobile ? config.minNodeRadiusMobile : 3.5;
+        config.maxNodeRadius = isMobile ? config.maxNodeRadiusMobile : 6.5;
     }
 
     function updateDistanceBounds() {
@@ -345,7 +351,7 @@
             const isMobileView = window.innerWidth <= 768;
             const depthAlpha = isMobileView
                 ? Math.max(0.03, Math.min(0.18, finalOpacity * (0.16 + this.depth * 0.16)))
-                : Math.max(0.12, Math.min(0.82, finalOpacity * (0.3 + this.depth * 0.35)));
+                : Math.max(0.04, Math.min(0.25, finalOpacity * (0.08 + this.depth * 0.15))); // PC版は薄く幾何学的に
 
             ctx.save();
 
