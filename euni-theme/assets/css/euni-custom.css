@@ -3806,22 +3806,22 @@ body.admin-bar .l-header {
     }
 
     .p-hero__title {
-        animation: fadeIn 0.9s ease-out 0.15s both;
+        animation: fadeIn 0.9s ease-out 5s both;
     }
 
     .p-hero__lead {
-        animation: fadeIn 1s ease-out 0.3s both;
+        animation: fadeIn 1s ease-out 5.6s both;
     }
 
     .p-hero__visual {
         position: absolute;
-        top: -22%;
-        left: -8%;
-        width: 135%;
-        height: 155%;
+        top: -20%;
+        left: 50%;
+        width: 200%;
+        height: 200%;
         z-index: 1;
         opacity: 1;
-        transform: translate(0, -4%) scale(1.22);
+        transform: translate(-50%, -6%);
         transform-origin: center;
     }
 
@@ -3848,11 +3848,11 @@ body.admin-bar .l-header {
     }
 
     .p-hero__visual {
-        top: -28%;
-        left: -12%;
-        width: 150%;
-        height: 170%;
-        transform: translate(0, -6%) scale(1.28);
+        top: -24%;
+        left: 50%;
+        width: 215%;
+        height: 212%;
+        transform: translate(-50%, -8%);
     }
 }
 

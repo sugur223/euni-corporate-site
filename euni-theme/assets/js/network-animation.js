@@ -45,16 +45,16 @@
         driftAmplitude: 0.22,   // ノードの揺らぎ幅（ラジアン）
         separationDistance: 120,// ノード間の理想距離
         separationStrength: 0.14,// ノード間の離反強度
-        moveSmoothing: 0.025,   // 目標へ向かうスムーズさ
-        maxMoveStep: 1.8,       // 1フレームで進む最大距離（滑らかに移動）
+        moveSmoothing: 0.015,   // 目標へ向かうスムーズさ
+        maxMoveStep: 0.9,       // 1フレームで進む最大距離（滑らかに移動）
         settleDelay: 0,         // 追加が終わってから動き始めるまでの待機時間
         nodePaletteDesktop: {
             core: '#1a1a1a',
             edge: '#0b0b0b'
         },
         nodePaletteMobile: {
-            core: '#202020',
-            edge: '#0d0d0d'
+            core: '#a3a3a3',
+            edge: '#848484'
         },
         lineGradientDesktop: {
             start: '#c8cad0',
@@ -113,9 +113,9 @@
         config.driftAmplitude = isMobile ? 0.28 : 0.22;
         config.separationDistance = Math.min(minDimension * (isMobile ? 0.32 : 0.26), (effectiveWidth / 2) * 0.86);
         config.separationStrength = isMobile ? 0.12 : 0.14;
-        config.moveSmoothing = isMobile ? 0.018 : 0.025;
+        config.moveSmoothing = isMobile ? 0.012 : 0.015;
         config.settleDelay = 0;
-        config.maxMoveStep = isMobile ? 1.2 : 1.8;
+        config.maxMoveStep = isMobile ? 0.6 : 0.9;
         config.nodePalette = isMobile ? { ...config.nodePaletteMobile } : { ...config.nodePaletteDesktop };
         config.lineGradient = isMobile ? { ...config.lineGradientMobile } : { ...config.lineGradientDesktop };
     }
@@ -342,7 +342,10 @@
 
             const palette = config.nodePalette;
             const r = this.radius;
-            const depthAlpha = Math.max(0.18, Math.min(1, finalOpacity * (0.45 + this.depth * 0.55)));
+            const isMobileView = window.innerWidth <= 768;
+            const depthAlpha = isMobileView
+                ? Math.max(0.03, Math.min(0.18, finalOpacity * (0.16 + this.depth * 0.16)))
+                : Math.max(0.12, Math.min(0.82, finalOpacity * (0.3 + this.depth * 0.35)));
 
             ctx.save();
 
