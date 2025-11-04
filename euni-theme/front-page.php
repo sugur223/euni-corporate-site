@@ -132,71 +132,22 @@ get_header();
         </div>
     </section>
 
-    <!-- Business Overview Section -->
-    <section id="business" class="p-section -bg p-business js-parallax-trigger">
+    <!-- Business Section -->
+    <section id="business" class="p-section -bg">
         <div class="l-container">
             <div class="p-section__head">
-                <div class="p-section__icon">
-                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Network/connection pattern -->
-                        <circle cx="35" cy="15" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                        <circle cx="15" cy="35" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                        <circle cx="55" cy="35" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                        <circle cx="25" cy="55" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                        <circle cx="45" cy="55" r="5" stroke="currentColor" stroke-width="2.5" opacity="0.8"/>
-                        <circle cx="35" cy="35" r="8" stroke="currentColor" stroke-width="2.5" opacity="0.85"/>
-                        <circle cx="35" cy="35" r="3" fill="currentColor" opacity="0.7"/>
-                        <!-- Connection lines -->
-                        <line x1="35" y1="20" x2="35" y2="27" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                        <line x1="20" y1="35" x2="27" y2="35" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                        <line x1="43" y1="35" x2="50" y2="35" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                        <line x1="30" y1="41" x2="27" y2="52" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                        <line x1="40" y1="41" x2="43" y2="52" stroke="currentColor" stroke-width="2" opacity="0.6"/>
-                    </svg>
-                </div>
                 <span class="c-secLabel">BUSINESS</span>
-                <h2 class="c-secHeading">事業概要</h2>
+                <h2 class="c-secHeading">事業内容</h2>
                 <p class="c-secDscr">
                     Euniでは<br>
-                    3つの事業を展開しています。</p>
+                    3つの事業を展開しています。
+                </p>
             </div>
 
             <div class="p-section__body">
-                <!-- Decorative shapes -->
-                <div class="p-business__shape1 js-parallax">
-                    <svg width="190" height="190" viewBox="0 0 190 190" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Triangular grid pattern -->
-                        <path d="M95 20 L165 85 L95 150 L25 85 Z" stroke="currentColor" stroke-width="2.5" opacity="0.25" stroke-linejoin="round"/>
-                        <path d="M95 40 L145 95 L95 130 L45 95 Z" stroke="currentColor" stroke-width="2.5" opacity="0.35" stroke-linejoin="round"/>
-                        <path d="M95 60 L125 95 L95 110 L65 95 Z" stroke="currentColor" stroke-width="2" opacity="0.45" stroke-linejoin="round"/>
-                        <!-- Internal triangles -->
-                        <path d="M95 20 L95 85 L25 85 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <path d="M95 20 L95 85 L165 85 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <path d="M95 85 L25 85 L95 150 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <path d="M95 85 L165 85 L95 150 Z" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <!-- Center point -->
-                        <circle cx="95" cy="85" r="5" fill="currentColor" opacity="0.35"/>
-                    </svg>
-                </div>
-                <div class="p-business__shape2 js-parallax2">
-                    <svg width="170" height="170" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Pentagon pattern -->
-                        <path d="M85 15 L155 60 L130 135 L40 135 L15 60 Z" stroke="currentColor" stroke-width="2.5" opacity="0.25" stroke-linejoin="round"/>
-                        <path d="M85 35 L135 70 L115 125 L55 125 L35 70 Z" stroke="currentColor" stroke-width="2.5" opacity="0.35" stroke-linejoin="round"/>
-                        <path d="M85 55 L115 80 L100 115 L70 115 L55 80 Z" stroke="currentColor" stroke-width="2" opacity="0.45" stroke-linejoin="round"/>
-                        <!-- Star lines from center -->
-                        <line x1="85" y1="85" x2="85" y2="15" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="85" y1="85" x2="155" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="85" y1="85" x2="130" y2="135" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="85" y1="85" x2="40" y2="135" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <line x1="85" y1="85" x2="15" y2="60" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-                        <!-- Center circle -->
-                        <circle cx="85" cy="85" r="6" fill="currentColor" opacity="0.35"/>
-                    </svg>
-                </div>
-                <div class="p-cardGrid -col3">
-                    <div class="c-card">
-                        <div class="c-card__icon -svg">
+                <div class="p-businessStack">
+                    <article class="p-businessStack__item c-card">
+                        <div class="p-businessStack__icon c-card__icon -svg">
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="32" cy="20" r="8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                                 <path d="M20 44 C20 36 25 32 32 32 C39 32 44 36 44 44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
@@ -206,17 +157,21 @@ get_header();
                                 <path d="M56 44 C56 38 53 35 48 35" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
                             </svg>
                         </div>
-                        <h3 class="c-card__title">成長支援コミュニティ事業</h3>
-                        <p class="c-card__text">
-                            キャリアに悩む人に、学びと対話の場を提供します。<br>
-                            多様な出会いと気づきを通じて、一人ひとりが自分らしい選択を見つけ、<br>
-                            前へ進む力を育むコミュニティを運営しています。
-                        </p>
-                        <a href="https://service.euni.jp" class="c-btn-link" target="_blank" rel="noopener">サービスサイトを見る</a>
-                    </div>
+                        <div class="p-businessStack__content">
+                            <h3 class="c-card__title">成長支援コミュニティ<span class="u-nowrap">事業</span></h3>
+                            <p class="c-card__text">
+                                キャリアに悩む人に、学びと対話の場を提供します。多様な出会いと気づきを通じて、一人ひとりが自分らしい選択を見つけ、前へ進む力を育むコミュニティを運営しています。
+                            </p>
+                            <div class="p-businessStack__cta">
+                                <a href="https://service.euni.jp" class="c-btn c-btn--outline-dark" target="_blank" rel="noopener">
+                                    サービスサイトを見る
+                                </a>
+                            </div>
+                        </div>
+                    </article>
 
-                    <div class="c-card">
-                        <div class="c-card__icon -svg">
+                    <article class="p-businessStack__item c-card">
+                        <div class="p-businessStack__icon c-card__icon -svg">
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="8" y="12" width="48" height="36" rx="3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                                 <line x1="8" y1="20" x2="56" y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
@@ -226,17 +181,21 @@ get_header();
                                 <circle cx="32" cy="52" r="4" fill="currentColor" opacity="0.6"/>
                             </svg>
                         </div>
-                        <h3 class="c-card__title">ITソリューション事業</h3>
-                        <p class="c-card__text">
-                            コミュニティ運営に取り組む企業・団体へ、プラットフォーム開発から運用まで伴走します。<br>
-                            システム開発・AI活用で、メンバー同士の自発的なつながりを促進し、<br>
-                            長期的な関係性を育む仕組みを共に創ります。
-                        </p>
-                        <a href="#contact" class="c-btn-link">お問い合わせ</a>
-                    </div>
+                        <div class="p-businessStack__content">
+                            <h3 class="c-card__title">ITソリューション<span class="u-nowrap">事業</span></h3>
+                            <p class="c-card__text">
+                                コミュニティ運営に取り組む企業・団体へ、プラットフォーム開発から運用まで伴走します。システム開発・AI活用で、メンバー同士の自発的なつながりを促進し、長期的な関係性を育む仕組みを共に創ります。
+                            </p>
+                            <div class="p-businessStack__cta">
+                                <a href="#contact" class="c-btn c-btn--outline-dark">
+                                    お問い合わせ
+                                </a>
+                            </div>
+                        </div>
+                    </article>
 
-                    <div class="c-card">
-                        <div class="c-card__icon -svg">
+                    <article class="p-businessStack__item c-card">
+                        <div class="p-businessStack__icon c-card__icon -svg">
                             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <line x1="12" y1="52" x2="52" y2="52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                                 <line x1="12" y1="12" x2="12" y2="52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
@@ -249,14 +208,18 @@ get_header();
                                 <circle cx="50" cy="16" r="2.5" fill="currentColor"/>
                             </svg>
                         </div>
-                        <h3 class="c-card__title">コンサルティング事業</h3>
-                        <p class="c-card__text">
-                            組織内のつながりを強化したい企業へ、組織開発・人材育成をサポートします。<br>
-                            関係性の質を高めるプログラムを通じて、<br>
-                            一人ひとりが安心して力を発揮できる組織文化を共に育てます。
-                        </p>
-                        <a href="#contact" class="c-btn-link">お問い合わせ</a>
-                    </div>
+                        <div class="p-businessStack__content">
+                            <h3 class="c-card__title">コンサルティング<span class="u-nowrap">事業</span></h3>
+                            <p class="c-card__text">
+                                組織内のつながりを強化したい企業へ、組織開発・人材育成をサポートします。関係性の質を高めるプログラムを通じて、一人ひとりが安心して力を発揮できる組織文化を共に育てます。
+                            </p>
+                            <div class="p-businessStack__cta">
+                                <a href="#contact" class="c-btn c-btn--outline-dark">
+                                    お問い合わせ
+                                </a>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>

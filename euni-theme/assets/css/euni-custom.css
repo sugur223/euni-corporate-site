@@ -3875,3 +3875,57 @@ body.admin-bar .l-header {
         opacity: 1;
     }
 }
+/* ====================
+   Business Stack (Vertical Cards)
+   ==================== */
+.p-businessStack {
+    display: grid;
+    gap: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.p-businessStack__item {
+    display: grid;
+    gap: clamp(1rem, 3vw, 1.6rem);
+}
+
+.p-businessStack__icon {
+    display: flex;
+    justify-content: center;
+}
+
+.p-businessStack__content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.9rem, 2.4vw, 1.4rem);
+    text-align: center;
+}
+
+.p-businessStack__content .c-card__title {
+    margin-bottom: 0;
+}
+
+.p-businessStack__content .c-card__text {
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.p-businessStack__cta {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.p-businessStack__cta .c-btn {
+    width: fit-content;
+}
+
+@media (max-width: 768px) {
+    .p-businessStack__item {
+        gap: clamp(0.9rem, 5vw, 1.3rem);
+    }
+
+    .p-businessStack__cta .c-btn {
+        width: fit-content;
+        max-width: 90%;
+    }
+}
