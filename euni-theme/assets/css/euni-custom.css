@@ -472,11 +472,12 @@ body.admin-bar .l-header {
 @media (max-width: 768px) {
     .p-hero {
         min-height: auto;
-        padding: clamp(2rem, 6vh, 3rem) 0 clamp(4rem, 10vh, 6rem);
+        padding: 0.5rem 0 clamp(4rem, 10vh, 6rem);
     }
 
     .p-hero__subtitle {
-        margin-bottom: clamp(0.75rem, 2vh, 1rem);
+        margin-top: 0;
+        margin-bottom: 0.5rem;
     }
 
     .p-hero__shape1,
@@ -3782,7 +3783,7 @@ body.admin-bar .l-header {
     .p-hero {
         position: relative;
         min-height: clamp(460px, 82vh, 600px);
-        padding: clamp(1rem, 4.5vh, 1.6rem) 0;
+        padding: 0.25rem 0 clamp(1rem, 4.5vh, 1.6rem) 0;
     }
 
     .p-hero__inner {
@@ -3792,6 +3793,7 @@ body.admin-bar .l-header {
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-top: 0;
     }
 
     .p-hero__grid {
@@ -3806,7 +3808,11 @@ body.admin-bar .l-header {
         position: relative;
         z-index: 2;
         text-align: center;
-        padding: clamp(1rem, 3.5vh, 1.5rem) 1.4rem;
+        padding: 0.5rem 1.4rem clamp(1rem, 3.5vh, 1.5rem) 1.4rem;
+    }
+
+    .p-hero__subtitle {
+        margin-bottom: 0.5rem;
     }
 
     .p-hero__title {
