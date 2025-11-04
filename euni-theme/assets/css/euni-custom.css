@@ -2746,6 +2746,16 @@ body.admin-bar .l-header {
     text-align: center;
 }
 
+/* MVV Section Link */
+.p-mvv__link {
+    margin-top: clamp(3rem, 6vw, 4rem);
+    text-align: center;
+}
+
+.p-mvv__link .c-btn--text {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+}
+
 /* Link More Component (Arrow link) */
 .c-linkMore {
     display: inline-flex;
@@ -3202,10 +3212,49 @@ body.admin-bar .l-header {
 }
 
 .p-philosophyOrigin__text {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.p-philosophyOrigin__meaning {
     font-size: clamp(1.125rem, 2.5vw, 1.25rem);
-    color: var(--color-text-medium);
+    color: var(--color-text-dark);
     line-height: 1.9;
     margin: 0;
+    font-weight: 500;
+}
+
+.p-philosophyOrigin__detail {
+    font-size: clamp(1rem, 2.2vw, 1.125rem);
+    color: var(--color-text-medium);
+    line-height: 2;
+    margin: 0;
+}
+
+.p-philosophyOrigin__conclusion {
+    margin-top: clamp(4rem, 8vw, 6rem);
+    padding: clamp(2.5rem, 5vw, 3.5rem);
+    background: var(--color-bg-white);
+    border-radius: 16px;
+    border: 2px solid var(--color-border);
+    text-align: center;
+}
+
+.p-philosophyOrigin__conclusion p {
+    font-size: clamp(1.125rem, 2.5vw, 1.3rem);
+    color: var(--color-text-dark);
+    line-height: 2;
+    margin: 0;
+}
+
+.p-philosophyOrigin__conclusion p + p {
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.p-philosophyOrigin__conclusion strong {
+    color: var(--color-text-dark);
+    font-weight: 700;
 }
 
 @media (max-width: 768px) {

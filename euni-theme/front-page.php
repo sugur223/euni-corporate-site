@@ -351,6 +351,13 @@ get_header();
                         </ul>
                     </div>
                 </div>
+
+                <!-- Link to Philosophy Page -->
+                <div class="p-mvv__link">
+                    <a href="<?php echo esc_url( home_url( '/philosophy/' ) ); ?>" class="c-btn c-btn--text">
+                        社名に込めた想い →
+                    </a>
+                </div>
             </div>
         </div>
     </section>

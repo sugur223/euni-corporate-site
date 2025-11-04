@@ -50,7 +50,8 @@ get_header();
                     <h2 class="p-philosophyOrigin__title">社名の由来</h2>
                     <p class="p-philosophyOrigin__intro">
                         私たちの社名「Euni（ユニ）」には、<br>
-                        3つの想いが込められています。
+                        3つの言葉と想いが重なり合っています。<br>
+                        それぞれの意味が、私たちの在り方を表しています。
                     </p>
                     <div class="p-philosophyOrigin__list">
                         <div class="p-philosophyOrigin__item">
@@ -58,12 +59,22 @@ get_header();
                                 <span class="p-philosophyOrigin__name">Eunoia</span>
                                 <span class="p-philosophyOrigin__reading">ユーノイア</span>
                             </div>
-                            <p class="p-philosophyOrigin__text">
-                                ギリシャ語で「善き心、美しい思考」を意味します。<br>
-                                自分も相手も大切にする、利己と利他を両立する心。<br>
-                                私たちは、この「善き心」を大切にし、<br>
-                                すべての活動の基盤としています。
-                            </p>
+                            <div class="p-philosophyOrigin__text">
+                                <p class="p-philosophyOrigin__meaning">
+                                    古代ギリシャ語で「善き心、美しい思考」を意味する言葉です。
+                                </p>
+                                <p class="p-philosophyOrigin__detail">
+                                    単なる善意ではなく、自分も相手も大切にする心。<br>
+                                    利己と利他を対立させるのではなく、両方を大切にする知恵。<br>
+                                    相手の幸せを願いながら、自分も心地よくいられる。<br>
+                                    そんなバランスの取れた関係性を、私たちは大切にしています。
+                                </p>
+                                <p class="p-philosophyOrigin__detail">
+                                    この「善き心」は、私たちの事業のすべての基盤です。<br>
+                                    押し付けでもなく、利益優先でもなく、<br>
+                                    関わるすべての人が心地よくいられることを目指しています。
+                                </p>
+                            </div>
                         </div>
 
                         <div class="p-philosophyOrigin__item">
@@ -71,11 +82,24 @@ get_header();
                                 <span class="p-philosophyOrigin__name">UNI</span>
                                 <span class="p-philosophyOrigin__reading">User Network Interface</span>
                             </div>
-                            <p class="p-philosophyOrigin__text">
-                                人と人を繋ぐインターフェース。<br>
-                                私たちは、出会いと関係性を創る接点となり、<br>
-                                人々の可能性を広げる架け橋でありたいと考えています。
-                            </p>
+                            <div class="p-philosophyOrigin__text">
+                                <p class="p-philosophyOrigin__meaning">
+                                    人と人を繋ぐインターフェース。<br>
+                                    それが、私たちの役割です。
+                                </p>
+                                <p class="p-philosophyOrigin__detail">
+                                    技術は、それ自体が目的ではありません。<br>
+                                    人と人が出会い、関係性が深まり、可能性が広がる。<br>
+                                    そのための「接点」「きっかけ」「場」を創ることが、<br>
+                                    私たちの使命だと考えています。
+                                </p>
+                                <p class="p-philosophyOrigin__detail">
+                                    WebサイトもシステムもAIも、すべては手段です。<br>
+                                    大切なのは、その先にある人と人のつながり。<br>
+                                    技術を通じて、温かいつながりが生まれる瞬間を創りたい。<br>
+                                    それが私たちの目指す「インターフェース」です。
+                                </p>
+                            </div>
                         </div>
 
                         <div class="p-philosophyOrigin__item">
@@ -83,14 +107,37 @@ get_header();
                                 <span class="p-philosophyOrigin__name">Uni</span>
                                 <span class="p-philosophyOrigin__reading">ユニ</span>
                             </div>
-                            <p class="p-philosophyOrigin__text">
-                                ラテン語で「一つ」を意味します。<br>
-                                善意の循環、つながりの循環。<br>
-                                一人ひとりの小さな善意が、<br>
-                                大きな温かい流れを生み出す。<br>
-                                そんな社会を目指しています。
-                            </p>
+                            <div class="p-philosophyOrigin__text">
+                                <p class="p-philosophyOrigin__meaning">
+                                    ラテン語で「一つ」を意味します。<br>
+                                    これは、つながりと循環への願いです。
+                                </p>
+                                <p class="p-philosophyOrigin__detail">
+                                    一人ひとりは小さな存在かもしれない。<br>
+                                    でも、つながることで「一つ」になり、大きな力になる。<br>
+                                    誰かから受け取った善意を、また別の誰かへ。<br>
+                                    その循環が広がっていくことで、社会は少しずつ温かくなる。
+                                </p>
+                                <p class="p-philosophyOrigin__detail">
+                                    私たちは、この「善意の循環」「つながりの循環」を信じています。<br>
+                                    バラバラに見える人々が、実は一つにつながっている。<br>
+                                    その見えないつながりを可視化し、強くしていくこと。<br>
+                                    それが、Euniの目指す社会です。
+                                </p>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="p-philosophyOrigin__conclusion">
+                        <p>
+                            <strong>Eunoia（善き心）</strong>を持ち、<br>
+                            <strong>User Network Interface（人と人を繋ぐ接点）</strong>となり、<br>
+                            <strong>Uni（一つのつながり）</strong>を創る。
+                        </p>
+                        <p>
+                            この3つの想いが重なり合い、「Euni（ユニ）」という社名になりました。<br>
+                            私たちは、この名前に込めた想いを、日々の事業で実現していきます。
+                        </p>
                     </div>
                 </div>
             </div>
