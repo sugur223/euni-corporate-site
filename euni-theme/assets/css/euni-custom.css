@@ -472,7 +472,11 @@ body.admin-bar .l-header {
 @media (max-width: 768px) {
     .p-hero {
         min-height: auto;
-        padding: clamp(6rem, 15vh, 8rem) 0 clamp(4rem, 10vh, 6rem);
+        padding: clamp(2rem, 6vh, 3rem) 0 clamp(4rem, 10vh, 6rem);
+    }
+
+    .p-hero__subtitle {
+        margin-bottom: clamp(0.75rem, 2vh, 1rem);
     }
 
     .p-hero__shape1,
