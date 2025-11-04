@@ -107,7 +107,7 @@
         config.avoidCenter = false; // モバイルでも中央含め縦方向へ広げる
         config.mouseForce = isMobile ? 0.35 : 0.45;
         config.minDistanceFactor = isMobile ? 0.08 : 0.16;
-        config.maxDistanceFactor = isMobile ? 0.85 : 0.62;
+        config.maxDistanceFactor = isMobile ? 0.50 : 0.30; // PC版はさらにコンパクトに
         config.edgePadding = isMobile ? -40 : 16; // モバイルは余白なしでヒーロー外にも広げる
         config.topPadding = isMobile ? -40 : 80; // PCは上方向に余白を設ける（ヘッダーまで届かないように）
         config.driftAmplitude = isMobile ? 0.28 : 0.22;

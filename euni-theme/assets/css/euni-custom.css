@@ -3754,7 +3754,7 @@ body.admin-bar .l-header {
     padding-bottom: 108%; /* 正方形（width=heightになる） */
     max-width: 760px;
     overflow: visible;
-    transform: translate(-4%, -10%) scale(1.12);
+    transform: translate(-4%, -10%) scale(1.5); /* 面積を増やす */
     transform-origin: center;
     animation: fadeIn 1.2s ease-out 0.3s backwards;
     pointer-events: none;
@@ -3801,7 +3801,7 @@ body.admin-bar .l-header {
         height: 0;
         padding-bottom: 118%; /* 正方形（width=heightになる） */
         max-width: 760px;
-        transform: translate(-6%, -14%) scale(1.15);
+        transform: translate(-6%, -14%) scale(1.6); /* 面積を増やす */
     }
 }
 
@@ -3858,7 +3858,7 @@ body.admin-bar .l-header {
         padding-bottom: 150%; /* 正方形（width=heightになる） */
         z-index: 1;
         opacity: 1;
-        transform: translate(-50%, -6%);
+        transform: translate(-50%, -6%) scale(1.0); /* モバイルはサイズを抑える */
         transform-origin: center;
     }
 
