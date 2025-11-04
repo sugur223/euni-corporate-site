@@ -17,40 +17,79 @@
     let mouse = { x: null, y: null };
     let nodeSpawnTimer = 0;
     let distanceBounds = { min: 0, max: 0, widthLimit: 0, heightLimit: 0 };
-    let lastNodeAddedAt = Date.now();
 
     // 設定
     const config = {
-        maxNodes: 18,           // 最大ノード数
+        maxNodes: 20,           // 最大ノード数
         initialNodes: 5,        // 初期ノード数
         nodeSpawnInterval: 200, // ノード追加間隔（ms）
         nodeRadius: 8,          // ノードの基本半径
-        minNodeRadius: 4,       // 最小半径（奥）
-        maxNodeRadius: 12,      // 最大半径（手前）
+        minNodeRadius: 5.5,     // 最小半径（奥）
+        maxNodeRadius: 10.5,    // 最大半径（手前）
         expandDuration: 3000,   // 広がるアニメーションの時間（ms）
         fadeInDuration: 2000,   // フェードインの時間（ms）
         floatSpeed: 0.00014,    // 浮遊速度
-        lineOpacity: 0.25,      // 線の透明度
-        minLineOpacity: 0.08,   // 最小線透明度（奥）
-        maxLineOpacity: 0.35,   // 最大線透明度（手前）
-        minLineWidth: 1,        // 最小線太さ（奥）
-        maxLineWidth: 3,        // 最大線太さ（手前）
-        nodeColor: '#666666',   // ノードの色
-        lineColor: '#999999',   // 線の色
+        lineOpacity: 0.32,      // 線の透明度
+        minLineOpacity: 0.12,   // 最小線透明度（奥）
+        maxLineOpacity: 0.48,   // 最大線透明度（手前）
+        minLineWidth: 1.2,      // 最小線太さ（奥）
+        maxLineWidth: 3.6,      // 最大線太さ（手前）
         mouseRadius: 280,       // マウスの影響範囲（さらに広く）
-        mouseForce: 0.7,        // マウスの引力（かなり強く）
+        mouseForce: 0.45,       // マウスの引力（滑らかに調整）
         avoidCenter: false,     // レスポンシブで更新
         maxDistance: 240,       // 線を引く最大距離（レスポンシブで更新）
         minDistanceFactor: 0.16, // ノード生成距離の最小係数
         maxDistanceFactor: 0.58,// ノード生成距離の最大係数
         edgePadding: 16,        // キャンバス端の余白（変動可能）
         topPadding: 80,         // 上方向の余白（PC時にヘッダーまで届かないように）
-        driftAmplitude: 0.25,   // ノードの揺らぎ幅（ラジアン）
+        driftAmplitude: 0.22,   // ノードの揺らぎ幅（ラジアン）
         separationDistance: 120,// ノード間の理想距離
-        separationStrength: 0.18,// ノード間の離反強度
-        moveSmoothing: 0.06,    // 目標へ向かうスムーズさ
-        settleDelay: 1200       // 追加が終わってから動き始めるまでの待機時間
+        separationStrength: 0.14,// ノード間の離反強度
+        moveSmoothing: 0.05,    // 目標へ向かうスムーズさ
+        maxMoveStep: 4.0,       // 1フレームで進む最大距離（滑らかさ調整）
+        settleDelay: 0,         // 追加が終わってから動き始めるまでの待機時間
+        nodePaletteDesktop: {
+            core: '#f2f3f6',
+            edge: '#5b5f66'
+        },
+        nodePaletteMobile: {
+            core: '#f4f5f7',
+            edge: '#666a71'
+        },
+        lineGradientDesktop: {
+            start: '#c8cad0',
+            mid: '#a4a6ad',
+            end: '#6a6c74'
+        },
+        lineGradientMobile: {
+            start: '#d2d4da',
+            mid: '#b6b8be',
+            end: '#7a7c83'
+        },
+        nodePalette: {},
+        lineGradient: {}
     };
+    config.nodePalette = { ...config.nodePaletteDesktop };
+    config.lineGradient = { ...config.lineGradientDesktop };
+
+    function hexToRgb(hex) {
+        if (!hex) return { r: 255, g: 255, b: 255 };
+        const normalized = hex.replace('#', '').trim();
+        const value = normalized.length === 3
+            ? normalized.split('').map(ch => ch + ch).join('')
+            : normalized.slice(0, 6);
+        const intValue = parseInt(value, 16);
+        return {
+            r: (intValue >> 16) & 255,
+            g: (intValue >> 8) & 255,
+            b: intValue & 255
+        };
+    }
+
+    function withAlpha(hexColor, alpha) {
+        const { r, g, b } = hexToRgb(hexColor || '#ffffff');
+        return `rgba(${r}, ${g}, ${b}, ${Math.max(0, Math.min(alpha, 1))})`;
+    }
 
     function applyResponsiveSettings() {
         const isMobile = window.innerWidth <= 768;
@@ -58,19 +97,21 @@
         const effectiveHeight = height || canvas.parentElement.clientHeight;
         const minDimension = Math.min(effectiveWidth, effectiveHeight);
 
-        config.lineOpacity = isMobile ? 0.18 : 0.25;
-        config.nodeColor = isMobile ? '#b5b5b5' : '#666666';
-        config.lineColor = isMobile ? '#d6d6d6' : '#999999';
+        config.lineOpacity = isMobile ? 0.26 : 0.32;
         config.avoidCenter = false; // モバイルでも中央含め縦方向へ広げる
+        config.mouseForce = isMobile ? 0.35 : 0.45;
         config.minDistanceFactor = isMobile ? 0.08 : 0.16;
         config.maxDistanceFactor = isMobile ? 0.85 : 0.62;
         config.edgePadding = isMobile ? -40 : 16; // モバイルは余白なしでヒーロー外にも広げる
         config.topPadding = isMobile ? -40 : 80; // PCは上方向に余白を設ける（ヘッダーまで届かないように）
-        config.driftAmplitude = isMobile ? 0.32 : 0.22;
-        config.separationDistance = Math.min(minDimension * (isMobile ? 0.34 : 0.28), (effectiveWidth / 2) * 0.9);
-        config.separationStrength = isMobile ? 0.1 : 0.16;
-        config.moveSmoothing = isMobile ? 0.045 : 0.06;
-        config.settleDelay = isMobile ? 1000 : 1500;
+        config.driftAmplitude = isMobile ? 0.28 : 0.22;
+        config.separationDistance = Math.min(minDimension * (isMobile ? 0.32 : 0.26), (effectiveWidth / 2) * 0.86);
+        config.separationStrength = isMobile ? 0.12 : 0.14;
+        config.moveSmoothing = isMobile ? 0.04 : 0.05;
+        config.settleDelay = 0;
+        config.maxMoveStep = isMobile ? 2.8 : 4.0;
+        config.nodePalette = isMobile ? { ...config.nodePaletteMobile } : { ...config.nodePaletteDesktop };
+        config.lineGradient = isMobile ? { ...config.lineGradientMobile } : { ...config.lineGradientDesktop };
     }
 
     function updateDistanceBounds() {
@@ -105,9 +146,9 @@
     }
 
     function shouldLockNodes() {
-        const stillGrowing = nodes.length < config.maxNodes;
-        const recentlyAdded = Date.now() - lastNodeAddedAt < config.settleDelay;
-        return stillGrowing || recentlyAdded;
+        if (!config.settleDelay) return false;
+        const now = Date.now();
+        return nodes.some(node => now - node.spawnTime < config.settleDelay);
     }
 
     // ノードクラス
@@ -152,7 +193,7 @@
             this.updatePosition();
         }
 
-        updatePosition(allNodes, lockMovement) {
+        updatePosition(allNodes, lockMovement = false) {
             // 個別の進行度（生成時刻を考慮）
             const timeSinceSpawn = Date.now() - this.spawnTime;
             const individualProgress = Math.min(timeSinceSpawn / config.expandDuration, 1);
@@ -261,8 +302,20 @@
             this.targetY = Math.max(centerY - distanceBounds.heightLimitTop, Math.min(centerY + distanceBounds.heightLimitBottom, this.targetY));
 
             // 緩やかに目標位置へ補間
-            this.currentX += (this.targetX - this.currentX) * config.moveSmoothing;
-            this.currentY += (this.targetY - this.currentY) * config.moveSmoothing;
+            let stepX = (this.targetX - this.currentX) * config.moveSmoothing;
+            let stepY = (this.targetY - this.currentY) * config.moveSmoothing;
+            const stepMagnitude = Math.sqrt(stepX * stepX + stepY * stepY);
+            if (stepMagnitude > 0) {
+                const maxStep = config.maxMoveStep * (0.65 + this.depth * 0.5);
+                if (stepMagnitude > maxStep) {
+                    const ratio = maxStep / stepMagnitude;
+                    stepX *= ratio;
+                    stepY *= ratio;
+                }
+            }
+
+            this.currentX += stepX;
+            this.currentY += stepY;
 
             this.x = this.currentX;
             this.y = this.currentY;
@@ -281,22 +334,26 @@
             const depthOpacity = 0.2 + this.depth * 0.8; // 0.32-1.0
             const finalOpacity = this.opacity * depthOpacity;
 
-            // ノードを描画（深度に応じたサイズ）
+            const palette = config.nodePalette;
+
+            ctx.save();
+
+            // 本体（単色）
             ctx.globalAlpha = finalOpacity;
+            ctx.fillStyle = palette.core;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = config.nodeColor;
             ctx.fill();
 
-            // アウトライン（手前のノードほど強調、より動的に）
-            if (this.opacity > 0.9 && this.depth > 0.6) {
-                ctx.strokeStyle = config.nodeColor;
-                ctx.lineWidth = 1.5 * this.depth;
-                ctx.globalAlpha = finalOpacity * 0.5; // 少し濃く
+            // 薄いアウトラインでコントラストを補強
+            if (finalOpacity > 0.4) {
+                ctx.strokeStyle = withAlpha(palette.edge, 0.35 + this.depth * 0.25);
+                ctx.lineWidth = 1;
+                ctx.globalAlpha = finalOpacity;
                 ctx.stroke();
             }
 
-            ctx.globalAlpha = 1;
+            ctx.restore();
         }
     }
 
@@ -346,7 +403,6 @@
             const distance = Math.min(minDistance + Math.random() * distanceRange, maxDistance);
             nodes.push(new Node(angle, distance, i, startTime));
         }
-        lastNodeAddedAt = Date.now();
     }
 
     // ノードを1つ追加
@@ -372,7 +428,6 @@
         const distance = Math.min(minDistance + Math.random() * distanceRange, maxDistance);
 
         nodes.push(new Node(angle, distance, nodes.length, Date.now()));
-        lastNodeAddedAt = Date.now();
     }
 
     // 線を描画
@@ -401,14 +456,20 @@
                     // 深度に応じた線の太さ（奥ほど細く）
                     const lineWidth = config.minLineWidth + (config.maxLineWidth - config.minLineWidth) * avgDepth;
 
+                    const gradient = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+                    gradient.addColorStop(0, withAlpha(config.lineGradient.start, Math.min(1, opacity * 1.1)));
+                    gradient.addColorStop(0.5, withAlpha(config.lineGradient.mid, opacity));
+                    gradient.addColorStop(1, withAlpha(config.lineGradient.end, Math.min(1, opacity * 1.05)));
+
                     ctx.beginPath();
                     ctx.moveTo(nodes[i].x, nodes[i].y);
                     ctx.lineTo(nodes[j].x, nodes[j].y);
-                    ctx.strokeStyle = config.lineColor;
-                    ctx.globalAlpha = opacity;
-                    ctx.lineWidth = lineWidth;
-                    ctx.stroke();
+                    ctx.strokeStyle = gradient;
                     ctx.globalAlpha = 1;
+                    ctx.lineWidth = lineWidth;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+                    ctx.stroke();
                 }
             }
         }
