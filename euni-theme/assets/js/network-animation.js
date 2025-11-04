@@ -45,16 +45,16 @@
         driftAmplitude: 0.22,   // ノードの揺らぎ幅（ラジアン）
         separationDistance: 120,// ノード間の理想距離
         separationStrength: 0.14,// ノード間の離反強度
-        moveSmoothing: 0.05,    // 目標へ向かうスムーズさ
-        maxMoveStep: 4.0,       // 1フレームで進む最大距離（滑らかさ調整）
+        moveSmoothing: 0.025,   // 目標へ向かうスムーズさ
+        maxMoveStep: 1.8,       // 1フレームで進む最大距離（滑らかに移動）
         settleDelay: 0,         // 追加が終わってから動き始めるまでの待機時間
         nodePaletteDesktop: {
-            core: '#f2f3f6',
-            edge: '#5b5f66'
+            core: '#1a1a1a',
+            edge: '#0b0b0b'
         },
         nodePaletteMobile: {
-            core: '#f4f5f7',
-            edge: '#666a71'
+            core: '#202020',
+            edge: '#0d0d0d'
         },
         lineGradientDesktop: {
             start: '#c8cad0',
@@ -87,8 +87,14 @@
     }
 
     function withAlpha(hexColor, alpha) {
-        const { r, g, b } = hexToRgb(hexColor || '#ffffff');
-        return `rgba(${r}, ${g}, ${b}, ${Math.max(0, Math.min(alpha, 1))})`;
+        if (!hexColor) {
+            return `rgba(0, 0, 0, ${Math.max(0, Math.min(alpha, 1))})`;
+        }
+        if (hexColor.startsWith('#')) {
+            const { r, g, b } = hexToRgb(hexColor);
+            return `rgba(${r}, ${g}, ${b}, ${Math.max(0, Math.min(alpha, 1))})`;
+        }
+        return hexColor;
     }
 
     function applyResponsiveSettings() {
@@ -107,9 +113,9 @@
         config.driftAmplitude = isMobile ? 0.28 : 0.22;
         config.separationDistance = Math.min(minDimension * (isMobile ? 0.32 : 0.26), (effectiveWidth / 2) * 0.86);
         config.separationStrength = isMobile ? 0.12 : 0.14;
-        config.moveSmoothing = isMobile ? 0.04 : 0.05;
+        config.moveSmoothing = isMobile ? 0.018 : 0.025;
         config.settleDelay = 0;
-        config.maxMoveStep = isMobile ? 2.8 : 4.0;
+        config.maxMoveStep = isMobile ? 1.2 : 1.8;
         config.nodePalette = isMobile ? { ...config.nodePaletteMobile } : { ...config.nodePaletteDesktop };
         config.lineGradient = isMobile ? { ...config.lineGradientMobile } : { ...config.lineGradientDesktop };
     }
@@ -335,23 +341,17 @@
             const finalOpacity = this.opacity * depthOpacity;
 
             const palette = config.nodePalette;
+            const r = this.radius;
+            const depthAlpha = Math.max(0.18, Math.min(1, finalOpacity * (0.45 + this.depth * 0.55)));
 
             ctx.save();
 
             // 本体（単色）
-            ctx.globalAlpha = finalOpacity;
+            ctx.globalAlpha = depthAlpha;
             ctx.fillStyle = palette.core;
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
             ctx.fill();
-
-            // 薄いアウトラインでコントラストを補強
-            if (finalOpacity > 0.4) {
-                ctx.strokeStyle = withAlpha(palette.edge, 0.35 + this.depth * 0.25);
-                ctx.lineWidth = 1;
-                ctx.globalAlpha = finalOpacity;
-                ctx.stroke();
-            }
 
             ctx.restore();
         }
