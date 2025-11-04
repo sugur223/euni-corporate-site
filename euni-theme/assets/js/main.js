@@ -283,6 +283,15 @@
                 menuToggle.setAttribute('aria-expanded', 'true');
                 menuToggle.setAttribute('aria-label', 'メニューを閉じる');
                 if (menuToggleLabel) menuToggleLabel.textContent = 'close';
+
+                // Re-trigger menu item animations
+                const menuItems = gnav.querySelectorAll('.menu-item');
+                menuItems.forEach((item, index) => {
+                    item.style.animation = 'none';
+                    setTimeout(() => {
+                        item.style.animation = '';
+                    }, 10);
+                });
             } else {
                 gnav.classList.remove('-active');
                 menuToggle.classList.remove('-active');
