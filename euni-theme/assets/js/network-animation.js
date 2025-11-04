@@ -32,10 +32,10 @@
         fadeInDuration: 2000,   // フェードインの時間（ms）
         floatSpeed: 0.00014,    // 浮遊速度
         lineOpacity: 0.32,      // 線の透明度
-        minLineOpacity: 0.12,   // 最小線透明度（奥）
-        maxLineOpacity: 0.48,   // 最大線透明度（手前）
-        minLineWidth: 1.2,      // 最小線太さ（奥）
-        maxLineWidth: 3.6,      // 最大線太さ（手前）
+        minLineOpacity: 0.25,   // 最小線透明度（奥）
+        maxLineOpacity: 0.75,   // 最大線透明度（手前）
+        minLineWidth: 0.5,      // 最小線太さ（奥）
+        maxLineWidth: 1.2,      // 最大線太さ（手前）
         mouseRadius: 280,       // マウスの影響範囲（さらに広く）
         mouseForce: 0.45,       // マウスの引力（滑らかに調整）
         avoidCenter: false,     // レスポンシブで更新
@@ -378,10 +378,29 @@
     // リサイズ処理
     function resize() {
         const container = canvas.parentElement;
-        width = canvas.width = container.clientWidth;
-        height = canvas.height = container.clientHeight;
+        const dpr = window.devicePixelRatio || 1;
+
+        // 表示サイズ
+        const displayWidth = container.clientWidth;
+        const displayHeight = container.clientHeight;
+
+        // Canvas の実際の解像度を高DPI対応に
+        canvas.width = displayWidth * dpr;
+        canvas.height = displayHeight * dpr;
+
+        // CSSでの表示サイズを設定
+        canvas.style.width = displayWidth + 'px';
+        canvas.style.height = displayHeight + 'px';
+
+        // Canvas コンテキストをスケール
+        ctx.scale(dpr, dpr);
+
+        // 計算用のサイズは表示サイズを使用
+        width = displayWidth;
+        height = displayHeight;
         centerX = width / 2;
         centerY = height / 2;
+
         applyResponsiveSettings();
         updateDistanceBounds();
     }
@@ -457,13 +476,16 @@
                     // 両端のノードの平均深度を計算
                     const avgDepth = (nodes[i].depth + nodes[j].depth) / 2;
 
-                    // 深度に応じた線の透明度（奥ほど薄く）
-                    const depthOpacity = config.minLineOpacity + (config.maxLineOpacity - config.minLineOpacity) * avgDepth;
+                    // 深度の影響を強調（より大きいノード同士の線を濃く）
+                    const depthFactor = Math.pow(avgDepth, 1.5); // 指数で強調
+
+                    // 深度に応じた線の透明度（奥ほど薄く、手前ほど濃く）
+                    const depthOpacity = config.minLineOpacity + (config.maxLineOpacity - config.minLineOpacity) * depthFactor;
                     const distanceFactor = 1 - distance / config.maxDistance;
                     const opacity = distanceFactor * depthOpacity * nodeOpacity * lineOpacity; // lineOpacityを追加
 
-                    // 深度に応じた線の太さ（奥ほど細く）
-                    const lineWidth = config.minLineWidth + (config.maxLineWidth - config.minLineWidth) * avgDepth;
+                    // 深度に応じた線の太さ（奥ほど細く、手前ほど太く）
+                    const lineWidth = config.minLineWidth + (config.maxLineWidth - config.minLineWidth) * depthFactor;
 
                     const gradient = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
                     gradient.addColorStop(0, withAlpha(config.lineGradient.start, Math.min(1, opacity * 1.1)));
