@@ -387,24 +387,6 @@ get_header();
                 </div>
 
                 <div class="p-ceoMessageCard">
-                    <div class="p-ceoMessageCard__profile">
-                        <div class="p-ceoProfile">
-                            <div class="p-ceoProfile__photo">
-                                <?php if ( get_theme_mod( 'euni_ceo_photo' ) ) : ?>
-                                    <img src="<?php echo esc_url( get_theme_mod( 'euni_ceo_photo' ) ); ?>" alt="代表者写真">
-                                <?php else : ?>
-                                    <div class="p-ceoProfile__placeholder">👤</div>
-                                <?php endif; ?>
-                            </div>
-                            <div class="p-ceoProfile__info">
-                                <p class="p-ceoProfile__title">代表取締役</p>
-                                <p class="p-ceoProfile__name">
-                                    <?php echo esc_html( get_theme_mod( 'euni_ceo_name', '代表者名' ) ); ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="p-ceoMessageCard__content">
                         <?php if ( get_theme_mod( 'euni_ceo_message' ) ) : ?>
                             <div class="p-ceoMessageCard__text">
@@ -412,23 +394,27 @@ get_header();
                             </div>
                         <?php else : ?>
                             <div class="p-ceoMessageCard__text">
-                                <p>あなたは今、どんな分岐点に立っていますか？</p>
-                                <p>人生には、無数の選択肢があります。その一つ一つの選択に最も影響を与える存在が、「人」なのではないでしょうか。</p>
-                                <p>誰かとの出会いが、新しい道を見せてくれる。誰かの言葉が、一歩を踏み出す勇気をくれる。誰かとの関係が、あなたの可能性を広げてくれる。</p>
-                                <p>私自身、深く孤独を経験した時期がありました。その時、救ってくれたのは人とのつながりでした。一つの出会いが、閉じていた道を開いてくれる。一つの関係が、前を向く力を与えてくれる。</p>
-                                <p>Euniは、あなたの人生の分岐点で、より良い選択を後押しする「きっかけ」となりたい。</p>
-                                <p>人と人をつなぎ、より善い関係へと導くインターフェース（接点）として、あなたの未来に寄り添いたいと考えています。</p>
-                                <p>一人ひとりが、自分らしく可能性を広げられる。互いに支え合い、高め合える関係が、当たり前にある。そんな未来を、共に築いていきましょう。</p>
+                                <p>今、どんな分岐点に立っていますか？<br>
+                                誰とどんなつながりを築きたいですか？</p>
+
+                                <p>人生には、無数の選択肢がありますが、<br>
+                                その選択に最も影響を与えるのが、「人とのつながり」だと、私は信じています。</p>
+
+                                <p>ふとした出会いが、見えなかった道を照らしてくれる。<br>
+                                何気ない会話が、踏み出せなかった一歩を後押ししてくれる。<br>
+                                誰かとの関係が、自分でも気づかなかった可能性を引き出してくれる。<br>
+                                つながりは、人生を大きく変える力を持っています。</p>
+
+                                <p>Euniは、「誰とどんなつながりを築くか」という問いに、一緒に向き合いたい。<br>
+                                人生の分岐点で、より良い選択を後押しする「きっかけ」でありたい。</p>
+
+                                <p>人と人をつなぎ、善い関係へと導く接点として、<br>
+                                未来に寄り添えたらと思っています。</p>
+
+                                <p>一人ひとりが、自分らしく可能性を広げられる。<br>
+                                互いに支え合い、高め合える関係が、当たり前にある。<br>
+                                そんな未来を、一緒に築いていけたら嬉しいです。</p>
                             </div>
-                            <div class="p-ceoMessageCard__signature">
-                                <p>代表取締役 <?php echo esc_html( get_theme_mod( 'euni_ceo_name', '代表者名' ) ); ?></p>
-                            </div>
-                            <?php if ( get_theme_mod( 'euni_ceo_career' ) ) : ?>
-                                <div class="p-ceoMessageCard__career">
-                                    <h4>略歴</h4>
-                                    <p><?php echo nl2br( esc_html( get_theme_mod( 'euni_ceo_career' ) ) ); ?></p>
-                                </div>
-                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
                 </div>
