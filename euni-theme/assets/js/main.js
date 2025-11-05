@@ -15,13 +15,8 @@
     }
 
     /**
-     * Force scroll to top on page load
+     * Scroll to top on page load (only when actually loading, not when navigating away)
      */
-    window.addEventListener('beforeunload', function() {
-        window.scrollTo(0, 0);
-    });
-
-    // Immediate scroll to top on load
     window.scrollTo(0, 0);
 
     /**
