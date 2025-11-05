@@ -87,7 +87,7 @@ function euni_add_seo_meta_tags() {
     // Get page-specific information
     if ( is_front_page() ) {
         $page_title = $site_name . ' | ' . $site_description;
-        $page_description = get_theme_mod( 'euni_seo_description', 'つながりの中で生きる社会を目指し、成長支援コミュニティ事業、ITソリューション事業、コンサルティング事業を展開する株式会社Euniのコーポレートサイトです。' );
+        $page_description = get_theme_mod( 'euni_seo_description', '新しい出会いを生み出し、既存の関係を深める。IT技術で『つながり』を創り、育てる株式会社Euniのコーポレートサイトです。' );
         $page_url = $site_url;
         $page_type = 'website';
     } else {
