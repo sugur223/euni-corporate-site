@@ -122,12 +122,6 @@ get_header();
                     endif;
                     ?>
                 </div>
-
-                <div class="p-section__cta">
-                    <a href="<?php echo esc_url( home_url( '/news/' ) ); ?>" class="c-btn c-btn--outline-dark">
-                        ニュース一覧を見る →
-                    </a>
-                </div>
             </div>
         </div>
     </section>
