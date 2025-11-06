@@ -443,7 +443,7 @@ get_header();
                         <tbody>
                             <tr>
                                 <th>会社名</th>
-                                <td>株式会社Euni</td>
+                                <td>株式会社Euni（ユニ）</td>
                             </tr>
                             <tr>
                                 <th>英語表記</th>
