@@ -133,7 +133,7 @@ get_header();
                 <span class="c-secLabel">BUSINESS</span>
                 <h2 class="c-secHeading">事業内容</h2>
                 <p class="c-secDscr">
-                    新しい出会いを生み出し、既存の関係を深める。<br>
+                    新しい出会いを生み出し、今ある関係を深める。<br>
                     IT技術で「つながり」を創り、育てます。
                 </p>
             </div>
