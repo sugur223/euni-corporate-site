@@ -144,7 +144,7 @@ get_header();
                     <!-- Left: Create Connections -->
                     <article class="p-businessGrid__item c-card">
                         <div class="p-businessGrid__icon c-card__icon -svg">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="32" cy="20" r="8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                                 <path d="M20 44 C20 36 25 32 32 32 C39 32 44 36 44 44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                                 <circle cx="16" cy="24" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
@@ -174,13 +174,10 @@ get_header();
                     <!-- Right: Nurture Connections -->
                     <article class="p-businessGrid__item c-card">
                         <div class="p-businessGrid__icon c-card__icon -svg">
-                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="8" y="12" width="48" height="36" rx="3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                                <line x1="8" y1="20" x2="56" y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                                <rect x="16" y="28" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-                                <line x1="36" y1="30" x2="48" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-                                <line x1="36" y1="36" x2="48" y2="36" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-                                <circle cx="32" cy="52" r="4" fill="currentColor" opacity="0.6"/>
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- trending-up icon (Lucide) -->
+                                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="16 7 22 7 22 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
                         <div class="p-businessGrid__content">
