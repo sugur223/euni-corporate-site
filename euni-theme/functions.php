@@ -213,6 +213,40 @@ function euni_get_contact_type_label( $type ) {
 }
 
 /**
+ * Verify reCAPTCHA v3 token
+ */
+function euni_verify_recaptcha( $token ) {
+    $secret_key = get_theme_mod( 'euni_recaptcha_secret_key', '' );
+
+    if ( empty( $secret_key ) || empty( $token ) ) {
+        return false;
+    }
+
+    $response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', array(
+        'body' => array(
+            'secret'   => $secret_key,
+            'response' => $token,
+        ),
+    ) );
+
+    if ( is_wp_error( $response ) ) {
+        return false;
+    }
+
+    $response_body = wp_remote_retrieve_body( $response );
+    $result = json_decode( $response_body, true );
+
+    // Check if verification was successful and score is above threshold (0.5)
+    if ( isset( $result['success'] ) && $result['success'] === true ) {
+        if ( isset( $result['score'] ) && $result['score'] >= 0.5 ) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
  * Handle contact form submission
  */
 function euni_handle_contact_form() {
@@ -220,6 +254,17 @@ function euni_handle_contact_form() {
     if ( ! isset( $_POST['euni_contact_nonce'] ) ||
          ! wp_verify_nonce( $_POST['euni_contact_nonce'], 'euni_contact_form' ) ) {
         wp_die( 'Security check failed' );
+    }
+
+    // Verify reCAPTCHA if enabled
+    $recaptcha_token = isset( $_POST['recaptcha_token'] ) ? sanitize_text_field( $_POST['recaptcha_token'] ) : '';
+    $recaptcha_secret = get_theme_mod( 'euni_recaptcha_secret_key', '' );
+
+    if ( ! empty( $recaptcha_secret ) ) {
+        if ( ! euni_verify_recaptcha( $recaptcha_token ) ) {
+            wp_redirect( add_query_arg( 'contact', 'recaptcha_error', home_url( '/#contact' ) ) );
+            exit;
+        }
     }
 
     // Sanitize and validate inputs

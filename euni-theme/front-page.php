@@ -499,6 +499,14 @@ get_header();
                         自動返信メールをお送りしておりますので、ご確認ください。</p>
                     </div>
                 <?php
+                    elseif ( $_GET['contact'] === 'recaptcha_error' ) :
+                ?>
+                    <div class="c-message c-message--error" role="alert">
+                        <p><strong>送信エラー</strong></p>
+                        <p>スパム対策の検証に失敗しました。<br>
+                        お手数ですが、もう一度お試しいただくか、直接メールにてお問い合わせください。</p>
+                    </div>
+                <?php
                     elseif ( $_GET['contact'] === 'error' ) :
                 ?>
                     <div class="c-message c-message--error" role="alert">
@@ -554,8 +562,12 @@ get_header();
 
                     <!-- Contact Form -->
                     <div class="p-contact__form">
+                        <?php
+                        $recaptcha_site_key = get_theme_mod( 'euni_recaptcha_site_key', '' );
+                        ?>
                         <form id="contactForm" class="c-form" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post">
                             <input type="hidden" name="action" value="euni_contact_form">
+                            <input type="hidden" name="recaptcha_token" id="recaptchaToken">
                             <?php wp_nonce_field( 'euni_contact_form', 'euni_contact_nonce' ); ?>
 
                             <div class="c-form__row">
@@ -599,6 +611,23 @@ get_header();
                                 <button type="submit" class="c-btn c-btn--primary">送信する</button>
                             </div>
                         </form>
+
+                        <?php if ( ! empty( $recaptcha_site_key ) ) : ?>
+                        <!-- reCAPTCHA v3 Script -->
+                        <script src="https://www.google.com/recaptcha/api.js?render=<?php echo esc_attr( $recaptcha_site_key ); ?>"></script>
+                        <script>
+                            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                                e.preventDefault();
+
+                                grecaptcha.ready(function() {
+                                    grecaptcha.execute('<?php echo esc_js( $recaptcha_site_key ); ?>', {action: 'contact_form'}).then(function(token) {
+                                        document.getElementById('recaptchaToken').value = token;
+                                        document.getElementById('contactForm').submit();
+                                    });
+                                });
+                            });
+                        </script>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

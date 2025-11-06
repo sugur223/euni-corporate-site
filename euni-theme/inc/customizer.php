@@ -147,6 +147,46 @@ function euni_customize_register( $wp_customize ) {
         )
     );
 
+    // reCAPTCHA Site Key
+    $wp_customize->add_setting(
+        'euni_recaptcha_site_key',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_recaptcha_site_key',
+        array(
+            'label'       => __( 'reCAPTCHA サイトキー', 'euni-theme' ),
+            'description' => __( 'Google reCAPTCHA v3のサイトキーを入力してください。', 'euni-theme' ),
+            'section'     => 'euni_company_info',
+            'type'        => 'text',
+        )
+    );
+
+    // reCAPTCHA Secret Key
+    $wp_customize->add_setting(
+        'euni_recaptcha_secret_key',
+        array(
+            'default'           => '',
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'refresh',
+        )
+    );
+
+    $wp_customize->add_control(
+        'euni_recaptcha_secret_key',
+        array(
+            'label'       => __( 'reCAPTCHA シークレットキー', 'euni-theme' ),
+            'description' => __( 'Google reCAPTCHA v3のシークレットキーを入力してください。', 'euni-theme' ),
+            'section'     => 'euni_company_info',
+            'type'        => 'text',
+        )
+    );
+
     // Employees
     $wp_customize->add_setting(
         'euni_employees',
