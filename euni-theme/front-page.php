@@ -186,7 +186,7 @@ get_header();
                         <div class="p-businessGrid__content">
                             <h3 class="c-card__title">つながりを育てる</h3>
                             <p class="c-card__text">
-                                既存の関係性を深め、継続させます。顧客・社員との信頼関係を強化します。
+                                今ある関係を深め、継続させます。顧客・社員との信頼関係を強化します。
                             </p>
                             <ul class="p-businessGrid__services">
                                 <li>CRM・顧客管理システム開発</li>
