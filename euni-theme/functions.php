@@ -199,6 +199,20 @@ function euni_add_structured_data() {
 }
 
 /**
+ * Get contact type label in Japanese
+ */
+function euni_get_contact_type_label( $type ) {
+    $types = array(
+        'general'     => '一般お問い合わせ',
+        'recruit'     => '採用について',
+        'media'       => '取材・メディア掲載について',
+        'partnership' => '事業提携について',
+        'other'       => 'その他',
+    );
+    return isset( $types[ $type ] ) ? $types[ $type ] : $type;
+}
+
+/**
  * Handle contact form submission
  */
 function euni_handle_contact_form() {
@@ -222,29 +236,70 @@ function euni_handle_contact_form() {
         exit;
     }
 
-    // Prepare email
-    $to = get_theme_mod( 'euni_email', get_option( 'admin_email' ) );
-    $subject = '[Euniコーポレートサイト] ' . esc_html( $name ) . ' 様からお問い合わせ';
+    // Get type label
+    $type_label = euni_get_contact_type_label( $type );
 
-    $body = "お問い合わせがありました。\n\n";
-    $body .= "■ お名前: " . $name . "\n";
+    // Admin email
+    $admin_email = get_theme_mod( 'euni_email', get_option( 'admin_email' ) );
+
+    // 1. Send notification to admin
+    $admin_subject = '[Euniコーポレートサイト] ' . esc_html( $name ) . ' 様からお問い合わせ';
+
+    $admin_body = "お問い合わせがありました。\n\n";
+    $admin_body .= "■ お名前: " . $name . "\n";
     if ( ! empty( $company ) ) {
-        $body .= "■ 会社名: " . $company . "\n";
+        $admin_body .= "■ 会社名: " . $company . "\n";
     }
-    $body .= "■ メールアドレス: " . $email . "\n";
+    $admin_body .= "■ メールアドレス: " . $email . "\n";
     if ( ! empty( $phone ) ) {
-        $body .= "■ 電話番号: " . $phone . "\n";
+        $admin_body .= "■ 電話番号: " . $phone . "\n";
     }
-    $body .= "■ お問い合わせ種別: " . $type . "\n\n";
-    $body .= "■ お問い合わせ内容:\n" . $message . "\n";
+    $admin_body .= "■ お問い合わせ種別: " . $type_label . "\n\n";
+    $admin_body .= "■ お問い合わせ内容:\n" . $message . "\n";
 
-    $headers = array(
-        'From: ' . get_bloginfo( 'name' ) . ' <' . $to . '>',
+    $admin_headers = array(
+        'From: ' . get_bloginfo( 'name' ) . ' <' . $admin_email . '>',
         'Reply-To: ' . $email,
     );
 
-    // Send email
-    $sent = wp_mail( $to, $subject, $body, $headers );
+    // Send email to admin
+    $sent = wp_mail( $admin_email, $admin_subject, $admin_body, $admin_headers );
+
+    // 2. Send auto-reply to user
+    if ( $sent ) {
+        $user_subject = 'お問い合わせありがとうございます｜株式会社Euni';
+
+        $user_body = $name . " 様\n\n";
+        $user_body .= "この度は、株式会社Euniへお問い合わせいただき、誠にありがとうございます。\n\n";
+        $user_body .= "以下の内容でお問い合わせを承りました。\n";
+        $user_body .= "内容を確認の上、担当者より折り返しご連絡させていただきます。\n\n";
+        $user_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+        $user_body .= "■ お名前: " . $name . "\n";
+        if ( ! empty( $company ) ) {
+            $user_body .= "■ 会社名: " . $company . "\n";
+        }
+        $user_body .= "■ メールアドレス: " . $email . "\n";
+        if ( ! empty( $phone ) ) {
+            $user_body .= "■ 電話番号: " . $phone . "\n";
+        }
+        $user_body .= "■ お問い合わせ種別: " . $type_label . "\n\n";
+        $user_body .= "■ お問い合わせ内容:\n" . $message . "\n";
+        $user_body .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+        $user_body .= "※ このメールは自動送信されています。\n";
+        $user_body .= "※ 本メールに心当たりのない方は、お手数ですが削除をお願いいたします。\n\n";
+        $user_body .= "――――――――――――――――――――――――――――――――――\n";
+        $user_body .= "株式会社Euni（ユニ）\n";
+        $user_body .= "〒150-0041 東京都渋谷区神南一丁目１１番地４号 ＦＰＧリンクス神南 5階\n";
+        $user_body .= "Email: " . $admin_email . "\n";
+        $user_body .= "Website: " . home_url( '/' ) . "\n";
+        $user_body .= "――――――――――――――――――――――――――――――――――\n";
+
+        $user_headers = array(
+            'From: ' . get_bloginfo( 'name' ) . ' <' . $admin_email . '>',
+        );
+
+        wp_mail( $email, $user_subject, $user_body, $user_headers );
+    }
 
     if ( $sent ) {
         wp_redirect( add_query_arg( 'contact', 'success', home_url( '/#contact' ) ) );
