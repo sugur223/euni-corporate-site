@@ -1149,6 +1149,53 @@ body.admin-bar .l-header {
     line-height: 1.8;
 }
 
+/* Contact Form Status Message */
+.c-message {
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(2rem, 4vw, 2.5rem);
+    border-radius: 12px;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    border-left: 4px solid;
+    animation: fadeInDown 0.5s ease-out;
+}
+
+.c-message p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+.c-message p + p {
+    margin-top: 0.75rem;
+}
+
+.c-message strong {
+    font-size: clamp(1.0625rem, 2vw, 1.125rem);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.c-message--success {
+    background: #f0fdf4;
+    border-color: #22c55e;
+    color: #166534;
+}
+
+.c-message--error {
+    background: #fef2f2;
+    border-color: #ef4444;
+    color: #991b1b;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Contact Form */
 .c-form {
     background: var(--color-bg-white);

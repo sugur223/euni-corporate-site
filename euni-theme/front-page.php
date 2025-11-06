@@ -487,6 +487,29 @@ get_header();
             </div>
 
             <div class="p-section__body">
+                <?php
+                // Display contact form status message
+                if ( isset( $_GET['contact'] ) ) :
+                    if ( $_GET['contact'] === 'success' ) :
+                ?>
+                    <div class="c-message c-message--success" role="alert">
+                        <p><strong>送信完了</strong></p>
+                        <p>お問い合わせありがとうございます。<br>
+                        内容を確認の上、担当者より折り返しご連絡させていただきます。<br>
+                        自動返信メールをお送りしておりますので、ご確認ください。</p>
+                    </div>
+                <?php
+                    elseif ( $_GET['contact'] === 'error' ) :
+                ?>
+                    <div class="c-message c-message--error" role="alert">
+                        <p><strong>送信エラー</strong></p>
+                        <p>申し訳ございません。送信中にエラーが発生しました。<br>
+                        お手数ですが、もう一度お試しいただくか、直接メールにてお問い合わせください。</p>
+                    </div>
+                <?php
+                    endif;
+                endif;
+                ?>
                 <div class="p-contact__grid">
                     <!-- Contact Info -->
                     <div class="p-contact__info">
