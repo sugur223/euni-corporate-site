@@ -1239,7 +1239,7 @@ body.admin-bar .l-header {
     position: fixed !important;
     bottom: 14px !important;
     right: 14px !important;
-    z-index: 9999 !important;
+    z-index: 10001 !important;
     visibility: visible !important;
     opacity: 1 !important;
 }
