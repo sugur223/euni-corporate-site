@@ -262,8 +262,8 @@ get_header();
                             <span class="p-mvvItem__jp">使命</span>
                         </div>
                         <p class="p-mvvItem__text">
-                            豊かな発想と高い技術力によって、<br>
-                            善いつながりを育み、<br>
+                            豊かな発想と高い技術力によって<br>
+                            善いつながりを育み<br>
                             すべての人々の可能性を広げる
                         </p>
                     </div>
