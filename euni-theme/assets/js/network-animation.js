@@ -219,7 +219,6 @@
             this.currentDistance = this.maxDistance * easedProgress;
 
             // フェードイン効果（モバイルでは速く）
-            const isMobileView = window.innerWidth <= 768;
             const fadeDuration = isMobileView ? config.fadeInDurationMobile : config.fadeInDuration;
             const fadeProgress = Math.min(timeSinceSpawn / fadeDuration, 1);
             this.opacity = this.easeOutCubic(fadeProgress);
