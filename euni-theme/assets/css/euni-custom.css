@@ -1238,12 +1238,18 @@ body.admin-bar .l-header {
 .grecaptcha-badge {
     position: fixed !important;
     bottom: 14px !important;
-    right: 14px !important;
+    left: 14px !important;
+    right: auto !important;
     z-index: 999999 !important;
     visibility: visible !important;
-    opacity: 1 !important;
+    opacity: 0.8 !important;
     pointer-events: auto !important;
     transform: none !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.grecaptcha-badge:hover {
+    opacity: 1 !important;
 }
 
 /* Contact Form */
