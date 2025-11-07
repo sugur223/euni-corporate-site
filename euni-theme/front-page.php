@@ -456,7 +456,7 @@ get_header();
                             </tr>
                             <tr>
                                 <th>資本金</th>
-                                <td><?php echo esc_html( get_theme_mod( 'euni_capital', '300万円' ) ); ?></td>
+                                <td><?php echo esc_html( get_theme_mod( 'euni_capital', '3,000,000円' ) ); ?></td>
                             </tr>
                             <tr>
                                 <th>所在地</th>
