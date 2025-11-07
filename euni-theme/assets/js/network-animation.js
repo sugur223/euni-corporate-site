@@ -529,6 +529,18 @@
         if (progress < 1) {
             const isMobileView = window.innerWidth <= 768;
             const duration = isMobileView ? config.expandDurationMobile : config.expandDuration;
+
+            // デバッグ: 最初の1回だけログ出力
+            if (progress === 0) {
+                console.log('Network Animation Debug:', {
+                    isMobile: isMobileView,
+                    width: window.innerWidth,
+                    duration: duration,
+                    expandDurationMobile: config.expandDurationMobile,
+                    expandDuration: config.expandDuration
+                });
+            }
+
             progress += 1 / (duration / 16.67); // 60fps想定
             progress = Math.min(progress, 1);
         }
