@@ -452,7 +452,7 @@ get_header();
                             </tr>
                             <tr>
                                 <th>設立</th>
-                                <td><?php echo esc_html( get_theme_mod( 'euni_establishment', '2025年11月（予定）' ) ); ?></td>
+                                <td><?php echo esc_html( get_theme_mod( 'euni_establishment', '2025年11月' ) ); ?></td>
                             </tr>
                             <tr>
                                 <th>資本金</th>
