@@ -1234,6 +1234,16 @@ body.admin-bar .l-header {
     }
 }
 
+/* reCAPTCHA Badge */
+.grecaptcha-badge {
+    position: fixed !important;
+    bottom: 14px !important;
+    right: 14px !important;
+    z-index: 9999 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 /* Contact Form */
 .c-form {
     background: var(--color-bg-white);
