@@ -3931,7 +3931,7 @@ body.admin-bar .l-header {
 /* PC版のみ: ヒーローコンテンツを下に配置 */
 @media (min-width: 769px) {
     .p-hero {
-        padding-top: clamp(12rem, 25vh, 18rem);
+        padding-top: clamp(8rem, 15vh, 12rem);
         align-items: flex-start;
     }
 }
