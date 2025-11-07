@@ -28,7 +28,8 @@
         maxNodeRadius: 6.5,     // 最大半径（手前） - PC版用に縮小
         minNodeRadiusMobile: 5.5,     // モバイル用最小半径
         maxNodeRadiusMobile: 10.5,    // モバイル用最大半径
-        expandDuration: 3000,   // 広がるアニメーションの時間（ms）
+        expandDuration: 3000,   // 広がるアニメーションの時間（ms） - PC版
+        expandDurationMobile: 1500,   // 広がるアニメーションの時間（ms） - モバイル版
         fadeInDuration: 2000,   // フェードインの時間（ms）
         floatSpeed: 0.00014,    // 浮遊速度
         lineOpacity: 0.32,      // 線の透明度
@@ -208,7 +209,9 @@
         updatePosition(allNodes, lockMovement = false) {
             // 個別の進行度（生成時刻を考慮）
             const timeSinceSpawn = Date.now() - this.spawnTime;
-            const individualProgress = Math.min(timeSinceSpawn / config.expandDuration, 1);
+            const isMobileView = window.innerWidth <= 768;
+            const duration = isMobileView ? config.expandDurationMobile : config.expandDuration;
+            const individualProgress = Math.min(timeSinceSpawn / duration, 1);
             const easedProgress = this.easeOutCubic(individualProgress);
 
             this.currentDistance = this.maxDistance * easedProgress;
