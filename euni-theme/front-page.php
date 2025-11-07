@@ -613,6 +613,12 @@ get_header();
                             <div class="c-form__submit">
                                 <button type="submit" class="c-btn c-btn--primary">送信する</button>
                             </div>
+
+                            <?php if ( ! empty( $recaptcha_site_key ) ) : ?>
+                            <p class="c-recaptcha-notice">
+                                このサイトはreCAPTCHAによって保護されており、Googleの<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>と<a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">利用規約</a>が適用されます。
+                            </p>
+                            <?php endif; ?>
                         </form>
 
                         <?php if ( ! empty( $recaptcha_site_key ) ) : ?>
