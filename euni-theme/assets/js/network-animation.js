@@ -22,17 +22,14 @@
     const config = {
         maxNodes: 20,           // 最大ノード数
         initialNodes: 5,        // 初期ノード数
-        nodeSpawnInterval: 200, // ノード追加間隔（ms） - PC版
-        nodeSpawnIntervalMobile: 80, // ノード追加間隔（ms） - モバイル版
+        nodeSpawnInterval: 200, // ノード追加間隔（ms）
         nodeRadius: 8,          // ノードの基本半径
         minNodeRadius: 3.5,     // 最小半径（奥） - PC版用に縮小
         maxNodeRadius: 6.5,     // 最大半径（手前） - PC版用に縮小
         minNodeRadiusMobile: 5.5,     // モバイル用最小半径
         maxNodeRadiusMobile: 10.5,    // モバイル用最大半径
-        expandDuration: 3000,   // 広がるアニメーションの時間（ms） - PC版
-        expandDurationMobile: 1000,   // 広がるアニメーションの時間（ms） - モバイル版（iPhone Safari対応）
-        fadeInDuration: 2000,   // フェードインの時間（ms） - PC版
-        fadeInDurationMobile: 800,   // フェードインの時間（ms） - モバイル版
+        expandDuration: 3000,   // 広がるアニメーションの時間（ms）
+        fadeInDuration: 2000,   // フェードインの時間（ms）
         floatSpeed: 0.00014,    // 浮遊速度
         lineOpacity: 0.32,      // 線の透明度
         minLineOpacity: 0.25,   // 最小線透明度（奥）
@@ -211,21 +208,18 @@
         updatePosition(allNodes, lockMovement = false) {
             // 個別の進行度（生成時刻を考慮）
             const timeSinceSpawn = Date.now() - this.spawnTime;
-            const isMobileView = window.innerWidth <= 768;
-            const duration = isMobileView ? config.expandDurationMobile : config.expandDuration;
-            const individualProgress = Math.min(timeSinceSpawn / duration, 1);
+            const individualProgress = Math.min(timeSinceSpawn / config.expandDuration, 1);
             const easedProgress = this.easeOutCubic(individualProgress);
 
             this.currentDistance = this.maxDistance * easedProgress;
 
-            // フェードイン効果（モバイルでは速く）
-            const fadeDuration = isMobileView ? config.fadeInDurationMobile : config.fadeInDuration;
-            const fadeProgress = Math.min(timeSinceSpawn / fadeDuration, 1);
+            // フェードイン効果（より長い時間をかけて徐々に濃く）
+            const fadeProgress = Math.min(timeSinceSpawn / config.fadeInDuration, 1);
             this.opacity = this.easeOutCubic(fadeProgress);
 
             // 線のフェードイン（ノードが70%表示されてから開始）
-            const lineStartDelay = fadeDuration * 0.7; // ノードフェードインの70%後に開始
-            const lineFadeDuration = fadeDuration * 0.8; // 線のフェードイン時間
+            const lineStartDelay = config.fadeInDuration * 0.7; // ノードフェードインの70%後に開始
+            const lineFadeDuration = config.fadeInDuration * 0.8; // 線のフェードイン時間
             const lineFadeProgress = Math.max(0, Math.min((timeSinceSpawn - lineStartDelay) / lineFadeDuration, 1));
             this.lineOpacity = this.easeOutCubic(lineFadeProgress);
 
@@ -528,20 +522,16 @@
     function animate(timestamp) {
         ctx.clearRect(0, 0, width, height);
 
-        // 進行度を更新（モバイルでは速く）
+        // 進行度を更新（最初の3秒で0→1、その後は1を維持）
         if (progress < 1) {
-            const isMobileView = window.innerWidth <= 768;
-            const duration = isMobileView ? config.expandDurationMobile : config.expandDuration;
-            progress += 1 / (duration / 16.67); // 60fps想定
+            progress += 1 / (config.expandDuration / 16.67); // 60fps想定
             progress = Math.min(progress, 1);
         }
 
-        // 定期的にノードを追加（モバイルでは速く）
+        // 定期的にノードを追加
         if (nodes.length < config.maxNodes) {
-            const isMobileView = window.innerWidth <= 768;
-            const spawnInterval = isMobileView ? config.nodeSpawnIntervalMobile : config.nodeSpawnInterval;
             nodeSpawnTimer += 16.67; // 約60fps
-            if (nodeSpawnTimer >= spawnInterval) {
+            if (nodeSpawnTimer >= config.nodeSpawnInterval) {
                 addNode();
                 nodeSpawnTimer = 0;
             }
