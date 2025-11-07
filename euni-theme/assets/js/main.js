@@ -504,7 +504,9 @@
             // Close button handler
             const closeButton = message.querySelector('.c-message__close');
             if (closeButton) {
-                closeButton.addEventListener('click', () => {
+                closeButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     hideMessage(message);
                 });
             }
@@ -531,7 +533,9 @@
 
         // Remove from DOM after fade out
         setTimeout(() => {
-            message.remove();
+            if (message.parentNode) {
+                message.remove();
+            }
         }, 500);
     }
 

@@ -1188,22 +1188,33 @@ body.admin-bar .l-header {
 
 .c-message__close {
     position: absolute;
-    top: clamp(1rem, 2vw, 1.25rem);
-    right: clamp(1rem, 2vw, 1.25rem);
-    background: transparent;
+    top: clamp(1.25rem, 2vw, 1.5rem);
+    right: clamp(1.25rem, 2vw, 1.5rem);
+    width: 28px;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.1);
     border: none;
-    font-size: clamp(1.75rem, 3vw, 2rem);
+    border-radius: 50%;
+    font-size: 1.25rem;
     line-height: 1;
     cursor: pointer;
-    padding: 0.25rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: inherit;
-    opacity: 0.6;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    opacity: 0.7;
+    transition: all 0.2s ease;
 }
 
 .c-message__close:hover {
     opacity: 1;
-    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+.c-message__close:active {
+    transform: scale(0.95);
 }
 
 .c-message__close:focus {
