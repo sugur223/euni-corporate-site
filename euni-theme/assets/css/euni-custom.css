@@ -528,8 +528,15 @@ body.admin-bar .l-header {
    Section Layout (Modern Spacing)
    ==================== */
 .p-section {
-    padding: clamp(9rem, 16vw, 15rem) 0;
+    padding: clamp(7rem, 14vw, 12rem) 0;
     position: relative;
+}
+
+/* PC版のみ: セクション間隔を広げる */
+@media (min-width: 769px) {
+    .p-section {
+        padding: clamp(9rem, 16vw, 15rem) 0;
+    }
 }
 
 .p-section.-bg {
