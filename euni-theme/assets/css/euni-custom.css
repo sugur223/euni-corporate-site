@@ -356,14 +356,22 @@ body.admin-bar .l-header {
 .p-hero {
     background: var(--color-bg-white);
     color: var(--color-text-dark);
-    padding: clamp(8rem, 18vh, 12rem) 0 clamp(4rem, 10vh, 6rem) 0;
+    padding: clamp(3rem, 8vh, 5rem) 0;
     text-align: center;
     position: relative;
     overflow: visible;
     min-height: clamp(580px, 85vh, 780px);
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+}
+
+/* PC版のみ: コンテンツを下に配置 */
+@media (min-width: 769px) {
+    .p-hero {
+        padding-top: clamp(12rem, 25vh, 18rem);
+        align-items: flex-start;
+    }
 }
 
 /* Decorative shapes */
