@@ -1234,36 +1234,14 @@ body.admin-bar .l-header {
     }
 }
 
-/* reCAPTCHA Badge - Hide default and create custom */
+/* reCAPTCHA Badge - Position only */
 .grecaptcha-badge {
-    visibility: hidden !important;
-}
-
-/* Custom reCAPTCHA Badge */
-.c-recaptcha-badge {
-    position: fixed;
-    bottom: 14px;
-    left: 14px;
-    z-index: 999999;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    padding: 8px 12px;
-    font-size: 0.75rem;
-    line-height: 1.4;
-    color: #6b7280;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: opacity 0.3s ease;
-    opacity: 0.8;
-}
-
-.c-recaptcha-badge:hover {
-    opacity: 1;
-}
-
-.c-recaptcha-badge strong {
-    color: #1a1a1a;
-    font-weight: 600;
+    position: fixed !important;
+    bottom: 14px !important;
+    left: 14px !important;
+    right: auto !important;
+    z-index: 999999 !important;
+    opacity: 0.8 !important;
     transition: opacity 0.2s ease !important;
 }
 
