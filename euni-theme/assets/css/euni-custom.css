@@ -1238,8 +1238,8 @@ body.admin-bar .l-header {
 .grecaptcha-badge {
     position: fixed !important;
     bottom: 14px !important;
-    right: 14px !important;
-    left: auto !important;
+    left: 14px !important;
+    right: auto !important;
     z-index: 999999 !important;
     opacity: 0.9 !important;
     width: 70px !important;
