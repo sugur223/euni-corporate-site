@@ -528,7 +528,7 @@ body.admin-bar .l-header {
    Section Layout (Modern Spacing)
    ==================== */
 .p-section {
-    padding: clamp(7rem, 14vw, 12rem) 0;
+    padding: clamp(9rem, 16vw, 15rem) 0;
     position: relative;
 }
 
