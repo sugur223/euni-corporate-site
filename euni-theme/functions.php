@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define theme constants
  */
-define( 'EUNI_THEME_VERSION', '2.3.1' );
+define( 'EUNI_THEME_VERSION', '2.3.2' );
 define( 'EUNI_THEME_DIR', get_template_directory() );
 define( 'EUNI_THEME_URI', get_template_directory_uri() );
 
