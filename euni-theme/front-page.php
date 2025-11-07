@@ -616,6 +616,11 @@ get_header();
                         </form>
 
                         <?php if ( ! empty( $recaptcha_site_key ) ) : ?>
+                        <!-- Custom reCAPTCHA Badge -->
+                        <div class="c-recaptcha-badge">
+                            <span><strong>reCAPTCHA</strong> で保護されています</span>
+                        </div>
+
                         <script src="https://www.google.com/recaptcha/api.js?render=<?php echo esc_attr( $recaptcha_site_key ); ?>"></script>
                         <script>
                             document.getElementById('contactForm').addEventListener('submit', function(e) {
