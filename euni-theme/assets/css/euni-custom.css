@@ -1234,14 +1234,16 @@ body.admin-bar .l-header {
     }
 }
 
-/* reCAPTCHA Badge - Position only */
+/* reCAPTCHA Badge - Show only badge icon */
 .grecaptcha-badge {
     position: fixed !important;
     bottom: 14px !important;
-    left: 14px !important;
-    right: auto !important;
+    right: 14px !important;
+    left: auto !important;
     z-index: 999999 !important;
-    opacity: 0.8 !important;
+    opacity: 0.9 !important;
+    width: 70px !important;
+    overflow: hidden !important;
     transition: opacity 0.2s ease !important;
 }
 
