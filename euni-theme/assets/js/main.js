@@ -495,6 +495,27 @@
     }
 
     /**
+     * Auto-hide contact form success/error messages
+     */
+    function initAutoHideMessages() {
+        const messages = document.querySelectorAll('.c-message');
+
+        messages.forEach(message => {
+            // Fade out after 5 seconds
+            setTimeout(() => {
+                message.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                message.style.opacity = '0';
+                message.style.transform = 'translateY(-20px)';
+
+                // Remove from DOM after fade out
+                setTimeout(() => {
+                    message.remove();
+                }, 500);
+            }, 5000);
+        });
+    }
+
+    /**
      * Initialize all functions when DOM is ready
      */
     function init() {
@@ -510,6 +531,7 @@
         initMobileMenu();
         initBackToTop();
         initParallaxEffect();
+        initAutoHideMessages();
     }
 
     // Wait for DOM to be ready
