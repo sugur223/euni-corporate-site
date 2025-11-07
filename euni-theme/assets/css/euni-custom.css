@@ -366,14 +366,6 @@ body.admin-bar .l-header {
     justify-content: center;
 }
 
-/* PC版のみ: コンテンツを下に配置 */
-@media (min-width: 769px) {
-    .p-hero {
-        padding-top: clamp(12rem, 25vh, 18rem) !important;
-        align-items: flex-start !important;
-    }
-}
-
 /* Decorative shapes */
 .p-hero__shape1,
 .p-hero__shape2,
