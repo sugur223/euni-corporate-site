@@ -29,7 +29,7 @@
         minNodeRadiusMobile: 5.5,     // モバイル用最小半径
         maxNodeRadiusMobile: 10.5,    // モバイル用最大半径
         expandDuration: 3000,   // 広がるアニメーションの時間（ms） - PC版
-        expandDurationMobile: 1500,   // 広がるアニメーションの時間（ms） - モバイル版
+        expandDurationMobile: 1000,   // 広がるアニメーションの時間（ms） - モバイル版（iPhone Safari対応）
         fadeInDuration: 2000,   // フェードインの時間（ms）
         floatSpeed: 0.00014,    // 浮遊速度
         lineOpacity: 0.32,      // 線の透明度
@@ -525,9 +525,11 @@
     function animate(timestamp) {
         ctx.clearRect(0, 0, width, height);
 
-        // 進行度を更新（最初の3秒で0→1、その後は1を維持）
+        // 進行度を更新（モバイルでは速く）
         if (progress < 1) {
-            progress += 1 / (config.expandDuration / 16.67); // 60fps想定
+            const isMobileView = window.innerWidth <= 768;
+            const duration = isMobileView ? config.expandDurationMobile : config.expandDuration;
+            progress += 1 / (duration / 16.67); // 60fps想定
             progress = Math.min(progress, 1);
         }
 
