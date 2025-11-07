@@ -564,10 +564,6 @@ get_header();
                     <div class="p-contact__form">
                         <?php
                         $recaptcha_site_key = get_theme_mod( 'euni_recaptcha_site_key', '' );
-                        // Debug: Check if reCAPTCHA key is loaded
-                        if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-                            error_log( 'reCAPTCHA Site Key: ' . ( ! empty( $recaptcha_site_key ) ? 'Set (length: ' . strlen( $recaptcha_site_key ) . ')' : 'Not set' ) );
-                        }
                         ?>
                         <form id="contactForm" class="c-form" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post">
                             <input type="hidden" name="action" value="euni_contact_form">
@@ -616,9 +612,7 @@ get_header();
                             </div>
                         </form>
 
-                        <!-- reCAPTCHA Debug: Site Key = <?php echo ! empty( $recaptcha_site_key ) ? 'SET (' . strlen( $recaptcha_site_key ) . ' chars)' : 'NOT SET'; ?> -->
                         <?php if ( ! empty( $recaptcha_site_key ) ) : ?>
-                        <!-- reCAPTCHA v3 Script -->
                         <script src="https://www.google.com/recaptcha/api.js?render=<?php echo esc_attr( $recaptcha_site_key ); ?>"></script>
                         <script>
                             document.getElementById('contactForm').addEventListener('submit', function(e) {

@@ -236,12 +236,6 @@ function euni_verify_recaptcha( $token ) {
     $response_body = wp_remote_retrieve_body( $response );
     $result = json_decode( $response_body, true );
 
-    // Debug: Log reCAPTCHA score (remove in production)
-    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-        error_log( 'reCAPTCHA Score: ' . ( isset( $result['score'] ) ? $result['score'] : 'N/A' ) );
-        error_log( 'reCAPTCHA Result: ' . print_r( $result, true ) );
-    }
-
     // Check if verification was successful and score is above threshold (0.5)
     if ( isset( $result['success'] ) && $result['success'] === true ) {
         if ( isset( $result['score'] ) && $result['score'] >= 0.5 ) {
