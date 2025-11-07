@@ -3922,10 +3922,18 @@ body.admin-bar .l-header {
     min-height: clamp(420px, 55vh, 520px);
     padding: clamp(1rem, 2vh, 1.5rem) 0 clamp(3rem, 6vh, 4.5rem) 0;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     background: var(--color-bg-white);
     overflow: visible;
+}
+
+/* PC版のみ: ヒーローコンテンツを下に配置 */
+@media (min-width: 769px) {
+    .p-hero {
+        padding-top: clamp(12rem, 25vh, 18rem);
+        align-items: flex-start;
+    }
 }
 
 .p-hero__inner {
