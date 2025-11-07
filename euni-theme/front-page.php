@@ -493,6 +493,7 @@ get_header();
                     if ( $_GET['contact'] === 'success' ) :
                 ?>
                     <div class="c-message c-message--success" role="alert">
+                        <button type="button" class="c-message__close" aria-label="閉じる">&times;</button>
                         <p><strong>送信完了</strong></p>
                         <p>お問い合わせありがとうございます。<br>
                         内容を確認の上、担当者より折り返しご連絡させていただきます。<br>
@@ -502,6 +503,7 @@ get_header();
                     elseif ( $_GET['contact'] === 'recaptcha_error' ) :
                 ?>
                     <div class="c-message c-message--error" role="alert">
+                        <button type="button" class="c-message__close" aria-label="閉じる">&times;</button>
                         <p><strong>送信エラー</strong></p>
                         <p>スパム対策の検証に失敗しました。<br>
                         お手数ですが、もう一度お試しいただくか、直接メールにてお問い合わせください。</p>
@@ -510,6 +512,7 @@ get_header();
                     elseif ( $_GET['contact'] === 'error' ) :
                 ?>
                     <div class="c-message c-message--error" role="alert">
+                        <button type="button" class="c-message__close" aria-label="閉じる">&times;</button>
                         <p><strong>送信エラー</strong></p>
                         <p>申し訳ございません。送信中にエラーが発生しました。<br>
                         お手数ですが、もう一度お試しいただくか、直接メールにてお問い合わせください。</p>

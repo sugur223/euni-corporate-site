@@ -1151,7 +1151,8 @@ body.admin-bar .l-header {
 
 /* Contact Form Status Message */
 .c-message {
-    padding: clamp(1.5rem, 3vw, 2rem) clamp(2rem, 4vw, 2.5rem);
+    position: relative;
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(3rem, 5vw, 3.5rem) clamp(1.5rem, 3vw, 2rem) clamp(2rem, 4vw, 2.5rem);
     border-radius: 12px;
     margin-bottom: clamp(2rem, 4vw, 3rem);
     border-left: 4px solid;
@@ -1183,6 +1184,32 @@ body.admin-bar .l-header {
     background: #fef2f2;
     border-color: #ef4444;
     color: #991b1b;
+}
+
+.c-message__close {
+    position: absolute;
+    top: clamp(1rem, 2vw, 1.25rem);
+    right: clamp(1rem, 2vw, 1.25rem);
+    background: transparent;
+    border: none;
+    font-size: clamp(1.75rem, 3vw, 2rem);
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.c-message__close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.c-message__close:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    opacity: 1;
 }
 
 @keyframes fadeInDown {

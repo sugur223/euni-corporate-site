@@ -501,18 +501,38 @@
         const messages = document.querySelectorAll('.c-message');
 
         messages.forEach(message => {
-            // Fade out after 5 seconds
-            setTimeout(() => {
-                message.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-                message.style.opacity = '0';
-                message.style.transform = 'translateY(-20px)';
+            // Close button handler
+            const closeButton = message.querySelector('.c-message__close');
+            if (closeButton) {
+                closeButton.addEventListener('click', () => {
+                    hideMessage(message);
+                });
+            }
 
-                // Remove from DOM after fade out
-                setTimeout(() => {
-                    message.remove();
-                }, 500);
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                hideMessage(message);
             }, 5000);
         });
+    }
+
+    /**
+     * Hide message with animation
+     */
+    function hideMessage(message) {
+        if (!message || message.classList.contains('is-hiding')) {
+            return;
+        }
+
+        message.classList.add('is-hiding');
+        message.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+        message.style.opacity = '0';
+        message.style.transform = 'translateY(-20px)';
+
+        // Remove from DOM after fade out
+        setTimeout(() => {
+            message.remove();
+        }, 500);
     }
 
     /**
