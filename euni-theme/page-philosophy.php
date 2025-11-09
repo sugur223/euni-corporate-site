@@ -147,7 +147,7 @@ get_header();
     </section>
 
     <!-- Back to Top Link -->
-    <section class="p-section">
+    <section class="p-section p-section--compact">
         <div class="l-container">
             <div class="p-section__cta">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="c-btn c-btn--outline-dark">

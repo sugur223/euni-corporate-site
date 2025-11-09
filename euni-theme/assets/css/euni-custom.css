@@ -539,6 +539,21 @@ body.admin-bar .l-header {
     }
 }
 
+/* コンパクトセクション（トップへ戻るボタンなど） */
+.p-section--compact {
+    padding: clamp(3rem, 6vw, 4rem) 0 clamp(4rem, 8vw, 6rem) 0;
+}
+
+@media (min-width: 769px) {
+    .p-section--compact {
+        padding: clamp(3.5rem, 7vw, 5rem) 0 clamp(5rem, 10vw, 7rem) 0;
+    }
+}
+
+.p-section--compact .p-section__cta {
+    margin-top: 0;
+}
+
 .p-section.-bg {
     background: var(--color-bg-gray);
 }
