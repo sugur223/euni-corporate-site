@@ -247,9 +247,9 @@ get_header();
 
                         <p>Euniは、そんなつながりや関係性が生まれる<br class="u-br-sp">機会を創ります<br><br>
                         一人ひとりの可能性が、<br class="u-br-sp">誰かとつながることで広がっていく<br><br class="u-br-sp">
-                        迷いながらでも、一歩ずつ前へ進める関係を、大切に育てていきたい</p>
+                        迷いながらでも、一歩ずつ前へ進める関係を、大切に育てていく</p>
 
-                        <p>人と人がつながることで、未来は変わっていく</p>
+                        <p>人と人がつながることで、未来は変わる</p>
 
                         <p class="p-mvvPurpose__tagline">Connect to possibilities.</p>
                     </div>
