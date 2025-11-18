@@ -402,7 +402,7 @@ get_header();
                                 <p>人と人をつなぎ、<br class="u-br-sp">善い関係へと導く接点として、<br class="u-br-sp">未来に寄り添えたらと思っています。</p>
 
                                 <p>一人ひとりが、<br class="u-br-sp">自分らしく可能性を広げられる。<br>
-                                互いに支え合い、高め合える関係が、<br class="u-br-sp">当たり前にある。<br>
+                                互いに支え合い、高め合える関係が、<br class="u-br-sp">当たり前にある。<br><br>
                                 そんな社会を、<br class="u-br-sp">一緒に築いていけたら嬉しいです。</p>
                             </div>
                         <?php endif; ?>
