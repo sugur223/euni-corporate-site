@@ -133,7 +133,7 @@ get_header();
                 <span class="c-secLabel">BUSINESS</span>
                 <h2 class="c-secHeading">事業内容</h2>
                 <p class="c-secDscr">
-                    新しい出会いを生み出し、今ある関係を深める。<br>
+                    新しい出会いを生み出し、<br>今ある関係を深める。<br>
                     IT技術で「つながり」を創り、育てます。
                 </p>
             </div>
@@ -336,7 +336,7 @@ get_header();
                                 <div class="p-values__num">05</div>
                                 <dl class="p-values__content">
                                     <dt class="p-values__title">矛盾を受け入れよう</dt>
-                                    <dd class="p-values__text">完璧じゃなくていい<br>矛盾も、不完全も受け入れる。それでも、少しずつ前へ</dd>
+                                    <dd class="p-values__text">完璧じゃなくていい<br>矛盾も、不完全も受け入れる。<br>それでも、少しずつ前へ</dd>
                                 </dl>
                             </li>
                         </ul>
@@ -396,7 +396,7 @@ get_header();
                                 誰かとの関係が、自分でも気づかなかった可能性を引き出してくれる。<br>
                                 つながりは、人生を大きく変える力を持っています。</p>
 
-                                <p>Euniは、「誰とどんなつながりを築くか」という問いに、一緒に向き合いたい。<br>
+                                <p>「誰とどんなつながりを築くか」という問いに、一緒に向き合いたい。<br>
                                 人生の分岐点で、より良い選択を後押しする「きっかけ」でありたい。</p>
 
                                 <p>人と人をつなぎ、善い関係へと導く接点として、<br>
