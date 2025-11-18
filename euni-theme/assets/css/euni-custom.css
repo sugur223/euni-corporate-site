@@ -4352,3 +4352,17 @@ body.admin-bar .l-header {
         padding: clamp(1.2rem, 4vw, 1.5rem);
     }
 }
+
+/* ====================
+   Utility Classes
+   ==================== */
+/* Mobile-only line break */
+.u-br-sp {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .u-br-sp {
+        display: block;
+    }
+}
