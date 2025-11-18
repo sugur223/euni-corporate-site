@@ -64,7 +64,7 @@ get_header();
                                     古代ギリシャ語で「善き心、美しい思考」を意味する言葉です。
                                 </p>
                                 <p class="p-philosophyOrigin__detail">
-                                    一方的な善意ではなく、<br class="u-br-sp">自分も相手も大切にする心。<br>
+                                    一方的な善意ではなく、<br class="u-br-sp">相手を思い、理解しようとする心。<br>
                                     利己と利他を対立させるのではなく、<br class="u-br-sp">どちらも大切にするための知恵。<br><br>
                                     相手の幸せを願いながら、<br class="u-br-sp">自分も心地よくいられる。<br>
                                     そんなバランスの取れた関係性を、<br class="u-br-sp">私たちは大切にしています。
