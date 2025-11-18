@@ -89,8 +89,8 @@ get_header();
                                 </p>
                                 <p class="p-philosophyOrigin__detail">
                                     技術は、それ自体が目的ではありません。<br>
-                                    ITシステムもAIも、ただの手段。<br>大切なのは、その先にある人と人のつながり。<br>
-                                    人と人が出会い、関係性が深まり、可能性が広がる。<br><br>
+                                    ITシステムもAIも、ただの手段。<br>大切なのは、その先にある人と人のつながり。<br><br>
+                                    人と人が出会い、関係性が深まり、可能性が広がる。<br>
                                     そのための「接点」「きっかけ」「場」を生み出すことが、<br class="u-br-pc">私たちの使命だと考えています。
                                 </p>
                                 <p class="p-philosophyOrigin__detail">
