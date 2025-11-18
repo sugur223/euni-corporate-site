@@ -90,8 +90,7 @@ get_header();
                                 <p class="p-philosophyOrigin__detail">
                                     技術は、それ自体が目的ではありません。<br>
                                     人と人が出会い、関係性が深まり、可能性が広がる。<br>
-                                    そのための「接点」「きっかけ」「場」を創ることが、<br>
-                                    私たちの使命だと考えています。
+                                    そのための「接点」「きっかけ」「場」を創ることが、<br class="u-br-pc">私たちの使命だと考えています。
                                 </p>
                                 <p class="p-philosophyOrigin__detail">
                                     WebサイトもシステムもAIも、すべては手段です。<br>

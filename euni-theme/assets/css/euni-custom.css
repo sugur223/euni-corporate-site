@@ -4366,3 +4366,14 @@ body.admin-bar .l-header {
         display: block;
     }
 }
+
+/* PC-only line break */
+.u-br-pc {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .u-br-pc {
+        display: none;
+    }
+}
