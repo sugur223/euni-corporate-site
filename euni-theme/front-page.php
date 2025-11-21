@@ -64,22 +64,16 @@ get_header();
                     if ( ! $news_query->have_posts() ) :
                         $dummy_news = array(
                             array(
-                                'date'            => '2025.11.XX',
+                                'date'            => '2025.11.21',
                                 'category'        => 'プレスリリース',
                                 'category_class'  => 'press',
                                 'title'           => '株式会社Euni設立のお知らせ',
                             ),
                             array(
-                                'date'            => '2025.11.XX',
+                                'date'            => '2025.11.21',
                                 'category'        => 'お知らせ',
                                 'category_class'  => 'info',
                                 'title'           => 'コーポレートサイトを公開しました',
-                            ),
-                            array(
-                                'date'            => '2025.12.XX',
-                                'category'        => 'イベント',
-                                'category_class'  => 'event',
-                                'title'           => 'キックオフイベント開催予定',
                             ),
                         );
 
@@ -401,8 +395,8 @@ get_header();
 
                                 <p>人と人をつなぎ、<br class="u-br-sp">善い関係を育む接点として、<br class="u-br-sp">役割を果たしたいと思っています。</p>
 
-                                <p>一人ひとりが、<br class="u-br-sp">自分らしく可能性を広げられる。<br>
-                                互いに支え合える温かいつながりが、<br class="u-br-sp">今ここにある。<br>
+                                <p>一人ひとりが、自分らしく可能性を広げられる。<br>
+                                互いに支え合える温かいつながりが、今ここにある。<br>
                                 そんな社会を、一緒に築いていけたら嬉しいです。</p>
                             </div>
                         <?php endif; ?>
