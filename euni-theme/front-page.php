@@ -87,7 +87,7 @@ get_header();
                                 </span>
                             </div>
                             <h3 class="c-newsCard__title">
-                                <a href="#news"><?php echo esc_html( $news['title'] ); ?></a>
+                                <?php echo esc_html( $news['title'] ); ?>
                             </h3>
                         </article>
                     <?php
