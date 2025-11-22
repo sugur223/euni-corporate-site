@@ -3633,14 +3633,11 @@ body.admin-bar .l-header {
     margin-top: clamp(2rem, 4vw, 3rem);
     padding-top: clamp(1.5rem, 3vw, 2rem);
     border-top: 1px solid var(--color-border);
-}
-
-.p-ceoMessageCard__signature p {
-    font-size: clamp(1rem, 2vw, 1.125rem);
-    font-weight: 700;
-    color: var(--color-text-medium);
+    font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+    font-weight: 400;
+    color: var(--color-text-dark);
     text-align: right;
-    margin: 0;
+    margin-bottom: 0;
 }
 
 .p-ceoMessageCard__career {
