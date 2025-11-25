@@ -399,10 +399,7 @@ get_header();
                                 互いに支え合える温かいつながりが、今ここにある。<br>
                                 そんな社会を、一緒に築いていけたら嬉しいです。</p>
 
-                                <p class="p-ceoMessageCard__signature">
-                                    株式会社Euni<br>
-                                    代表取締役　松本 卓
-                                </p>
+                                <p class="p-ceoMessageCard__signature">松本 卓</p>
                             </div>
                         <?php endif; ?>
                     </div>
