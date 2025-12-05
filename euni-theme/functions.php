@@ -262,7 +262,8 @@ function euni_handle_contact_form() {
 
     if ( ! empty( $recaptcha_secret ) ) {
         if ( ! euni_verify_recaptcha( $recaptcha_token ) ) {
-            wp_redirect( add_query_arg( 'contact', 'recaptcha_error', home_url( '/#contact' ) ) );
+            $redirect_url = add_query_arg( 'contact', 'recaptcha_error', home_url( '/' ) );
+            wp_redirect( $redirect_url . '#contact' );
             exit;
         }
     }
@@ -277,7 +278,8 @@ function euni_handle_contact_form() {
 
     // Validate required fields
     if ( empty( $name ) || empty( $email ) || empty( $type ) || empty( $message ) ) {
-        wp_redirect( add_query_arg( 'contact', 'error', home_url( '/#contact' ) ) );
+        $redirect_url = add_query_arg( 'contact', 'error', home_url( '/' ) );
+        wp_redirect( $redirect_url . '#contact' );
         exit;
     }
 
@@ -347,9 +349,11 @@ function euni_handle_contact_form() {
     }
 
     if ( $sent ) {
-        wp_redirect( add_query_arg( 'contact', 'success', home_url( '/#contact' ) ) );
+        $redirect_url = add_query_arg( 'contact', 'success', home_url( '/' ) );
+        wp_redirect( $redirect_url . '#contact' );
     } else {
-        wp_redirect( add_query_arg( 'contact', 'error', home_url( '/#contact' ) ) );
+        $redirect_url = add_query_arg( 'contact', 'error', home_url( '/' ) );
+        wp_redirect( $redirect_url . '#contact' );
     }
     exit;
 }

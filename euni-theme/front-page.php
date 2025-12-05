@@ -620,16 +620,114 @@ get_header();
                         <?php if ( ! empty( $recaptcha_site_key ) ) : ?>
                         <script src="https://www.google.com/recaptcha/api.js?render=<?php echo esc_attr( $recaptcha_site_key ); ?>"></script>
                         <script>
-                            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                                e.preventDefault();
+                            (function() {
+                                var form = document.getElementById('contactForm');
+                                if (!form) {
+                                    return;
+                                }
 
-                                grecaptcha.ready(function() {
-                                    grecaptcha.execute('<?php echo esc_js( $recaptcha_site_key ); ?>', {action: 'contact_form'}).then(function(token) {
-                                        document.getElementById('recaptchaToken').value = token;
-                                        document.getElementById('contactForm').submit();
+                                var submitButton = form.querySelector('button[type="submit"]');
+                                var tokenInput = document.getElementById('recaptchaToken');
+                                var isSubmitting = false;
+                                var tokenRefreshTimer = null;
+                                var TOKEN_REFRESH_INTERVAL = 90 * 1000;
+                                var RECAPTCHA_READY_TIMEOUT = 10 * 1000;
+                                var RECAPTCHA_READY_INTERVAL = 300;
+                                var siteKey = '<?php echo esc_js( $recaptcha_site_key ); ?>';
+
+                                function setSubmitDisabled(disabled) {
+                                    if (!submitButton) {
+                                        return;
+                                    }
+                                    submitButton.disabled = disabled;
+                                    submitButton.classList.toggle('is-disabled', disabled);
+                                }
+
+                                function notifyRecaptchaError(message) {
+                                    alert(message || 'reCAPTCHAの取得に失敗しました。ブラウザの設定を確認いただくか、時間をおいて再度お試しください。');
+                                }
+
+                                function scheduleRefresh() {
+                                    if (tokenRefreshTimer) {
+                                        clearTimeout(tokenRefreshTimer);
+                                    }
+                                    tokenRefreshTimer = setTimeout(function() {
+                                        refreshToken();
+                                    }, TOKEN_REFRESH_INTERVAL);
+                                }
+
+                                function refreshToken(options) {
+                                    var isInitial = options && options.initial;
+
+                                    if (typeof grecaptcha === 'undefined') {
+                                        notifyRecaptchaError('reCAPTCHAが読み込めません。ブラウザの設定（コンテンツブロッカー等）をご確認ください。');
+                                        setSubmitDisabled(false);
+                                        return;
+                                    }
+
+                                    if (isInitial) {
+                                        setSubmitDisabled(true);
+                                    }
+
+                                    grecaptcha.execute(siteKey, { action: 'contact_form' }).then(function(token) {
+                                        tokenInput.value = token;
+                                        if (isInitial) {
+                                            setSubmitDisabled(false);
+                                        }
+                                        scheduleRefresh();
+                                    }).catch(function(error) {
+                                        console.error('reCAPTCHA error:', error);
+                                        if (isInitial) {
+                                            setSubmitDisabled(false);
+                                        }
+                                        notifyRecaptchaError();
                                     });
+                                }
+
+                                form.addEventListener('submit', function(e) {
+                                    if (isSubmitting) {
+                                        return;
+                                    }
+
+                                    if (!tokenInput.value) {
+                                        e.preventDefault();
+                                        notifyRecaptchaError('reCAPTCHAの初期化が完了していません。少し待ってから再度お試しください。');
+                                        refreshToken();
+                                        return;
+                                    }
+
+                                    isSubmitting = true;
                                 });
-                            });
+
+                                if (!submitButton) {
+                                    console.error('Submit button not found for contact form.');
+                                } else {
+                                    setSubmitDisabled(true);
+                                }
+
+                                (function waitForRecaptcha(startTime) {
+                                    if (!startTime) {
+                                        startTime = Date.now();
+                                    }
+
+                                    if (typeof grecaptcha !== 'undefined' && typeof grecaptcha.ready === 'function') {
+                                        grecaptcha.ready(function() {
+                                            refreshToken({ initial: true });
+                                        });
+                                        return;
+                                    }
+
+                                    if (Date.now() - startTime >= RECAPTCHA_READY_TIMEOUT) {
+                                        setSubmitDisabled(false);
+                                        notifyRecaptchaError('reCAPTCHAが読み込めません。ブラウザの設定（コンテンツブロッカー等）をご確認ください。');
+                                        return;
+                                    }
+
+                                    setTimeout(function() {
+                                        waitForRecaptcha(startTime);
+                                    }, RECAPTCHA_READY_INTERVAL);
+                                })();
+                            })();
                         </script>
                         <?php endif; ?>
                     </div>
